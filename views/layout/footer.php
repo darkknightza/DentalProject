@@ -1,4 +1,4 @@
-	<!-- footer starts here -->
+<!-- footer starts here -->
 	<footer class="footer clearfix">
 		<div class="container">
 			<div class="row">

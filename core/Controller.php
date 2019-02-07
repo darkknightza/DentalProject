@@ -11,18 +11,18 @@ class Controller
         header('Content-type: text/html; charset=utf-8');
         require_once 'core/View.php';
         $this->viwes = new View();
-
     }
 
     public function check_login()
     {
-        Session::init();
+       
         $user = Session::get('user');
         if ($user == '') {
-            header('location:/LoginControllers/formlogin');
+            header('location:/LoginControllers/Login');
+        }else {
+            header('location:/index');
         }
     }
-
     protected function views($view, $data = [], $inc = FALSE)
     {
         $this->viwes->render($view, $inc, $data);

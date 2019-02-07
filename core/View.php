@@ -4,11 +4,13 @@ namespace core;
 class View {
     
     function __construct() {
-        //echo 'this is the view';
+        Session::init();
+        
     }
     
     public function render($name, $noInclude = false, $data = [])
     {
+        $user = Session::get('user');
         if ($noInclude == true) {
             require 'views/' . $name . '.php';
         }

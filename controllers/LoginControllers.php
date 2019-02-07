@@ -14,11 +14,11 @@ class LoginControllers extends Controller
     }
     public function logout(){
         Session::destroy();
-        $this->views('dental/Login');
+        header('location:/LoginControllers/FormLogin');
     }
     
     public function FormLogin(){
-        $this->views('dental/Login');
+        $this->views('dental/Login',null);
     }
     
 
@@ -27,19 +27,17 @@ class LoginControllers extends Controller
        
         $username = filter_input(INPUT_POST, 'username',FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password',FILTER_SANITIZE_STRING);
-        echo $username;
-        echo $password;
         $result = $this->model->getPasswordByUsername($username);
-//         $passwordHash = $result['password']; 
-//         $userId = $result['id'];
-//         $pass = password_hash($password, PASSWORD_DEFAULT);
-//         if(password_verify($password, $passwordHash)){
-//             $user = $this->model->getUserDetail($userId);
-//             Session::set('user', $user);
-//             header('location:/index');
-//         }else {
-//             $this->views('login/login', null);
-//         }
+        $passwordHash = $result['password']; 
+        $userId = $result['user_id'];
+        $pass = password_hash($password, PASSWORD_DEFAULT);
+        if(password_verify($password, $passwordHash)){
+            $user = $this->model->getUserDetail($userId);
+            Session::set('user', $user);
+            $this->views('index/index',null);
+        }else {
+            $this->views('dental/Login',null);
+        }
     }
 }
 

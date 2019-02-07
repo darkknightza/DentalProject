@@ -1,4 +1,5 @@
 <?php
+use core\Session;
 use core\Cotroller\Controller;
 
 class Index extends Controller
@@ -9,11 +10,13 @@ class Index extends Controller
     public function __construct()
     {
         parent::__construct();
+        Session::init();
     }
 
     public function Index()
     {
-        $this->views('index/index', null);
+        $user = session::get('user');
+        $this->views('index/index',null);
     }
     
 
