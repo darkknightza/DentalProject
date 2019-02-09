@@ -12,14 +12,8 @@ class LoginControllers extends Controller
         $this->model = new login_model();
         Session::init();
     }
-    public function logout(){
-        Session::destroy();
-        header('location:/LoginControllers/FormLogin');
-    }
     
-    public function FormLogin(){
-        $this->views('dental/Login',null);
-    }
+    
     
 
     
@@ -49,4 +43,3 @@ class LoginControllers extends Controller
         }
     }
 }
-
