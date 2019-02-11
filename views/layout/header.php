@@ -30,7 +30,11 @@
 			<div class="row">
 				<div class="col-xs-5 header-logo">
 					<br>
-					<a href="/index"><img src="/public/img/logo.png" alt="" class="img-responsive logo"></a>
+					<?php if($user==null){ ?>
+					<a href="/UserTypeController/Topage/''"><img src="/public/img/logo.png" alt="" class="img-responsive logo"></a>
+					<?php }else{ ?>
+					<a href="/UserTypeController/Topage/<?php echo $user['userType_id'] ?>"><img src="/public/img/logo.png" alt="" class="img-responsive logo"></a>
+					<?php } ?>
 				</div>
 				<div class="col-md-7">
 					<nav class="navbar navbar-default">
@@ -48,7 +52,11 @@
 					    <!-- Collect the nav links, forms, and other content for toggling -->
 					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					      <ul class="nav navbar-nav navbar-right">
-					        <li><a class="menu active" href="/index" >Home</a></li>
+					      	<?php if($user==null){ ?>
+					      	<li><a class="menu active" href="/UserTypeController/Topage/''" >Home</a></li>
+					      	 <?php }else{ ?>
+					        <li><a class="menu active" href="/UserTypeController/Topage/<?php echo $user['userType_id'] ?>" >Home</a></li>
+					        <?php } ?>
 					        <?php if($user==null){ ?>
 					        <li><a class="menu" href="/LoginControllers/FormLogin">Login พนักงาน</a></li>
 					        <?php }else{ ?>

@@ -36,13 +36,9 @@ class LoginControllers extends Controller
             Session::set('user', $user);
             Session::set('userType_id', $user);
 
-            if($user['userType_id']=='1'){
-                $this->views('record/index',null);
+           header('location:/UserTypeController/Topage/'.$user['userType_id']);
 
-            }else{
-                $this->views('index/index',null);
-
-            }
+            
             
         }else {
             $this->views('dental/Login',null);
