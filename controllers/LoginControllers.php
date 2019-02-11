@@ -38,8 +38,6 @@ class LoginControllers extends Controller
 
            header('location:/UserTypeController/Topage/'.$user['userType_id']);
 
-            
-            
         }else {
             $this->views('dental/Login',null);
         }
