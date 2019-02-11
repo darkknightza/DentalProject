@@ -16,7 +16,7 @@
 			<div class="row">
 				<h2>ยินดีต้อนรับ</h2>
 				<h4><?php echo $user['name'] ?> ( เจ้าหน้าที่เวชระเบียน ) </h4>
-				<div class="col-md-3 col-sm-6">
+				<a href="/AddPatientController/AddPatient" target="_blank"><div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -25,8 +25,8 @@
 						</div>
 						<h3>เพิ่มข้อมูลผู้ป่วย</h3>
 					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
+				</div></a>
+				<a href="www.google.co.th"><div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -35,8 +35,8 @@
 						</div>
 						<h3>จัดการข้อมูลผู้ป่วย</h3>
 					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
+				</div></a>
+				<a href="www.google.co.th"><div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -45,8 +45,8 @@
 						</div>
 						<h3>การจองคิวผู้ป่วย</h3>
 					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
+				</div></a>
+				<a href="www.google.co.th"><div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -56,7 +56,7 @@
 						<h3>ตรวจสอบประวัติผู้ป่วย</h3>
 					</div>
 				</div>
-			</div>
+			</div></a>
 		</div>
 	</section><!-- end of service section -->
 
