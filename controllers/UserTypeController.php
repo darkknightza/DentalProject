@@ -15,8 +15,8 @@ class UserTypeController extends Controller
     
 
     
-    public function Topage($type){
-        if($type==''){
+    public function Topage($type=null){
+        if($type==null){
             $this->views('index/index',null);
 
         }else{
