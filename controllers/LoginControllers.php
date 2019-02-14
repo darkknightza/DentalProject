@@ -34,8 +34,7 @@ class LoginControllers extends Controller
         if(password_verify($password, $passwordHash)){
             $user = $this->model->getUserDetail($userId);
             Session::set('user', $user);
-            Session::set('userType_id', $user);
-           header('location:/UserTypeController/Topage/'.$user['userType_id']);
+            header('location:/UserTypeController/Topage/'.$user['userType_id']);
 
         }else {
             $this->views('dental/Login',null);
