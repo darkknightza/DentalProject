@@ -30,7 +30,6 @@ class LoginControllers extends Controller
         $result = $this->model->getPasswordByUsername($username);
         $passwordHash = $result['password']; 
         $userId = $result['user_id'];
-        $pass = password_hash($password, PASSWORD_DEFAULT);
         if(password_verify($password, $passwordHash)){
             $user = $this->model->getUserDetail($userId);
             Session::set('user', $user);
