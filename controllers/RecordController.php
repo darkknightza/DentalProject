@@ -13,7 +13,9 @@ class RecordController extends Controller
     }
     
     
-    
+     public function ToAddPatient(){
+        $this->views('record/AddPatient',null);
+    }
 
     
     public function AddPatient(){
@@ -41,5 +43,8 @@ class RecordController extends Controller
         
         
     }
+
+
+
 }
 ?>
