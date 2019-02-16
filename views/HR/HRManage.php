@@ -21,20 +21,24 @@
         			<th>Name</th>
         			<th>USERNAME</th>
         			<th>TYPE</th>
+        			<th>EDITPASS</th>
         			<th>EDIT</th>
         			<th>DELETE</th>
         		</tr>
         	</thead>
         	<tbody>
+        	<?php $i = 1 ?>
         	<?php foreach ($data['alluser'] as $row){ ?>
         		<tr>
-        			<td><?php echo $row['user_id'] ?></td>
+        			<td><?php echo $i ?></td>
         			<td><?php echo $row['name'] ?></td>
         			<td><?php echo $row['username'] ?></td>
         			<td><?php echo $row['userType_name'] ?></td>
-        			<td>แก้ไข</td>
-        			<td>ลบ</td>
+         			<td><a href="/HRController/EditPassword/<?php echo $row['user_id'] ?>">แก้ไขรหัสผ่าน</a></td>
+        			<td><a href="/HRController/EditUser/<?php echo $row['user_id'] ?>">แก้ไข</a></td>
+        			<td><a href="/HRController/DeleteUser/<?php echo $row['user_id'] ?>" onclick="return confirm('Are you sure?')">ลบ</a></td>
         		</tr>
+        		<?php $i++ ?>
         	<?php } ?>
         	</tbody>
         </table>
