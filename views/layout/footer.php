@@ -16,7 +16,6 @@
 
 	<!-- script tags
 	============================================================= -->
-	<script src="/public/js/jquery-2.1.1.js"></script>
 	<script src="/public/js/smoothscroll.js"></script>
 	<script src="/public/js/bootstrap.min.js"></script>
 </body>

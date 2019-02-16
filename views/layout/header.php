@@ -15,6 +15,13 @@
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<script src="/public/js/modernizr.js"></script>
+	
+	<!-- นำเข้า  CSS จาก dataTables -->
+	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+	<!-- นำเข้า  Javascript จาก  Jquery -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- นำเข้า  Javascript  จาก   dataTables -->
+	<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
 	<!--[if lt IE 9]>
       <script src="/public/js/html5shiv.js"></script>
       <script src="/public/js/respond.min.js"></script>

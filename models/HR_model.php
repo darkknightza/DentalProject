@@ -1,0 +1,38 @@
+<?php
+namespace models;
+use core\Model;
+use PDO;
+
+class HR_model extends Model
+{
+    
+    public function __construct(){
+        parent::__construct();
+        
+        
+    }
+    
+    public function getUserType(){
+        $sql ="SELECT * FROM user_type";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function InsertUser($data){
+        $sql ="INSERT INTO user (name,username,password,userType_id) VALUES(:name,:username,:password,:userType_id)";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':name', $data['name']);
+        $pstm->bindParam(':username', $data['username']);
+        $pstm->bindParam(':password', $data['pass']);
+        $pstm->bindParam(':userType_id', $data['usertype']);
+        return $pstm->execute();
+    }
+    public function GetUser(){
+        $sql ="SELECT * FROM `user` INNER JOIN user_type ON `user`.userType_id = user_type.userType_id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
+}

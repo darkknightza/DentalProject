@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="row">
 				<h2>ยินดีต้อนรับ</h2>
-				<h4><?php echo $user['name'] ?> ( เจ้าหน้าที่เวชระเบียน ) </h4>
+				<h4><?php echo $user['name'] ?> ( <?php echo $user['userType_name'] ?> ) </h4>
 				<a href="/AddPatientController/AddPatient" ><div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
