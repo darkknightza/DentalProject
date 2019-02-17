@@ -25,10 +25,12 @@ class RecordController extends Controller
     }
 
 
-     public function TViewDetail($id){
-         $Patient = $this->model->GetPatientDetail();
+     public function ViewDetail($id){
+         $Patient = $this->model->GetPatientDetail($id);
+          $History = $this->model->GetPatientHistory($id);
         $this->views('record/ViewDetail',[
-            'Patient' =>$Patient
+            'Patient' =>$Patient,
+            'History' =>$History
         ]);
     }
 
