@@ -25,6 +25,8 @@ class UserTypeController extends Controller
     
             }else if($type=='2'){
                 $this->views('HR/index',null);
+            }else if($type=='5'){
+                $this->views('dentist/index',null);
             }else if($type=='6'){
                 $this->views('HR/index',null);
             }else{
