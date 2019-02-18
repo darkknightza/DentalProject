@@ -17,6 +17,23 @@ class RecordController extends Controller
         $this->views('record/AddPatient',null);
     }
 
+     public function ToManagePatient(){
+         $allPatient = $this->model->GetAllPatient();
+        $this->views('record/ManagePatient',[
+            'allPatient' =>$allPatient
+        ]);
+    }
+
+
+     public function ViewDetail($id){
+         $Patient = $this->model->GetPatientDetail($id);
+          $History = $this->model->GetPatientHistory($id);
+        $this->views('record/ViewDetail',[
+            'Patient' =>$Patient,
+            'History' =>$History
+        ]);
+    }
+
     
     public function AddPatient(){
       $fname = filter_input(INPUT_POST, 'fname',FILTER_SANITIZE_STRING);

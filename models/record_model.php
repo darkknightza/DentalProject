@@ -24,6 +24,31 @@ class record_model extends Model
         $pstm->bindParam(':UpdateBy', $user_id);
         $pstm->execute();
     }
+
+    public function GetAllPatient(){
+        $sql ="SELECT * FROM `Patient` ";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function GetPatientDetail($id){
+        $sql ="SELECT * FROM `Patient` where patient_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
+        $pstm->execute();
+        return $pstm->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+    public function GetPatientHistory($id){
+        $sql ="SELECT t.treatment_name as treatment_name,t.HowToTreatment as HowToTreatment,t.treatment_history_date as treatment_history_date,u.name as name  FROM treatment_history t INNER JOIN user u WHERE t.dentist_id = u.user_id and t.patient_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
     
     
 }
