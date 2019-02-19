@@ -38,7 +38,7 @@
         			<td><?php echo $row['tel'] ?></td>
          			<td><a href="/RecordController/ViewDetail/<?php echo $row['patient_id'] ?>">เพิ่มเติม</a></td>
         			<td><a href="/RecordController/ToEditPatientPage/<?php echo $row['patient_id'] ?>">แก้ไข</a></td>
-        			<td><a href="/HRController/DeleteUser/<?php echo $row['patient_id'] ?>" onclick="return confirm('Are you sure?')">ลบ</a></td>
+        			<td><a href="/RecordController/ToDeletePatient/<?php echo $row['patient_id'] ?>" onclick="return confirm('Are you sure?')">ลบ</a></td>
         		</tr>
         		<?php $i++ ?>
         	<?php } ?>

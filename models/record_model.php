@@ -53,7 +53,7 @@ class record_model extends Model
 
     public function UpdatePatient($data){
         $sql ="UPDATE patient SET patient_name = :patient_name ,location = :location ,tel = :tel ,Allergic = :Allergic ,CongenitalDetail = :CongenitalDetail   WHERE patient_id = :id";
-        
+
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':patient_name', $data['name']);
         $pstm->bindParam(':location', $data['location']);
@@ -61,6 +61,16 @@ class record_model extends Model
         $pstm->bindParam(':Allergic', $data['Allergic']);
         $pstm->bindParam(':CongenitalDetail', $data['CongenitalDetail']);
         $pstm->bindParam(':id', $data['id']);
+        return $pstm->execute();
+    }
+
+
+    
+
+     public function DeletePatient($id){
+        $sql ="DELETE FROM `patient` WHERE patient_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
         return $pstm->execute();
     }
     
