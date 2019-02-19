@@ -19,6 +19,7 @@
         		<tr>
         			<th>ID</th>
         			<th>ชื่ผู้ป่วย</th>
+                    <th>วันเกิด</th>
         			<th>ที่อยู่</th>
         			<th>เบอร์โทรศัพท์</th>
         			<th>เพิ่มเติม</th>
@@ -32,10 +33,11 @@
         		<tr>
         			<td><?php echo $i ?></td>
         			<td><?php echo $row['patient_name'] ?></td>
+                    <td><?php echo $row['BirthDate'] ?></td>
         			<td><?php echo $row['location'] ?></td>
         			<td><?php echo $row['tel'] ?></td>
          			<td><a href="/RecordController/ViewDetail/<?php echo $row['patient_id'] ?>">เพิ่มเติม</a></td>
-        			<td><a href="/HRController/EditUser/<?php echo $row['patient_id'] ?>">แก้ไข</a></td>
+        			<td><a href="/RecordController/ToEditPatientPage/<?php echo $row['patient_id'] ?>">แก้ไข</a></td>
         			<td><a href="/HRController/DeleteUser/<?php echo $row['patient_id'] ?>" onclick="return confirm('Are you sure?')">ลบ</a></td>
         		</tr>
         		<?php $i++ ?>

@@ -49,6 +49,20 @@ class record_model extends Model
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+    public function UpdatePatient($data){
+        $sql ="UPDATE patient SET patient_name = :patient_name ,location = :location ,tel = :tel ,Allergic = :Allergic ,CongenitalDetail = :CongenitalDetail   WHERE patient_id = :id";
+        
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':patient_name', $data['name']);
+        $pstm->bindParam(':location', $data['location']);
+        $pstm->bindParam(':tel', $data['tel']);
+        $pstm->bindParam(':Allergic', $data['Allergic']);
+        $pstm->bindParam(':CongenitalDetail', $data['CongenitalDetail']);
+        $pstm->bindParam(':id', $data['id']);
+        return $pstm->execute();
+    }
     
     
 }

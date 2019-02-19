@@ -34,6 +34,14 @@ class RecordController extends Controller
         ]);
     }
 
+
+     public function ToEditPatientPage($id){
+         $Patient = $this->model->GetPatientDetail($id);
+        $this->views('record/EditPatient',[
+            'Patient' =>$Patient
+        ]);
+    }
+
     
     public function AddPatient(){
       $fname = filter_input(INPUT_POST, 'fname',FILTER_SANITIZE_STRING);
@@ -59,6 +67,29 @@ class RecordController extends Controller
         </script>";
         
         
+    }
+
+    public function UpdatePatient(){
+        $id = filter_input(INPUT_POST, 'Patient_id',FILTER_SANITIZE_STRING);
+        $name = filter_input(INPUT_POST, 'name',FILTER_SANITIZE_STRING);
+        $tel = filter_input(INPUT_POST, 'tel',FILTER_SANITIZE_STRING);
+        $location = filter_input(INPUT_POST, 'location',FILTER_SANITIZE_STRING);
+        $Allergic = filter_input(INPUT_POST, 'Allergic',FILTER_SANITIZE_STRING);
+        $CongenitalDetail = filter_input(INPUT_POST, 'CongenitalDetail',FILTER_SANITIZE_STRING);
+        $data = [
+            'name' => $name,
+            'location' => $location,
+            'tel' => $tel,
+            'Allergic' => $Allergic,
+            'CongenitalDetail' => $CongenitalDetail,
+            'id' => $id
+        ];
+        $result = $this->model->UpdatePatient($data);
+        if($result){
+            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+        }else{
+            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
+        }
     }
 
 
