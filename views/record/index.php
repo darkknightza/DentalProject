@@ -43,7 +43,7 @@
 								<img class="heart img-responsive" src="/public/img/img_458480.png" style="width:60%;height:80%" alt="">
 							</div>
 						</div>
-						<h3>การจองคิวผู้ป่วย</h3>
+						<h3>การจัดการคิว</h3>
 					</div>
 				</div></a>
 				<a href="www.google.co.th"><div class="col-md-3 col-sm-6">

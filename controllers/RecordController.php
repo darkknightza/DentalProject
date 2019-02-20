@@ -32,8 +32,8 @@ class RecordController extends Controller
 
     public function ToQ_Page(){
          $allQ = $this->model->GetAllQ();
-        $this->views('record/ManagePatient',[
-            'allPatient' =>$allPatient
+        $this->views('record/Patient_Q',[
+            'allQ' =>$allQ
         ]);
     }
 
