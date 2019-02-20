@@ -11,6 +11,10 @@ class RecordController extends Controller
         require_once 'models/record_model.php';
         $this->model = new record_model();
     }
+
+    public function ToRecordPage(){
+        $this->views('record/index',null);
+    }
     
     
      public function ToAddPatient(){

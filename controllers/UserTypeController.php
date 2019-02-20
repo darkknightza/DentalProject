@@ -27,7 +27,7 @@ class UserTypeController extends Controller
             }else if($type=='8'||$type=='9'){ //พวกแอดมิน
                 $this->views('HR/index',null);
             }else{ //พวกพนักงานที่เหลือ
-                $this->views('index/index',null);
+                $this->views('dental/index',null);
             }
         }
        

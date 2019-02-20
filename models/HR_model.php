@@ -64,12 +64,7 @@ class HR_model extends Model
 
 
 
-    public function GetAllUser(){
-        $sql ="SELECT * FROM `user` INNER JOIN user_type ON `user`.userType_id = user_type.userType_id";
-        $pstm = $this->connect->prepare($sql);
-        $pstm->execute();
-        return $pstm->fetchAll(PDO::FETCH_ASSOC);
-    }
+    
     
     
 }
