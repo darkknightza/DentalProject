@@ -25,6 +25,15 @@ class RecordController extends Controller
     }
 
 
+
+    public function ToQ_Page(){
+         $allQ = $this->model->GetAllQ();
+        $this->views('record/ManagePatient',[
+            'allPatient' =>$allPatient
+        ]);
+    }
+
+
      public function ViewDetail($id){
          $Patient = $this->model->GetPatientDetail($id);
           $History = $this->model->GetPatientHistory($id);

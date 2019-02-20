@@ -20,14 +20,11 @@ class UserTypeController extends Controller
             $this->views('index/index',null);
 
         }else{
-            if($type=='1'){
-                $this->views('record/index',null);
-    
-            }else if($type=='2'){
+            if($type=='7'){
                 $this->views('HR/index',null);
             }else if($type=='5'){
                 $this->views('dentist/index',null);
-            }else if($type=='6'){
+            }else if($type=='8'||$type=='9'){
                 $this->views('HR/index',null);
             }else{
                 $this->views('index/index',null);

@@ -74,6 +74,12 @@ class record_model extends Model
         return $pstm->execute();
     }
     
+    public function GetAllQ(){
+        $sql ="SELECT * FROM `treatment_q` ";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }
 

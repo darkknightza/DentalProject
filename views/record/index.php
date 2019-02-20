@@ -36,7 +36,7 @@
 						<h3>จัดการข้อมูลผู้ป่วย</h3>
 					</div>
 				</div></a>
-				<a href="www.google.co.th"><div class="col-md-3 col-sm-6">
+				<a href="/RecordController/ToQ_Page"><div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
