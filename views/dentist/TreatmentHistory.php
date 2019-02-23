@@ -17,24 +17,20 @@
         <table class="table table-bordered" id="dataTable">
         	<thead>
         		<tr>
-        			<th>ID</th>
         			<th>รหัสคนไข้</th>
-        			<th>Name</th>
+        			<th>ชื่อผู้ป่วย</th>
         			<th>เบอร์โทร</th>
         			<th>ดูรายละเอียด</th>
         		</tr>
         	</thead>
         	<tbody>
-        	<?php $i = 1 ?>
         	<?php foreach ($data['ListTreatmentHis'] as $row){ ?>
         		<tr>
-        			<td><?php echo $i ?></td>
         			<td><?php echo $row['patient_id'] ?></td>
         			<td><?php echo $row['patient_name'] ?></td>
         			<td><?php echo $row['tel'] ?></td>
-        			<td><a href="/HRController/DeleteUser/<?php echo $row['user_id'] ?>">ดูรายละเอียด</a></td>
+        			<td><a href="/DentistController/ViewHistoryDetail/<?php echo $row['patient_id'] ?>">ดูรายละเอียด</a></td>
         		</tr>
-        		<?php $i++ ?>
         	<?php } ?>
         	</tbody>
         </table>
