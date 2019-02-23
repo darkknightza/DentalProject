@@ -11,6 +11,10 @@ class RecordController extends Controller
         require_once 'models/record_model.php';
         $this->model = new record_model();
     }
+
+    public function ToRecordPage(){
+        $this->views('record/index',null);
+    }
     
     
      public function ToAddPatient(){
@@ -25,12 +29,29 @@ class RecordController extends Controller
     }
 
 
+
+    public function ToQ_Page(){
+         $allQ = $this->model->GetAllQ();
+        $this->views('record/Patient_Q',[
+            'allQ' =>$allQ
+        ]);
+    }
+
+
      public function ViewDetail($id){
         $Patient = $this->model->GetPatientDetail($id);
         $History = $this->model->GetPatientHistory($id);
         $this->views('record/ViewDetail',[
             'Patient' =>$Patient,
             'History' =>$History
+        ]);
+    }
+
+
+     public function ToEditPatientPage($id){
+         $Patient = $this->model->GetPatientDetail($id);
+        $this->views('record/EditPatient',[
+            'Patient' =>$Patient
         ]);
     }
 
@@ -59,6 +80,38 @@ class RecordController extends Controller
         </script>";
         
         
+    }
+
+    public function UpdatePatient(){
+        $id = filter_input(INPUT_POST, 'Patient_id',FILTER_SANITIZE_STRING);
+        $name = filter_input(INPUT_POST, 'name',FILTER_SANITIZE_STRING);
+        $tel = filter_input(INPUT_POST, 'tel',FILTER_SANITIZE_STRING);
+        $location = filter_input(INPUT_POST, 'location',FILTER_SANITIZE_STRING);
+        $Allergic = filter_input(INPUT_POST, 'Allergic',FILTER_SANITIZE_STRING);
+        $CongenitalDetail = filter_input(INPUT_POST, 'CongenitalDetail',FILTER_SANITIZE_STRING);
+        $data = [
+            'name' => $name,
+            'location' => $location,
+            'tel' => $tel,
+            'Allergic' => $Allergic,
+            'CongenitalDetail' => $CongenitalDetail,
+            'id' => $id
+        ];
+        $result = $this->model->UpdatePatient($data);
+        if($result){
+            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+        }else{
+            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
+        }
+    }
+
+     public function ToDeletePatient($id){
+        $result = $this->model->DeletePatient($id);
+        if($result){
+            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+        }else{
+            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+        }
     }
 
 

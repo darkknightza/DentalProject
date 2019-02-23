@@ -61,6 +61,10 @@ class HR_model extends Model
         $pstm->execute();
         return $pstm->fetch(PDO::FETCH_ASSOC);
     }
+
+
+
+    
     
     
 }
