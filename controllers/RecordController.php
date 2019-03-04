@@ -32,8 +32,12 @@ class RecordController extends Controller
 
     public function ToQ_Page(){
          $allQ = $this->model->GetAllQ();
+         $allPatient = $this->model->GetAllPatient();
+         $Dentist = $this->model->GetAllDentist();
         $this->views('record/Patient_Q',[
-            'allQ' =>$allQ
+            'allQ' =>$allQ,
+            'allPatient' =>$allPatient,
+            'Dentist' =>$Dentist
         ]);
     }
 
@@ -112,6 +116,22 @@ class RecordController extends Controller
         }else{
             echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
         }
+    }
+
+
+    public function Add_Q(){
+      $patient_id = filter_input(INPUT_POST, 'patient',FILTER_SANITIZE_STRING);
+      $dentist_id = filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING);
+      $Treatment_q_time = filter_input(INPUT_POST, 'bdaytime',FILTER_SANITIZE_STRING);
+      $detail = filter_input(INPUT_POST, 'detail',FILTER_SANITIZE_STRING);
+      $user= Session::get('user');
+      $UpdateBy = $user['user_id'];
+      $status_id = 1;
+       
+
+      $data = array($patient_id, $dentist_id, $UpdateBy,$Treatment_q_time,$status_id,$detail); 
+      $this->model->InsertPatient_Q($data);
+        
     }
 
 

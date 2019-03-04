@@ -60,11 +60,11 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="heart img-responsive" src="/public/img/img_458480.png"
+								<img class="heart img-responsive" src="/public/img/76-512.png"
 									style="width: 60%; height: 80%" alt="">
 							</div>
 						</div>
-						<h3>การจัดการคิว</h3>
+						<h3>จัดการบัญชี</h3>
 					</div>
 				</div>
 			</a>

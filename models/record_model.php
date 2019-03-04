@@ -33,6 +33,14 @@ class record_model extends Model
     }
 
 
+    public function GetAllDentist(){
+        $sql ="SELECT * FROM `user` where userType_id = 5";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function GetPatientDetail($id){
         $sql ="SELECT * FROM `Patient` where patient_id = :id";
         $pstm = $this->connect->prepare($sql);
@@ -79,6 +87,21 @@ class record_model extends Model
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function InsertPatient_Q(){
+        $sql ="insert into patient (patient_name,location,tel,Allergic,CongenitalDetail,BirthDate,UpdateBy) values(:patient,:location,:tel,:Allergic,:CongenitalDetail,:BirthDate,:UpdateBy)";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':patient', $data[0]);
+        $pstm->bindParam(':location', $data[1]);
+        $pstm->bindParam(':tel', $data[2]);
+        $pstm->bindParam(':Allergic', $data[3]);
+        $pstm->bindParam(':CongenitalDetail', $data[4]);
+        $pstm->bindParam(':BirthDate', $data[5]);
+        $pstm->bindParam(':UpdateBy', $user_id);
+        $pstm->execute();
+
     }
     
 }

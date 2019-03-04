@@ -1,4 +1,26 @@
 <!-- about section -->
+
+<link rel="stylesheet" href="/public/css/jquery.inputpicker.css" />
+<script src="/public/js/jquery.inputpicker.js"></script>
+<div class="row">
+    <div class="contact-caption clearfix">
+        <div class="col-md-6 col-md-offset-3 contact-form">
+            <div align="center">
+                <h3>เพิ่มการนัดหมาย</h3>
+            </div>          
+                <form class="form" method="POST" action="/RecordController/Add_Q">
+                    <p align="left" ><font size="4" color="white">ชื่อคนไข้</font></p> <input id="test" value=" " name="patient"/>
+                    <p align="left" ><font size="4" color="white">แพทย์ผู้นัดหมาย</font></p> <input id="test2" value=" " name="dentist"/>
+                    <p align="left" ><font size="4" color="white">วันที่นัดหมาย</font></p><input type="datetime-local" name="bdaytime" required="">
+                    <p align="left" ><font size="4" color="white">หมายเหตุ</font></p> 
+                    <textarea value="" type="text" placeholder="ชื่อ-นามสกุล" name="detail"> </textarea>
+                    <input class="submit-btn" type="submit" value="เพิ่มการนัดหมาย">
+                </form>
+        </div>
+    </div>
+</div>
+
+
 <section class="about text-center" id="about">
 	<div class="container">
 		<div class="row">
@@ -51,4 +73,34 @@
 				//กำหนดให้  Plug-in dataTable ทำงาน ใน ตาราง Html ที่มี id เท่ากับ example
 				$('#dataTable').dataTable();
 			});
+</script>
+
+<script>
+$('#test').inputpicker({
+    data:[
+    <?php foreach($data['allPatient'] as $row){ ?>
+        {value:"<?php echo $row['patient_id'] ?>",text:"<?php echo $row['patient_name'] ?>"},
+        <?php } ?>
+        {}
+    ],
+    fields:['value','text'],
+    fieldText : 'text',
+    headShow: true,
+    filterOpen: true,
+    autoOpen: true
+});
+
+$('#test2').inputpicker({
+    data:[
+    <?php foreach($data['Dentist'] as $row){ ?>
+        {value:"<?php echo $row['user_id'] ?>",text:"<?php echo $row['name'] ?>"},
+        <?php } ?>
+        {}
+    ],
+    fields:['value','text'],
+    fieldText : 'text',
+    headShow: true,
+    filterOpen: true,
+    autoOpen: true
+});
 </script>
