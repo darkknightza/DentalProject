@@ -90,18 +90,16 @@ class record_model extends Model
     }
 
 
-    public function InsertPatient_Q(){
-        $sql ="insert into patient (patient_name,location,tel,Allergic,CongenitalDetail,BirthDate,UpdateBy) values(:patient,:location,:tel,:Allergic,:CongenitalDetail,:BirthDate,:UpdateBy)";
+    public function InsertPatient_Q($data){
+        $sql ="insert into treatment_q (patient_id,dentist_id,UpdateBy,Treatment_q_time,status_id,detail) values(:patient_id,:dentist_id,:UpdateBy,:Treatment_q_time,:status_id,:detail)";
         $pstm = $this->connect->prepare($sql);
-        $pstm->bindParam(':patient', $data[0]);
-        $pstm->bindParam(':location', $data[1]);
-        $pstm->bindParam(':tel', $data[2]);
-        $pstm->bindParam(':Allergic', $data[3]);
-        $pstm->bindParam(':CongenitalDetail', $data[4]);
-        $pstm->bindParam(':BirthDate', $data[5]);
-        $pstm->bindParam(':UpdateBy', $user_id);
+        $pstm->bindParam(':patient_id', $data[0]);
+        $pstm->bindParam(':dentist_id', $data[1]);
+        $pstm->bindParam(':UpdateBy', $data[2]);
+        $pstm->bindParam(':Treatment_q_time', $data[3]);
+        $pstm->bindParam(':status_id', $data[4]);
+        $pstm->bindParam(':detail', $data[5]);
         $pstm->execute();
-
     }
     
 }
