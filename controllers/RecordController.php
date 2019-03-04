@@ -131,9 +131,24 @@ class RecordController extends Controller
 
       $data = array($patient_id, $dentist_id, $UpdateBy,$Treatment_q_time,$status_id,$detail); 
       $this->model->InsertPatient_Q($data);
-      echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
+      //echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
         
     }
+
+
+      public function EditStatus($id){
+         $Q_Detail = $this->model->GetQ_Detail($id);
+         $Dentist = $this->model->GetAllDentist();
+         $Q_Status = $this->model->GetAllQ_Status();
+        $this->views('record/Q_Detail',[
+            'Q_Detail' =>$Q_Detail,
+            'Dentist' =>$Dentist,
+            'Q_Status' =>$Q_Status
+        ]);
+    }
+
+
+    
 
 
 

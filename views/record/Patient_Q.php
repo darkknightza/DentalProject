@@ -47,6 +47,7 @@
         			<th>สถานะ</th>
         			<th>อัพเดตโดย</th>
         			<th>หมายเหตุ</th>
+                    <th>การจัดการ</th>
         		</tr>
         	</thead>
         	<tbody>
@@ -58,9 +59,10 @@
                     <td><?php echo $row['dentist'] ?></td>
         			<td><?php echo $row['time'] ?></td>
         			<td><?php echo $row['arrive'] ?></td>
-         			<td><a href="/RecordController/ViewDetail/<?php echo $row['patient_id'] ?>">เพิ่มเติม</a></td>
-        			<td><a href="/RecordController/ToEditPatientPage/<?php echo $row['patient_id'] ?>">แก้ไข</a></td>
-        			<td><a href="/RecordController/ToDeletePatient/<?php echo $row['patient_id'] ?>" onclick="return confirm('Are you sure?')">ลบ</a></td>
+         			<td><p style="color: <?php echo $row['color'] ?>"><?php echo $row['status'] ?>  </p></a></td>
+        			<td><?php echo $row['UpdateBy'] ?></td>
+        			<td><?php echo $row['detail'] ?></td>
+                    <td><a href="/RecordController/EditStatus/<?php echo $row['t_id'] ?>">จัดการ</td>
         		</tr>
         		<?php $i++ ?>
         	<?php } ?>
