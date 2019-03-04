@@ -43,8 +43,8 @@ class RecordController extends Controller
 
 
      public function ViewDetail($id){
-         $Patient = $this->model->GetPatientDetail($id);
-          $History = $this->model->GetPatientHistory($id);
+        $Patient = $this->model->GetPatientDetail($id);
+        $History = $this->model->GetPatientHistory($id);
         $this->views('record/ViewDetail',[
             'Patient' =>$Patient,
             'History' =>$History

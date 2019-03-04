@@ -18,4 +18,12 @@ class DentistController extends Controller
             'ListTreatmentHis' =>$ListTreatmentHis
         ]);
     }
+    public function ViewHistoryDetail($id){
+        $Patient = $this->model->GetPatientDetail($id);
+        $History = $this->model->GetPatientHistory($id);
+        $this->views('dentist/TreatmentDetail',[
+            'Patient' =>$Patient,
+            'History' =>$History
+        ]);
+    }
 }
