@@ -21,7 +21,7 @@ class UserTypeController extends Controller
 
         }else{
             if($type=='7'){ //เจ้าของคลีนิค
-                $this->views('HR/index',null);
+                header('Location: /OwnerController/ToTransaction_Page');
             }else if($type=='5'){ //หมอ
                 $this->views('dentist/index',null);
             }else if($type=='8'||$type=='9'){ //พวกแอดมิน
