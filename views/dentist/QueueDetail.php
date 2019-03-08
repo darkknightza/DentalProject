@@ -10,15 +10,17 @@
 		</div>
 	</div>
 </div>
-
+<br>
+<br>
+<div class="row">
+    <div class="col-md-12 contact-form" align="center">
+        	<a href="/DentistController/FormTreatment/<?php echo $data['Patient']['patient_id'];  ?>" class="btn btn-info">เพิ่มรายละเอียดการรักษา</a>
+    </div>
+</div>
 <!-- about section -->
 <section class="about text-center" id="about">
 	<div class="container">
 		<div class="row">
-			<br>
-			<br>
-			<br>
-			<br>
 			<br>
 			<br>
 			<br>

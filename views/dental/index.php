@@ -42,8 +42,8 @@
 					</div>
 				</div>-->
 			</a>
-			<a href="/HRController/ManageUsers">
-				<div class="col-md-4 col-sm-6">
+			<a href="/FinanceController">
+				<div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">

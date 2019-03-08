@@ -1,0 +1,70 @@
+<div class="row">
+	<div class="contact-caption clearfix">
+		<div class="col-md-6 col-md-offset-3 contact-form">
+			<center><h3>เพิ่มรายละเอียดการรักษา</h3></center>				
+				<form class="form" method="POST" action="/DentistController/SubmitTreatment">
+					<font size="4" color="white"><p align="left" >ชื่อ-สกุล:</p></font> <input class="form-control" type="text" value="<?php echo $data['Patient']['patient_name']; ?>" placeholder="ชื่อ"  id="fname" name="name" readonly="readonly">
+					<input type="hidden" value="<?php echo $data['Patient']['patient_id']; ?>" name="id">
+					<input type="hidden" value="<?php echo $data['QueueToday']['treatment_Q_id']; ?>" name="treatment_Q_id">
+					
+					<font size="4" color="white"><p align="left" >การรักษา:</p></font><input class="form-control" type="text" placeholder="เบอร์ติดต่อ" id="phone" name="treatment_name" value="<?php echo $data['QueueToday']['detail']; ?>" readonly="readonly">
+					<font size="4" color="white"><p align="left" >รายละเอียดการรักษา:</p></font><textarea class="form-control" cols="30" rows="10" placeholder="รายละเอียดการรักษา"  name="howtotreatment"></textarea>
+					<font size="4" color="white"><p align="left" >ไฟล์เอกสาร</p></font> <input class="form-control" type="file" placeholder="การแพ้ยา" id="allegic" name="fileupload">
+					<hr>
+					<div class="form-group row">
+    					<div class="col-md-12">
+    					<table border="1" id="dataTable">
+    						<thead>
+    							<tr>
+    								<th>เลือก</th>
+    								<th>ชื่อรายการที่ทำ</th>
+    							</tr>
+    						</thead>
+    						<tbody>
+    							<?php foreach ( $data['product'] as $row){ ?>
+    							<tr>
+    								<td><input type="checkbox" value="<?php echo $row['product_id'] ?>" name="product[]"></td>
+    								<td><?php echo $row['productName'] ?></td>
+    							</tr>
+    							<?php } ?>
+    						</tbody>
+    					</table>
+    					</div>
+ 						
+
+					</div>
+					<hr>
+					<div class="form-group row">
+    					<div class="col-md-1">
+    						<input type="checkbox" name="appoint" id="appoint">
+    					</div>
+    					<div class="col-md-2">
+    						<label>นัดหมาย</label>
+    					</div>
+					</div>
+					<div class="form-group row">
+						<font size="4" color="white"><p align="left">การนัดครั้งหน้า</p></font>
+    					<div class="col-md-12">
+    					<input type="datetime-local" class="form-control" name="datetime">
+    					</div>
+    					<font size="4" color="white"><p align="left">รายละเอียด</p></font>
+    					<div class="col-md-12">
+    					<textarea rows="" cols="" name="detail"></textarea>
+    					</div>
+					</div>
+					<br>
+					<input class="submit-btn" type="submit" value="SUBMIT">	
+				</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+			//คำสั่ง Jquery เริ่มทำงาน เมื่อ โหลดหน้า Page เสร็จ 
+			$(function(){
+				//กำหนดให้  Plug-in dataTable ทำงาน ใน ตาราง Html ที่มี id เท่ากับ example
+				$('#dataTable').dataTable();
+			});
+			$( "#appoint" ).change(function() {
+				  alert( "Handler for .change() called." );
+				});
+</script>
