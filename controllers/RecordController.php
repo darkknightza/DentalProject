@@ -15,6 +15,11 @@ class RecordController extends Controller
     public function ToRecordPage(){
         $this->views('record/index',null);
     }
+
+
+    public function ToHistory_Page(){
+        $this->views('record/History',null);
+    }
     
     
      public function ToAddPatient(){
