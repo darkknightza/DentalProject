@@ -17,7 +17,7 @@
 			<h2>ยินดีต้อนรับ</h2>
 			<h4><?php echo $user['name'] ?> ( <?php echo $user['userType_name'] ?> ) </h4>
 			<a href="/RecordController/ToRecordPage">
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-4 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -29,7 +29,7 @@
 					</div>
 				</div>
 			</a> 
-			<a href="/HRController/ManageUsers">
+			<!--<a href="/HRController/ManageUsers">
 				<div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
@@ -40,10 +40,10 @@
 						</div>
 						<h3>งานยาและอุปรณ์ทางแพทย์</h3>
 					</div>
-				</div>
+				</div>-->
 			</a>
 			<a href="/HRController/ManageUsers">
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-4 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -51,12 +51,12 @@
 									style="width: 60%; height: 80%" alt="">
 							</div>
 						</div>
-						<h3>งานการเงิน</h3>
+						<h3>งานการเงินและบริการ</h3>
 					</div>
 				</div>
 			</a>
 			<a href="/HRController/ManageUsers">
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-4 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -64,7 +64,7 @@
 									style="width: 60%; height: 80%" alt="">
 							</div>
 						</div>
-						<h3>จัดการบัญชี</h3>
+						<h3>การจัดการบัญชี</h3>
 					</div>
 				</div>
 			</a>

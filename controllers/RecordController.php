@@ -143,8 +143,33 @@ class RecordController extends Controller
         $this->views('record/Q_Detail',[
             'Q_Detail' =>$Q_Detail,
             'Dentist' =>$Dentist,
-            'Q_Status' =>$Q_Status
+            'Q_Status' =>$Q_Status,
+            'id' => $id
         ]);
+    }
+
+
+    public function Save_Q(){
+        $id = filter_input(INPUT_POST, 'Q_id',FILTER_SANITIZE_STRING);
+        $patient = filter_input(INPUT_POST, 'patient',FILTER_SANITIZE_STRING);
+        $dentist = filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING);
+        $bdaytime = filter_input(INPUT_POST, 'bdaytime',FILTER_SANITIZE_STRING);
+        $detail = filter_input(INPUT_POST, 'detail',FILTER_SANITIZE_STRING);
+        $status = filter_input(INPUT_POST, 'status',FILTER_SANITIZE_STRING);
+        $data = [
+            'id' => $id,
+            'patient' => $patient,
+            'dentist' => $dentist,
+            'bdaytime' => $bdaytime,
+            'detail' => $detail,
+            'status' => $status
+        ];
+        $result = $this->model->UpdateQ($data);
+        if($result){
+            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+        }else{
+            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
+        }
     }
 
 
