@@ -18,27 +18,38 @@
         	<thead>
         		<tr>
         			<th>ID</th>
-        			<th>ชื่ผู้ป่วย</th>
-                    <th>วันเกิด</th>
-        			<th>ที่อยู่</th>
-        			<th>เบอร์โทรศัพท์</th>
-        			<th>เพิ่มเติม</th>
-        			<th>แก้ไข</th>
-        			<th>ลบ</th>
+        			<th>ประเภท</th>
+                    <th>รายละเอียด</th>
+        			<th>จำนวน</th>
+        			<th>เพิ่มโดย</th>
+        			
         		</tr>
         	</thead>
         	<tbody>
         	<?php $i = 1 ?>
-        	<?php foreach ($data['allPatient'] as $row){ ?>
+        	<?php foreach ($data['allTransaction'] as $row){ ?>
         		<tr>
         			<td><?php echo $i ?></td>
-        			<td><?php echo $row['patient_name'] ?></td>
-                    <td><?php echo $row['BirthDate'] ?></td>
-        			<td><?php echo $row['location'] ?></td>
-        			<td><?php echo $row['tel'] ?></td>
-         			<td><a href="/RecordController/ViewDetail/<?php echo $row['patient_id'] ?>">เพิ่มเติม</a></td>
-        			<td><a href="/RecordController/ToEditPatientPage/<?php echo $row['patient_id'] ?>">แก้ไข</a></td>
-        			<td><a href="/RecordController/ToDeletePatient/<?php echo $row['patient_id'] ?>" onclick="return confirm('Are you sure?')">ลบ</a></td>
+
+                    <?php if($row['Transaction_type']=='รับ'){ ?>
+
+
+
+                    <td> <p style="color: green"><?php echo $row['Transaction_type'] ?></p></td>
+
+                    <?php }if($row['Transaction_type']=='จ่าย'){ ?>
+
+
+                    <td> <p style="color: red"><?php echo $row['Transaction_type'] ?></p></td>
+
+                    <?php } ?>
+
+
+
+                    <td><?php echo $row['Transaction_detail'] ?></td>
+        			<td><?php echo $row['amount'] ?></td>
+        			<td><?php echo $row['UpdateBy'] ?></td>
+         			
         		</tr>
         		<?php $i++ ?>
         	<?php } ?>
