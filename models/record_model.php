@@ -123,15 +123,17 @@ class record_model extends Model
 
 
     public function UpdateQ($data){
-        $sql ="UPDATE treatment_q SET patient_id = :patient_name ,dentist_id = :location ,UpdateBy = :tel ,Allergic = :Allergic ,CongenitalDetail = :CongenitalDetail   WHERE patient_id = :id";
+     $sql ="UPDATE treatment_q SET dentist_id = :dentist_id ,UpdateBy = :UpdateBy ,Treatment_q_time = :Treatment_q_time ,status_id = :status_id , detail = :detail , Time_arrive = :Time_arrive   WHERE treatment_Q_id = :id";
 
+        
         $pstm = $this->connect->prepare($sql);
-        $pstm->bindParam(':patient_id', $data['name']);
-        $pstm->bindParam(':dentist_id', $data['location']);
-        $pstm->bindParam(':UpdateBy', $data['tel']);
-        $pstm->bindParam(':Allergic', $data['Allergic']);
-        $pstm->bindParam(':CongenitalDetail', $data['CongenitalDetail']);
         $pstm->bindParam(':id', $data['id']);
+        $pstm->bindParam(':dentist_id', $data['dentist']);
+        $pstm->bindParam(':UpdateBy', $data['UpdateBy']);
+        $pstm->bindParam(':Treatment_q_time', $data['bdaytime']);
+        $pstm->bindParam(':status_id', $data['status']);
+        $pstm->bindParam(':detail', $data['detail']);
+        $pstm->bindParam(':Time_arrive', $data['Time_arrive']);
         return $pstm->execute();
     }
 

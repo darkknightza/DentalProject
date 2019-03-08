@@ -10,7 +10,7 @@
             </div>          
                 <form class="form" method="POST" action="/RecordController/Save_Q">
                     <input type="hidden"  value="<?php echo $data['id']; ?>" name="Q_id"/> 
-                    <p align="left" ><font size="4" color="white">ชื่อคนไข้</font></p> <input value="<?php echo $data['Q_Detail']['patientName']; ?>" name="patient"/>
+                    <p align="left" ><font size="4" color="white">ชื่อคนไข้</font></p> <input value="<?php echo $data['Q_Detail']['patientName']; ?>" name="patient"/ disabled>
                     <p align="left" ><font size="4" color="white">แพทย์ผู้นัดหมาย</font></p> <input id="test2" value=" " name="dentist"/>
                     <p align="left" ><font size="4" color="white">วันที่นัดหมาย</font></p><input type="datetime-local" name="bdaytime" value="<?php echo date('Y-m-d\TH:i', strtotime($data['Q_Detail']['time'])); ?>">
                     <p align="left" ><font size="4" color="white">หมายเหตุ</font></p> 
