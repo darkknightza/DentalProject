@@ -63,7 +63,6 @@ class DentistController extends Controller
         if($treatment_Q_id){
             $this->model->UpdateQueue($treatment_Q_id);
         }
-        
         if($appoint){
             $datetime = filter_input(INPUT_POST, 'datetime', FILTER_DEFAULT);
             $detail = filter_input(INPUT_POST, 'detail', FILTER_DEFAULT);
@@ -78,9 +77,8 @@ class DentistController extends Controller
         $data = [
             'treatment_name' => $treatment_name,
             'howtotreatment' => $howtotreatment,
-            'userId' => $user['user_id'],
             'fileupload' => $fileupload,
-            'Patientid' => $Patientid
+            'treatment_Q_id' => $treatment_Q_id
         ];
         $lastId = $this->model->InsertTreatment($data);
         if($lastId&&$product){
@@ -88,7 +86,7 @@ class DentistController extends Controller
                 $this->model->InsertProductlog($lastId,$row);
             }
         }
-        $this->QueueToday();
+        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/QueueToday" </script>';
     }
     
 }

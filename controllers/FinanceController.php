@@ -110,4 +110,10 @@ class FinanceController extends Controller
         $result = $this->model->UpdateIncome($data);
         echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewListIncome" </script>';
     }
+    public function ViewBill(){
+        $getBill = $this->model->getBill();
+        $this->views('finance/BillList',[
+            'getBill' => $getBill
+        ]);
+    }
 }

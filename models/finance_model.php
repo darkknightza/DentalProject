@@ -74,4 +74,10 @@ class finance_model extends Model
         $pstm->bindParam(':Transaction_id', $data['id']);
         return $pstm->execute();
     }
+    public function getBill() {
+        $sql ="SELECT * FROM treatment_q WHERE status_id = 3";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
