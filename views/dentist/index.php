@@ -22,7 +22,7 @@
 		<div class="row">
 			<h2>ยินดีต้อนรับ</h2>
 			<h4><?php echo $user['name'] ?> ( <?php echo $user['userType_name'] ?> ) </h4>
-			<a href="/HRController/FROMAddUser">
+			<a href="/DentistController/QueueToday">
 				<div class="col-md-4 col-sm-4">
 					<div class="single-service">
 						<div class="single-service-img">
