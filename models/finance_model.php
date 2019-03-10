@@ -82,8 +82,17 @@ class finance_model extends Model
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function getHistoryBill() {
+        $sql ="SELECT * FROM treatment_q INNER JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
+                INNER JOIN patient ON treatment_q.patient_id = patient.patient_id WHERE treatment_q.status_id = 4 GROUP BY
+                treatment_history.treatment_Q_id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function getBillDetail($Id) {
-        $sql ="SELECT treatment_q.treatment_Q_id,treatment_history.treatment_history_id,treatment_history.treatment_name,treatment_history.HowToTreatment,patient.patient_name,patient.tel
+        $sql ="SELECT patient.patient_id,treatment_q.treatment_Q_id,treatment_history.treatment_history_id,treatment_history.treatment_name,treatment_history.HowToTreatment,patient.patient_name,
+                patient.tel,treatment_q.Time_arrive
                 FROM treatment_q INNER JOIN patient ON treatment_q.patient_id = patient.patient_id
                 INNER JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
                 WHERE treatment_q.treatment_Q_id = :Id";
@@ -114,7 +123,7 @@ class finance_model extends Model
         return $pstm->execute();
     }
     public function UpdateQueue($Qid){
-        $sql ="UPDATE treatment_q SET status_id = 4 WHERE treatment_Q_id = :treatment_Q_id";
+        $sql ="UPDATE treatment_q SET status_id = 5 WHERE treatment_Q_id = :treatment_Q_id";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':treatment_Q_id',$Qid);
         return $pstm->execute();

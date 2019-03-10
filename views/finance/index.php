@@ -16,7 +16,7 @@
 			<div class="row">
 				<h2>งานเวชระเบียน</h2>
 				<h4><?php echo $user['name'] ?> ( <?php echo $user['userType_name'] ?> ) </h4>
-				<a href="/FinanceController/ViewAllProduct" ><div class="col-md-4 col-sm-6">
+				<a href="/FinanceController/ViewAllProduct" ><div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -26,7 +26,7 @@
 						<h3>จัดการรายการรักษา</h3>
 					</div>
 				</div></a>
-				<a href="/FinanceController/ViewBill"><div class="col-md-4 col-sm-6">
+				<a href="/FinanceController/ViewBill"><div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -36,7 +36,17 @@
 						<h3>ออกบิล</h3>
 					</div>
 				</div></a>
-				<a href="/FinanceController/ViewListIncome"><div class="col-md-4 col-sm-6">
+				<a href="/FinanceController/VieHistoryBill"><div class="col-md-3 col-sm-6">
+					<div class="single-service">
+						<div class="single-service-img">
+							<div class="service-img">
+								<img class="heart img-responsive" src="/public/img/user.png" style="width:60%;height:80%" alt="">
+							</div>
+						</div>
+						<h3>ดูรายการบิลย้อนหลัง</h3>
+					</div>
+				</div></a>
+				<a href="/FinanceController/ViewListIncome"><div class="col-md-3 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
