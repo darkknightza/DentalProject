@@ -47,8 +47,8 @@ class dentist_model extends Model
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
     public function InsertTreatment($data){
-        $sql ="INSERT INTO treatment_history (treatment_name,HowToTreatment,treatment_Q_id,file) 
-               VALUE(:treatment_name,:howtotreatment,:treatment_Q_id,:fileupload)";
+        $sql ="INSERT INTO treatment_history (treatment_name,HowToTreatment,treatment_Q_id,file,Time_arrive) 
+               VALUE(:treatment_name,:howtotreatment,:treatment_Q_id,:fileupload,now())";
         try {
             $this->connect->beginTransaction();
             $pstm = $this->connect->prepare($sql);
@@ -73,14 +73,16 @@ class dentist_model extends Model
             $pstm->bindParam(':treatment_Q_id',$Qid);
             return $pstm->execute();
     }
-    public function InsertProductlog($lastId,$productId){
-        $sql ="INSERT INTO product_log (product_id,treatment_history_id)
-               VALUE(:product_id,:treatment_history_id)";
+    public function InsertProductlog($data){
+        $sql ="INSERT INTO product_log (product_id,totalPrice,amount,treatment_history_id)
+               VALUE(:product_id,:totalPrice,:amount,:treatment_history_id)";
         try {
             $this->connect->beginTransaction();
             $pstm = $this->connect->prepare($sql);
-            $pstm->bindParam(':product_id',$productId);
-            $pstm->bindParam(':treatment_history_id', $lastId);
+            $pstm->bindParam(':product_id',$data['product']);
+            $pstm->bindParam(':totalPrice',$data['price']);
+            $pstm->bindParam(':amount',$data['amount']);
+            $pstm->bindParam(':treatment_history_id', $data['lastId']);
             $pstm->execute();
             $lastId = $this->connect->lastInsertId();
             $this->connect->commit();

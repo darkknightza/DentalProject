@@ -116,4 +116,61 @@ class FinanceController extends Controller
             'getBill' => $getBill
         ]);
     }
+    public function FormBill($id){
+        $getBillDetail = $this->model->getBillDetail($id);
+        $getProductLog = $this->model->getProductByHisId($getBillDetail['treatment_history_id']);
+        $getProduct= $this->model->GetProduct();
+        $products = [];
+        $productsAll = [];
+        $arrayProtductNochoose = [];
+        foreach ($getProductLog as $row){
+            array_push($products, $row['product_id']);
+        }
+        foreach ($getProduct as $row){
+            array_push($productsAll, $row['product_id']);
+        }
+        foreach (array_diff($productsAll,$products) as $row){
+            $ProductNochoose= $this->model->getproductById($row);
+            array_push($arrayProtductNochoose, $ProductNochoose);
+        }
+        $this->views('finance/BillDetail',[
+            'getBillDetail' => $getBillDetail,
+            'getProductLog' => $getProductLog,
+            'arrayProtductNochoose' => $arrayProtductNochoose
+        ]);
+    }
+    public function SubmitBill() {
+        $treatment_history_id = filter_input(INPUT_POST, 'id',FILTER_SANITIZE_STRING);
+        $treatment_Q_id = filter_input(INPUT_POST, 'treatment_Q_id',FILTER_SANITIZE_STRING);
+        $product = $this->model->GetProduct();
+        $count = count($product);
+        if($treatment_Q_id){
+            $this->model->UpdateQueue($treatment_Q_id);
+        }
+        $result = $this->model->DeleteProductlogByHisId($treatment_history_id);
+        if($treatment_history_id){
+            for($i = 0;$i<=$count;$i++){
+                $product = filter_input(INPUT_POST, 'product'.$i,FILTER_SANITIZE_STRING);
+                if($product){
+                    $price = filter_input(INPUT_POST, 'price'.$i,FILTER_SANITIZE_STRING);
+                    $amount = filter_input(INPUT_POST, 'amount'.$i,FILTER_SANITIZE_STRING);
+                    $price = $price * $amount;
+                    $data = [
+                        'lastId' => $treatment_history_id,
+                        'price' => $price,
+                        'amount' => $amount,
+                        'product' => $product
+                    ];
+                    $this->model->InsertProductlog($data);
+                }
+                
+            }
+        }
+
+        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';
+    }
+    public function PrintBill($id){
+        
+        $this->views('finance/Bill',null,TRUE);
+    }
 }

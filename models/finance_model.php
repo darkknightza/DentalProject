@@ -75,9 +75,69 @@ class finance_model extends Model
         return $pstm->execute();
     }
     public function getBill() {
-        $sql ="SELECT * FROM treatment_q WHERE status_id = 3";
+        $sql ="SELECT * FROM treatment_q INNER JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
+                INNER JOIN patient ON treatment_q.patient_id = patient.patient_id WHERE treatment_q.status_id = 3 GROUP BY
+                treatment_history.treatment_Q_id";
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getBillDetail($Id) {
+        $sql ="SELECT treatment_q.treatment_Q_id,treatment_history.treatment_history_id,treatment_history.treatment_name,treatment_history.HowToTreatment,patient.patient_name,patient.tel
+                FROM treatment_q INNER JOIN patient ON treatment_q.patient_id = patient.patient_id
+                INNER JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
+                WHERE treatment_q.treatment_Q_id = :Id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':Id', $Id);
+        $pstm->execute();
+        return $pstm->fetch(PDO::FETCH_ASSOC);
+    }
+    public function getProductByHisId($Id) {
+        $sql ="SELECT product.productName,product_log.amount,product_log.totalPrice,product.product_id,product.Price FROM product_log
+                INNER JOIN product ON product_log.product_id = product.product_id WHERE
+                product_log.treatment_history_id = :Id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':Id', $Id);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function GetProduct(){
+        $sql ="SELECT * FROM product";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function DeleteProductlogByHisId($id){
+        $sql ="DELETE FROM product_log WHERE treatment_history_id = :treatment_history_id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':treatment_history_id',$id);
+        return $pstm->execute();
+    }
+    public function UpdateQueue($Qid){
+        $sql ="UPDATE treatment_q SET status_id = 4 WHERE treatment_Q_id = :treatment_Q_id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':treatment_Q_id',$Qid);
+        return $pstm->execute();
+    }
+    public function InsertProductlog($data){
+        $sql ="INSERT INTO product_log (product_id,totalPrice,amount,treatment_history_id)
+               VALUE(:product_id,:totalPrice,:amount,:treatment_history_id)";
+        try {
+            $this->connect->beginTransaction();
+            $pstm = $this->connect->prepare($sql);
+            $pstm->bindParam(':product_id',$data['product']);
+            $pstm->bindParam(':totalPrice',$data['price']);
+            $pstm->bindParam(':amount',$data['amount']);
+            $pstm->bindParam(':treatment_history_id', $data['lastId']);
+            $pstm->execute();
+            $lastId = $this->connect->lastInsertId();
+            $this->connect->commit();
+            return $lastId;
+        } catch (PDOException $e) {
+            $this->connect->rollBack();
+            echo $e->getMessage();
+            return FALSE;
+        }
+        
     }
 }

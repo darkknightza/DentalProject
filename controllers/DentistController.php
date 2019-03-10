@@ -58,7 +58,7 @@ class DentistController extends Controller
         $treatment_name = filter_input(INPUT_POST, 'treatment_name',FILTER_SANITIZE_STRING);
         $howtotreatment = filter_input(INPUT_POST, 'howtotreatment',FILTER_SANITIZE_STRING);
         $fileupload = filter_input(INPUT_POST, 'fileupload',FILTER_SANITIZE_STRING);
-        $product = filter_input(INPUT_POST, 'product',FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+        $product = $this->model->GetProduct();
         $appoint = filter_input(INPUT_POST, 'appoint',FILTER_SANITIZE_STRING);
         if($treatment_Q_id){
             $this->model->UpdateQueue($treatment_Q_id);
@@ -81,9 +81,24 @@ class DentistController extends Controller
             'treatment_Q_id' => $treatment_Q_id
         ];
         $lastId = $this->model->InsertTreatment($data);
-        if($lastId&&$product){
-            foreach ($product as $row){
-                $this->model->InsertProductlog($lastId,$row);
+        $count = count($product);
+        if($lastId){
+            for($i = 0;$i<=$count;$i++){
+                $product = filter_input(INPUT_POST, 'product'.$i,FILTER_SANITIZE_STRING);
+                if($product){
+                    $price = filter_input(INPUT_POST, 'price'.$i,FILTER_SANITIZE_STRING);
+                    $amount = filter_input(INPUT_POST, 'amount'.$i,FILTER_SANITIZE_STRING);
+                    $price = $price * $amount;
+                    $data = [
+                        'lastId' => $lastId,
+                        'price' => $price,
+                        'amount' => $amount,
+                        'product' => $product
+                    ];
+
+                    $this->model->InsertProductlog($data);
+                }
+                
             }
         }
         echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/QueueToday" </script>';

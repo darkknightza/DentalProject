@@ -18,13 +18,17 @@
     							<tr>
     								<th>เลือก</th>
     								<th>ชื่อรายการที่ทำ</th>
+    								<th>ราคา</th>
+    								<th>จำนวน</th>
     							</tr>
     						</thead>
     						<tbody>
-    							<?php foreach ( $data['product'] as $row){ ?>
+    							<?php foreach ( $data['product'] as $key => $row){ ?>
     							<tr>
-    								<td><input type="checkbox" value="<?php echo $row['product_id'] ?>" name="product[]"></td>
+    								<td><input type="checkbox" value="<?php echo $row['product_id'] ?>" name="product<?php echo $key  ?>"></td>
     								<td><?php echo $row['productName'] ?></td>
+    								<td><input type="number" name="price<?php echo $key  ?>" id="price" value="<?php echo $row['Price'] ?>" placeholder="ราคา"></td>
+    								<td><input type="number" name="amount<?php echo $key  ?>" id="amount" value="1" placeholder="จำนวน"></td>
     							</tr>
     							<?php } ?>
     						</tbody>
@@ -59,12 +63,12 @@
 	</div>
 </div>
 <script type="text/javascript">
-			//คำสั่ง Jquery เริ่มทำงาน เมื่อ โหลดหน้า Page เสร็จ 
-			$(function(){
-				//กำหนดให้  Plug-in dataTable ทำงาน ใน ตาราง Html ที่มี id เท่ากับ example
-				$('#dataTable').dataTable();
-			});
-			$( "#appoint" ).change(function() {
-				  alert( "Handler for .change() called." );
-				});
+	//คำสั่ง Jquery เริ่มทำงาน เมื่อ โหลดหน้า Page เสร็จ 
+	$(function(){
+		//กำหนดให้  Plug-in dataTable ทำงาน ใน ตาราง Html ที่มี id เท่ากับ example
+		$('#dataTable').dataTable();
+	});
+	$( "#appoint" ).change(function() {
+				
+	});
 </script>

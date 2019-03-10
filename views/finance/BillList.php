@@ -22,20 +22,20 @@
         	<thead>
         		<tr>
         			<th>No.</th>
-        			<th>การรักษา</th>
-        			<th>ราคา</th>
-        			<th>แก้ไข</th>
-        			<th>ลบ</th>
+        			<th>ชื่อ-สกุล</th>
+        			<th>รายการ</th>
+        			<th>รายละเอียด</th>
+        			<th>ออกบิล</th>
         		</tr>
         	</thead>
         	<tbody>
         	<?php foreach ($data['getBill'] as $key => $row){ ?>
         		<tr>
         			<td><?php echo $key+1  ?></td>
-        			<td><?php echo $row['productName'] ?></td>
-        			<td><?php echo $row['Price'] ?></td>
-					<td><a href="/FinanceController/FormEditProduct/<?php echo $row['product_id'] ?>">แก้ไข</a></td>
-        			<td><a href="/FinanceController/DeleteProduct/<?php echo $row['product_id'] ?>">ลบ</a></td>
+        			<td><?php echo $row['patient_name'] ?></td>
+        			<td><?php echo $row['treatment_name'] ?></td>
+        			<td><?php echo $row['HowToTreatment'] ?></td>
+					<td><a href="/FinanceController/FormBill/<?php echo $row['treatment_Q_id'] ?>">ออกบิล</a></td>
         		</tr>
         	<?php } ?>
         	</tbody>

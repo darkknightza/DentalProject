@@ -26,7 +26,7 @@
 						<h3>จัดการรายการรักษา</h3>
 					</div>
 				</div></a>
-				<a href="/FinanceController/ToManagePatient"><div class="col-md-4 col-sm-6">
+				<a href="/FinanceController/ViewBill"><div class="col-md-4 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">

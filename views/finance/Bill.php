@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<style type="text/css">
+body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #FAFAFA;
+    }
+    * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        padding: 20mm;
+        margin: 10mm auto;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        font-size: 22px;
+        font-family:Angsana New;
+    }
+    table th{
+        text-align: center;
+    }
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    @media print {
+        html, body {
+            width: 220mm;
+            height: 297mm;        
+        }
+        .page {
+            margin: 0;
+            border: initial;
+            border-radius: initial;
+            width: initial;
+            min-height: initial;
+            box-shadow: initial;
+            background: initial;
+            page-break-after: always;
+
+        }
+    }
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<body> 
+<div class="page">
+<div class="row">
+    	<div class="col-xs-2 col-md-2 col-sm-2 col-lg-2" style="margin-top: 10px">
+    		<img src="/public/img/logo.png" width="100" alt="" class="img-responsive logo">
+		</div>
+		<div class="col-xs-6 col-md-6 col-sm-6 col-lg-6" >
+			<h3>คลินิคทันตกรรม</h3>
+    		<p>63 หมู่4 ต.หนองหาร อ.สันทราย จ.เชียงใหม่</p>
+		</div>
+		<div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" align="right">
+			<p>ใบเสร็จรับเงิน/RECEPT</p>
+    		<p>เลขที่ใบเสร็จ R-2754</p>
+		</div>
+    </div>
+    <br>
+	<div class="row">
+		<p>ได้รับเงินจาก</p>
+	</div>
+	<div class="row">
+		<div class="col-xs-7 col-md-7 col-sm-7 col-lg-7" style="padding-top: 10px">
+			<table border="1" style="width: 100%;text-align: left;">
+				<tr>
+					<td>
+						<p>รหัส/ชื่อผู้ป่วย: 5601091 นางสาว....</p>
+						<p>โทร: 0933068175</p>
+					</td>
+				</tr>
+            </table>
+        </div>
+        <div class="col-xs-1 col-md-1 col-sm-1 col-lg-1" style="padding-top: 10px">
+         
+        </div>
+        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top: 10px">
+            <table border="1" style="width: 100%;text-align: right;">
+				<tr>
+					<td>
+    					<p>วันที่ 3/10/2019</p>
+    					<p>เวลา 03:34</p>
+    				</td>
+				</tr>
+            </table>
+        </div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+            <table border="1" style="width: 100%;text-align: center" >
+            	<thead>
+            		<tr>
+            			<th>ลำดับ</th>
+            			<th>รายการ</th>
+            			<th>จำนวน</th>
+            			<th>ราคาต่อหน่วย</th>
+            			<th>เป็นเงิน</th>
+            		</tr>
+            	</thead>
+            	<tbody>
+            		<tr>
+            			<td>1</td>
+            			<td>ค่าทำฟัน</td>
+            			<td>1</td>
+            			<td>50</td>
+            			<td>50</td>
+            		</tr>
+            		<tr>
+            			<td colspan="4">รวมทั้งสิ้น</td>
+            			<td>50</td>
+            		</tr>
+            	</tbody>
+            </table>
+        </div>        
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12" align="right">
+            <p>ผู้รับ____________________________</p>
+        </div>        
+	</div>
+</div>
+</body>
+</html>
