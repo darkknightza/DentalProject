@@ -36,19 +36,24 @@
 
 
                     <td> <p style="color: green"><?php echo $row['Transaction_type'] ?></p></td>
+                    <td><p style="color: green"><?php echo $row['Transaction_detail'] ?></p></td>
+                    <td><p style="color: green"><?php echo $row['amount'] ?></p></td>
+                    <td><p style="color: green"><?php echo $row['UpdateBy'] ?></p></td>
 
                     <?php }if($row['Transaction_type']=='จ่าย'){ ?>
 
 
+
                     <td> <p style="color: red"><?php echo $row['Transaction_type'] ?></p></td>
+                    <td><p style="color: red"><?php echo $row['Transaction_detail'] ?></p></td>
+                    <td><p style="color: red"><?php echo $row['amount'] ?></p></td>
+                    <td><p style="color: red"><?php echo $row['UpdateBy'] ?></p></td>
 
                     <?php } ?>
 
 
 
-                    <td><?php echo $row['Transaction_detail'] ?></td>
-        			<td><?php echo $row['amount'] ?></td>
-        			<td><?php echo $row['UpdateBy'] ?></td>
+                    
          			
         		</tr>
         		<?php $i++ ?>
