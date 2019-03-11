@@ -142,9 +142,17 @@ body {
             <p>ผู้รับ____________________________</p>
         </div>        
 	</div>
+	<br>
+	<div class="row">
+		<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12" align="center">
+            <button type="button" id="print">พิมพ์เอกสาร</button>
+        </div>        
+	</div>
 </div>
 </body>
 <script type="text/javascript">
-
+	$( "#print" ).click(function() {
+		window.print();
+	});
 </script>
 </html>

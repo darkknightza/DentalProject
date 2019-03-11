@@ -40,13 +40,14 @@
 					<hr>
 					<div class="form-group row">
     					<div class="col-md-1">
-    						<input type="checkbox" name="appoint" id="appoint">
+    						<input type="checkbox" value="1" name="appoint" id="appoint">
     					</div>
     					<div class="col-md-2">
-    						<label>นัดหมาย</label>
+    						<br>
+    						<label style="color: white;">นัดหมาย</label>
     					</div>
 					</div>
-					<div class="form-group row">
+					<div class="form-group row" id="appointDIV">
 						<font size="4" color="white"><p align="left">การนัดครั้งหน้า</p></font>
     					<div class="col-md-12">
     					<input type="datetime-local" class="form-control" name="datetime">
@@ -67,8 +68,14 @@
 	$(function(){
 		//กำหนดให้  Plug-in dataTable ทำงาน ใน ตาราง Html ที่มี id เท่ากับ example
 		$('#dataTable').dataTable();
+		$("#appointDIV").hide();	
 	});
 	$( "#appoint" ).change(function() {
-				
+		if($('#appoint:checked').val()==1){
+			$("#appointDIV").show();	
+		}else{
+			$("#appointDIV").hide();		
+		}
+		
 	});
 </script>
