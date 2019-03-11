@@ -69,7 +69,7 @@ body {
 		</div>
 		<div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" align="right">
 			<p>ใบเสร็จรับเงิน/RECEPT</p>
-    		<p>เลขที่ใบเสร็จ R-2754</p>
+    		<p>เลขที่ใบเสร็จ <?php echo $data['getBillDetail']['treatment_history_id'] ?></p>
 		</div>
     </div>
     <br>
@@ -81,8 +81,8 @@ body {
 			<table border="1" style="width: 100%;text-align: left;">
 				<tr>
 					<td>
-						<p>รหัส/ชื่อผู้ป่วย: 5601091 นางสาว....</p>
-						<p>โทร: 0933068175</p>
+						<p>รหัส/ชื่อผู้ป่วย: <?php echo $data['getBillDetail']['patient_id'] ?> <?php echo $data['getBillDetail']['patient_name'] ?></p>
+						<p>โทร: <?php echo $data['getBillDetail']['tel'] ?></p>
 					</td>
 				</tr>
             </table>
@@ -94,8 +94,8 @@ body {
             <table border="1" style="width: 100%;text-align: right;">
 				<tr>
 					<td>
-    					<p>วันที่ 3/10/2019</p>
-    					<p>เวลา 03:34</p>
+    					<p>วันที่ <?php echo $data['Time_arrive'][0] ?></p>
+    					<p>เวลา <?php echo $data['Time_arrive'][1] ?></p>
     				</td>
 				</tr>
             </table>
@@ -115,16 +115,22 @@ body {
             		</tr>
             	</thead>
             	<tbody>
+            		<?php $sumTotal = 0?>
+            		<?php foreach ( $data['getProductLog'] as $key => $row){ ?>
+            		<?php 
+    					$sumTotal += $row['totalPrice'];
+    			    ?>
             		<tr>
-            			<td>1</td>
-            			<td>ค่าทำฟัน</td>
-            			<td>1</td>
-            			<td>50</td>
-            			<td>50</td>
+            			<td><?php echo $key+1 ?></td>
+            			<td><?php echo $row['productName'] ?></td>
+            			<td><?php echo $row['amount'] ?></td>
+            			<td><?php echo $row['Price'] ?></td>
+            			<td><?php echo $row['totalPrice'] ?></td>
             		</tr>
+            		<?php } ?>
             		<tr>
             			<td colspan="4">รวมทั้งสิ้น</td>
-            			<td>50</td>
+            			<td><?php echo $sumTotal ?></td>
             		</tr>
             	</tbody>
             </table>
@@ -138,4 +144,7 @@ body {
 	</div>
 </div>
 </body>
+<script type="text/javascript">
+
+</script>
 </html>

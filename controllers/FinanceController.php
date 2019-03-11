@@ -116,6 +116,12 @@ class FinanceController extends Controller
             'getBill' => $getBill
         ]);
     }
+    public function VieHistoryBill(){
+        $getBill = $this->model->getHistoryBill();
+        $this->views('finance/HistoryBill',[
+            'getBill' => $getBill
+        ]);
+    }
     public function FormBill($id){
         $getBillDetail = $this->model->getBillDetail($id);
         $getProductLog = $this->model->getProductByHisId($getBillDetail['treatment_history_id']);
@@ -167,10 +173,18 @@ class FinanceController extends Controller
             }
         }
 
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';
+        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_history_id.'" </script>';
     }
     public function PrintBill($id){
-        
-        $this->views('finance/Bill',null,TRUE);
+        $getBillDetail = $this->model->getBillDetail($id);
+        $Time_arrive = explode(' ', $getBillDetail['Time_arrive']);
+        $date = explode('-', $Time_arrive[0]);
+        $Time_arrive[0] = $date[2] . '/' . $date[1] . '/' . ($date[0] + 543);
+        $getProductLog = $this->model->getProductByHisId($getBillDetail['treatment_history_id']);
+        $this->views('finance/Bill',[
+            'getBillDetail' => $getBillDetail,
+            'getProductLog' => $getProductLog,
+            'Time_arrive' => $Time_arrive
+        ],TRUE);
     }
 }
