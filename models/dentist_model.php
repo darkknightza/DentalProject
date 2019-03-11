@@ -47,8 +47,8 @@ class dentist_model extends Model
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
     public function InsertTreatment($data){
-        $sql ="INSERT INTO treatment_history (treatment_name,HowToTreatment,treatment_Q_id,file,Time_arrive) 
-               VALUE(:treatment_name,:howtotreatment,:treatment_Q_id,:fileupload,now())";
+        $sql ="INSERT INTO treatment_history (treatment_name,HowToTreatment,treatment_Q_id,file) 
+               VALUE(:treatment_name,:howtotreatment,:treatment_Q_id,:fileupload)";
         try {
             $this->connect->beginTransaction();
             $pstm = $this->connect->prepare($sql);
@@ -68,7 +68,7 @@ class dentist_model extends Model
         
     }
     public function UpdateQueue($Qid){
-        $sql ="UPDATE treatment_q SET status_id = 3 WHERE treatment_Q_id = :treatment_Q_id";
+        $sql ="UPDATE treatment_q SET status_id = 3,Time_arrive = now() WHERE treatment_Q_id = :treatment_Q_id";
             $pstm = $this->connect->prepare($sql);
             $pstm->bindParam(':treatment_Q_id',$Qid);
             return $pstm->execute();
