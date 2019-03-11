@@ -14,9 +14,9 @@
 </section>
 <!-- end of about section -->
 	<div class="container">
-		<div class="form-group row">
+		<!-- <div class="form-group row">
 			<a href="/HRController/FROMAddUser" class="btn btn-primary">เพิ่มรายการรักษา</a>
-		</div>
+		</div> -->
 		<div class="form-group row">
         <table class="table table-bordered" id="dataTable">
         	<thead>
