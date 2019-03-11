@@ -1,18 +1,29 @@
-<!-- about section -->
-<section class="about text-center" id="about">
-	<div class="container">
-		<div class="row">
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-		</div>
-	</div>
-</section>
+
 <!-- end of about section -->
+
+<div class="row">
+    <div class="contact-caption clearfix">
+        <div class="col-md-6 col-md-offset-3 contact-form">
+            <div align="center">
+                <h3>ค้นหารายการบัญชี</h3>
+            </div>          
+                <form class="form" method="POST" action="/OwnerController/ToFindTransaction_Page">
+                    <p align="left" ><font size="4" color="white">ช่วงเวลาที่ต้องการค้นหา</font></p><input type="date" name="Fdate" required>
+                    <input type="date" name="Ldate" required>
+                    <?php foreach ($data['allIncome'] as $rowO){ ?>
+                    <p align="left" ><font size="4" color="white">รายรับ</font></p> 
+
+                    <input type="text" placeholder="<?php echo $rowO['income'] ?>" name="productName" disabled>
+                    <?php }foreach ($data['allExpenses'] as $rowT){ ?>
+                    <p align="left" ><font size="4" color="white">รายจ่าย</font></p> 
+                    <input type="text" placeholder="<?php echo $rowT['expenses'] ?>" name="Price" disabled>
+                    <?php } ?>
+                    <input class="submit-btn" type="submit" value="ค้นหา"> 
+                </form>
+        </div>
+    </div>
+</div>
+<br><br>
 	<div class="container">
         <table class="table table-bordered" id="dataTable">
         	<thead>
