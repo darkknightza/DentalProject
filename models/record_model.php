@@ -109,7 +109,8 @@ class record_model extends Model
         $pstm->bindParam(':status_id', $data[4]);
         $pstm->bindParam(':detail', $data[5]);
         $pstm->execute();
-        print_r($data);    }
+        
+           }
 
 
     public function GetQ_Detail($id){

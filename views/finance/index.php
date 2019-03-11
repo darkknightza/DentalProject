@@ -20,7 +20,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="heart img-responsive" src="/public/img/50041.png" style="width:60%;height:80%" alt="">
+								<img class="heart img-responsive" src="/public/img/img_458480.png" style="width:60%;height:80%" alt="">
 							</div>
 						</div>
 						<h3>จัดการรายการรักษา</h3>
@@ -30,7 +30,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="heart img-responsive" src="/public/img/user.png" style="width:60%;height:80%" alt="">
+								<img class="heart img-responsive" src="/public/img/img_53139.png" style="width:60%;height:80%" alt="">
 							</div>
 						</div>
 						<h3>ออกบิล</h3>
@@ -40,7 +40,7 @@
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
-								<img class="heart img-responsive" src="/public/img/img_458480.png" style="width:60%;height:80%" alt="">
+								<img class="heart img-responsive" src="/public/img/49695.png" style="width:60%;height:80%" alt="">
 							</div>
 						</div>
 						<h3>จัดการรายรับรายจ่าย</h3>
