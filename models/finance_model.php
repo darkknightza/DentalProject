@@ -49,6 +49,12 @@ class finance_model extends Model
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function DeleteIncome($id){
+        $sql ="DELETE FROM `transaction_detail` WHERE Transaction_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
+        return $pstm->execute();
+    }
     public function InsertIncome($data) {
         $sql ="INSERT INTO transaction_detail (Transaction_type,Transaction_detail,amount,updateBy) VALUE (:Transaction_type,:Transaction_detail,:amount,:updateBy)";
         $pstm = $this->connect->prepare($sql);

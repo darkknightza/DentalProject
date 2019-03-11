@@ -66,6 +66,10 @@ class FinanceController extends Controller
     public function FormAddIncome(){
         $this->views('finance/AddIncome',null);
     }
+    public function DELETEIncome($id){
+        $result = $this->model->DeleteIncome($id);
+        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewListIncome" </script>';
+    }
     public function InsertIncome(){
         $Income = filter_input(INPUT_POST, 'Income',FILTER_SANITIZE_STRING);
         $detail = filter_input(INPUT_POST, 'detail',FILTER_SANITIZE_STRING);

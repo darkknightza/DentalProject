@@ -39,9 +39,9 @@
         			<td><p style="color: green"><?php echo $key+1  ?></p></td>
         			<td><p style="color: green"><?php echo $row['Transaction_type'] ?></p></td>
         			<td><p style="color: green"><?php echo $row['Transaction_detail'] ?></p></td>
-        			<td><p style="color: green"><?php echo $row['amount'] ?><</p>/td>
+        			<td><p style="color: green"><?php echo $row['amount'] ?></p></td>
 					<td><a href="/FinanceController/FormEditIncome/<?php echo $row['Transaction_id'] ?>">แก้ไข</a></td>
-        			<td><a href="/FinanceController/DeleteProduct/<?php echo $row['Transaction_id'] ?>">ลบ</a></td>
+        			<td><a href="/FinanceController/DELETEIncome/<?php echo $row['Transaction_id']  ?>" onclick="return confirm('Are you sure?')" > ลบ </a></td>
 
 
                     <?php }if($row['Transaction_type']=='จ่าย'){ ?>
@@ -52,7 +52,7 @@
                     <td><p style="color: red"><?php echo $row['Transaction_detail'] ?></p></td>
                     <td><p style="color: red"><?php echo $row['amount'] ?></p></td>
                     <td><a href="/FinanceController/FormEditIncome/<?php echo $row['Transaction_id'] ?>">แก้ไข</a></td>
-                    <td><a href="/FinanceController/DeleteProduct/<?php echo $row['Transaction_id'] ?>">ลบ</a></td>
+                    <td><a href="/FinanceController/DELETEIncome/<?php echo $row['Transaction_id']  ?>" onclick="return confirm('Are you sure?')"> ลบ </a></td>
 
                     <?php } ?>
 
