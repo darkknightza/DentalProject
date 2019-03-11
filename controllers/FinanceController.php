@@ -173,7 +173,7 @@ class FinanceController extends Controller
             }
         }
 
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_history_id.'" </script>';
+        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';
     }
     public function PrintBill($id){
         $getBillDetail = $this->model->getBillDetail($id);
