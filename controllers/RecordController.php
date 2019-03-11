@@ -79,7 +79,7 @@ class RecordController extends Controller
         $data = array($fullname, $location, $phone,$allegic,$contagious,$bdate);
        
         $user= Session::get('user');
-        $user_id = $user['userType_id'];
+        $user_id = $user['user_id'];
 
       
         $this->model->InsertPatient($data,$user_id);
