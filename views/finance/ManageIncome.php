@@ -32,12 +32,32 @@
         	<tbody>
         	<?php foreach ($data['AllIncome'] as $key => $row){ ?>
         		<tr>
-        			<td><?php echo $key+1  ?></td>
-        			<td><?php echo $row['Transaction_type'] ?></td>
-        			<td><?php echo $row['Transaction_detail'] ?></td>
-        			<td><?php echo $row['amount'] ?></td>
+
+                    <?php if($row['Transaction_type']=='รับ'){ ?>
+
+
+        			<td><p style="color: green"><?php echo $key+1  ?></p></td>
+        			<td><p style="color: green"><?php echo $row['Transaction_type'] ?></p></td>
+        			<td><p style="color: green"><?php echo $row['Transaction_detail'] ?></p></td>
+        			<td><p style="color: green"><?php echo $row['amount'] ?><</p>/td>
 					<td><a href="/FinanceController/FormEditIncome/<?php echo $row['Transaction_id'] ?>">แก้ไข</a></td>
         			<td><a href="/FinanceController/DeleteProduct/<?php echo $row['Transaction_id'] ?>">ลบ</a></td>
+
+
+                    <?php }if($row['Transaction_type']=='จ่าย'){ ?>
+
+
+                    <td><p style="color: red"><?php echo $key+1  ?></p></td>
+                    <td><p style="color: red"><?php echo $row['Transaction_type'] ?></p></td>
+                    <td><p style="color: red"><?php echo $row['Transaction_detail'] ?></p></td>
+                    <td><p style="color: red"><?php echo $row['amount'] ?></p></td>
+                    <td><a href="/FinanceController/FormEditIncome/<?php echo $row['Transaction_id'] ?>">แก้ไข</a></td>
+                    <td><a href="/FinanceController/DeleteProduct/<?php echo $row['Transaction_id'] ?>">ลบ</a></td>
+
+                    <?php } ?>
+
+
+
         		</tr>
         	<?php } ?>
         	</tbody>
