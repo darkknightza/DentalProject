@@ -90,7 +90,7 @@ class finance_model extends Model
     }
     public function getHistoryBill() {
         $sql ="SELECT * FROM treatment_q INNER JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
-                INNER JOIN patient ON treatment_q.patient_id = patient.patient_id WHERE treatment_q.status_id = 4 GROUP BY
+                INNER JOIN patient ON treatment_q.patient_id = patient.patient_id WHERE treatment_q.status_id = 5 GROUP BY
                 treatment_history.treatment_Q_id";
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();

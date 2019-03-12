@@ -35,6 +35,8 @@
         			<th>การรักษา</th>
         			<th>แพทย์ผู้รับผิดชอบ</th>
         			<th>เวลา</th>
+        			<th>แก้ไข</th>
+        			<th>ลบ</th>
         		</tr>
         	</thead>
         	<tbody>
@@ -46,7 +48,8 @@
         			<td><?php echo $row['HowToTreatment'] ?></td>
         			<td><?php echo $row['name'] ?></td>
         			<td><?php echo $row['treatment_history_date'] ?></td>
-        			
+        			<td><a href="/DentistController/FormEditTreatment/<?php echo $row['treatment_history_id'] ?>" >แก้ไข</a></td>
+        			<td><a href="/DentistController/DeleteTreatment/<?php echo $row['treatment_history_id'] ?>" onclick="return confirm('คุณต้องการลบ?');">ลบ</a></td>
         		</tr>
         		<?php $i++ ?>
         	<?php } ?>

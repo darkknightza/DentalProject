@@ -146,6 +146,8 @@ body {
 	<div class="row">
 		<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12" align="center">
             <button type="button" id="print">พิมพ์เอกสาร</button>
+            <a href="/FinanceController/ViewBill" ><button type="button">กลับไปหน้าออกบิล</button></a>
+
         </div>        
 	</div>
 </div>

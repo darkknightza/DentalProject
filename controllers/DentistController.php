@@ -51,6 +51,41 @@ class DentistController extends Controller
             'QueueToday' => $QueueToday
         ]);
     }
+    public function FormEditTreatment($id) {
+        $His = $this->model->GetHistorytreatment($id);
+        $this->views('dentist/EditTreatment',[
+            'His' =>$His
+        ]);
+    }
+    public function UpdateTreatment() {
+        $id = filter_input(INPUT_POST, 'id',FILTER_SANITIZE_STRING);
+        $treatment_name = filter_input(INPUT_POST, 'treatment_name',FILTER_SANITIZE_STRING);
+        $howtotreatment = filter_input(INPUT_POST, 'howtotreatment',FILTER_SANITIZE_STRING);
+        $patientid = filter_input(INPUT_POST, 'patientid',FILTER_SANITIZE_STRING);
+        print_r($patientid);
+        $data = [
+            'id' => $id,
+            'treatment_name' => $treatment_name,
+            'howtotreatment' => $howtotreatment
+        ];
+        $this->model->UpdateTreatment($data);
+        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/ViewHistoryDetail/'.$patientid.'" </script>';
+    }
+    public function DeleteTreatment($id) {
+        $this->model->DELETEProductLog($id);
+        $result = $this->model->DELETETreatment($id);
+        if($result){
+            echo '<script>alert("ทำรายการสำเร็จ");</script>';
+            if (isset($_SERVER["HTTP_REFERER"])) {
+                header("Location: " . $_SERVER["HTTP_REFERER"]);
+            }
+        }else{
+            echo '<script>alert("ไม่ทำรายการสำเร็จ");</script>';
+            if (isset($_SERVER["HTTP_REFERER"])) {
+                header("Location: " . $_SERVER["HTTP_REFERER"]);
+            }
+        }
+    }
     public function SubmitTreatment() {
         $user= Session::get('user');
         $Patientid = filter_input(INPUT_POST, 'id',FILTER_SANITIZE_STRING);

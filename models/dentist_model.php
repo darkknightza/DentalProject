@@ -26,6 +26,18 @@ class dentist_model extends Model
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function DELETEProductLog($id){
+        $sql ="DELETE FROM product_log WHERE product_log.treatment_history_id = :treatment_history_id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':treatment_history_id',$id);
+        return $pstm->execute();
+    }
+    public function DELETETreatment($id){
+        $sql ="DELETE FROM treatment_history WHERE treatment_history_id = :treatment_history_id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':treatment_history_id',$id);
+        return $pstm->execute();
+    }
     public function getQueueByPatientID($id) {
         $sql ="SELECT * FROM treatment_q WHERE status_id = 2 AND patient_id = :id";
         $pstm = $this->connect->prepare($sql);
@@ -39,6 +51,25 @@ class dentist_model extends Model
         $pstm->bindParam(':id', $id);
         $pstm->execute();
         return $pstm->fetch(PDO::FETCH_ASSOC);
+    }
+    public function GetHistorytreatment($id){
+        $sql ="SELECT treatment_history.treatment_name,treatment_history.HowToTreatment,patient.patient_name,
+                treatment_history.treatment_history_id,treatment_history.file,treatment_q.treatment_Q_id,patient.patient_id
+                FROM patient INNER JOIN treatment_q ON treatment_q.patient_id = patient.patient_id
+                INNER JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
+                WHERE treatment_history.treatment_history_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
+        $pstm->execute();
+        return $pstm->fetch(PDO::FETCH_ASSOC);
+    }
+    public function UpdateTreatment($data){
+        $sql ="UPDATE treatment_history SET treatment_name = :treatment_name,HowToTreatment = :HowToTreatment WHERE treatment_history_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':treatment_name',$data['treatment_name']);
+        $pstm->bindParam(':HowToTreatment',$data['howtotreatment']);
+        $pstm->bindParam(':id',$data['id']);
+        return $pstm->execute();
     }
     public function GetProduct(){
         $sql ="SELECT * FROM product";
