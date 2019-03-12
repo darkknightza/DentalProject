@@ -12,6 +12,9 @@ class HRController extends Controller
         require_once 'models/HR_model.php';
         $this->model = new HR_model();
         Session::init();
+        
+        
+
     }
 
 
@@ -26,6 +29,8 @@ class HRController extends Controller
         $username = filter_input(INPUT_POST, 'username',FILTER_SANITIZE_STRING);
         $password = filter_input(INPUT_POST, 'password',FILTER_SANITIZE_STRING);
         $usertype = filter_input(INPUT_POST, 'usertype',FILTER_SANITIZE_STRING);
+
+
         $pass = password_hash($password, PASSWORD_DEFAULT);
         $data = [
             'name' => $name,
@@ -36,11 +41,11 @@ class HRController extends Controller
         $result = $this->model->InsertUser($data);
         if($result){
            echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
-        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        window.location='/HRController/ManageUsers';
         </script>";
         }else{
             echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
-        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        window.location='/HRController/ManageUsers';
         </script>";
         }
     }
@@ -62,18 +67,23 @@ class HRController extends Controller
         $id = filter_input(INPUT_POST, 'user_id',FILTER_SANITIZE_STRING);
         $name = filter_input(INPUT_POST, 'name',FILTER_SANITIZE_STRING);
         $usertype = filter_input(INPUT_POST, 'usertype',FILTER_SANITIZE_STRING);
+
+        
+
         $data = [
             'name' => $name,
             'usertype' => $usertype,
             'id' => $id
         ];
+
+        $result = $this->model->UpdateUser($data);
         if($result){
            echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
-        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        window.location='/HRController/ManageUsers';
         </script>";
         }else{
             echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
-        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        window.location='/HRController/ManageUsers';
         </script>";
         }
     }
@@ -86,11 +96,11 @@ class HRController extends Controller
         $result = $this->model->DeleteUser($id);
         if($result){
            echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
-        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        window.location='/HRController/ManageUsers';
         </script>";
         }else{
             echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
-        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        window.location='/HRController/ManageUsers';
         </script>";
         }
     }
@@ -107,11 +117,11 @@ class HRController extends Controller
         $result = $this->model->UpdatePassword($pass,$id);
         if($result){
            echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
-        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        window.location='/HRController/ManageUsers';
         </script>";
         }else{
             echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
-        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        window.location='/HRController/ManageUsers';
         </script>";
         }
     }
