@@ -35,9 +35,13 @@ class HRController extends Controller
         ];
         $result = $this->model->InsertUser($data);
         if($result){
-            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/index"</script>';
+           echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
+        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        </script>";
         }else{
-            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/index"</script>';
+            echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
+        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        </script>";
         }
     }
     public function ManageUsers(){
@@ -63,19 +67,31 @@ class HRController extends Controller
             'usertype' => $usertype,
             'id' => $id
         ];
-        $result = $this->model->UpdateUser($data);
         if($result){
-            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/index"</script>';
+           echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
+        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        </script>";
         }else{
-            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/index"</script>';
+            echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
+        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        </script>";
         }
     }
     public function DeleteUser($id){
+        $user= Session::get('user');
+        $user_id = $user['user_id'];
+        $this->model->ChangeUserPermissionPatient($id,$user_id);
+        $this->model->ChangeUserPermissionTreatment($id,$user_id);
+        $this->model->ChangeUserPermissionTransaction($id,$user_id);
         $result = $this->model->DeleteUser($id);
         if($result){
-            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/index"</script>';
+           echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
+        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        </script>";
         }else{
-            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/index"</script>';
+            echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
+        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        </script>";
         }
     }
     public function EditPassword($id){
@@ -90,9 +106,13 @@ class HRController extends Controller
         $id = filter_input(INPUT_POST, 'user_id',FILTER_SANITIZE_STRING);
         $result = $this->model->UpdatePassword($pass,$id);
         if($result){
-            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/index"</script>';
+           echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
+        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        </script>";
         }else{
-            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/index"</script>';
+            echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
+        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        </script>";
         }
     }
 
