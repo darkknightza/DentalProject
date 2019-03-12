@@ -9,7 +9,7 @@
                 <h3>เพิ่มการนัดหมาย</h3>
             </div>          
                 <form class="form" method="POST" action="/RecordController/Add_Q">
-                    <p align="left" ><font size="4" color="white">ชื่อคนไข้</font></p> <input id="test" value=" " name="patient"/>
+                    <p align="left" ><font size="4" color="white">ชื่อคนไข้</font></p> <input id="test" value="" name="patient"/>
                     <p align="left" ><font size="4" color="white">แพทย์ผู้นัดหมาย</font></p> <input id="test2" value=" " name="dentist"/>
                     <p align="left" ><font size="4" color="white">วันที่นัดหมาย</font></p><input type="datetime-local" name="bdaytime" required="">
                     <p align="left" ><font size="4" color="white">หมายเหตุ</font></p> 
@@ -80,6 +80,7 @@
 <script>
 $('#test').inputpicker({
     data:[
+    {value:"",text:""},
     <?php foreach($data['allPatient'] as $row){ ?>
         {value:"<?php echo $row['patient_id'] ?>",text:"<?php echo $row['patient_name'] ?>"},
         <?php } ?>
@@ -94,6 +95,7 @@ $('#test').inputpicker({
 
 $('#test2').inputpicker({
     data:[
+    {value:"",text:""},
     <?php foreach($data['Dentist'] as $row){ ?>
         {value:"<?php echo $row['user_id'] ?>",text:"<?php echo $row['name'] ?>"},
         <?php } ?>

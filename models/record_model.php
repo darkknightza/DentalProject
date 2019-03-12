@@ -34,7 +34,7 @@ class record_model extends Model
 
 
     public function GetAllDentist(){
-        $sql ="SELECT * FROM `user` where userType_id = 5";
+        $sql ="SELECT * FROM `user` where userType_id = 5 or userType_id = 7";
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
@@ -111,12 +111,13 @@ class record_model extends Model
         $pstm->bindParam(':status_id', $data[4]);
         $pstm->bindParam(':detail', $data[5]);
         $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
         
            }
 
 
     public function GetQ_Detail($id){
-        $sql ="SELECT p.patient_name as patientName,u.name as dentist,us.name as UpdateBy,t.Treatment_q_time as time,t.detail as detail,t.Time_arrive as arrive,s.status_name as status,s.color as color,t.status_id as status_id, t.treatment_Q_id as t_id FROM treatment_q t INNER JOIN patient p on t.patient_id = p.patient_id INNER join user u on t.dentist_id = u.user_id INNER join user us on t.UpdateBy = us.user_id INNER join status s on t.status_id=s.status_id  WHERE t.treatment_Q_id = :id ORDER by t.Treatment_q_time";
+        $sql ="SELECT p.patient_name as patientName,u.name as dentist,u.user_id as dentist_id,us.name as UpdateBy,t.Treatment_q_time as time,t.detail as detail,t.Time_arrive as arrive,s.status_name as status,s.color as color,t.status_id as status_id, t.treatment_Q_id as t_id FROM treatment_q t INNER JOIN patient p on t.patient_id = p.patient_id INNER join user u on t.dentist_id = u.user_id INNER join user us on t.UpdateBy = us.user_id INNER join status s on t.status_id=s.status_id  WHERE t.treatment_Q_id = :id ORDER by t.Treatment_q_time";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':id', $id);
         $pstm->execute();

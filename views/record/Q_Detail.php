@@ -16,7 +16,7 @@
                 <form class="form" method="POST" action="/RecordController/Save_Q">
                     <input type="hidden"  value="<?php echo $data['id']; ?>" name="Q_id"/> 
                     <p align="left" ><font size="4" color="white">ชื่อคนไข้</font></p> <input value="<?php echo $data['Q_Detail']['patientName']; ?>" name="patient"/ disabled>
-                    <p align="left" ><font size="4" color="white">แพทย์ผู้นัดหมาย</font></p> <input id="test2" value=" " name="dentist"/>
+                    <p align="left" ><font size="4" color="white">แพทย์ผู้นัดหมาย</font></p> <input id="test2" value="<?php echo $data['Q_Detail']['dentist']; ?>" name="dentist"/>
                     <p align="left" ><font size="4" color="white">วันที่นัดหมาย</font></p><input type="datetime-local" name="bdaytime" value="<?php echo date('Y-m-d\TH:i', strtotime($data['Q_Detail']['time'])); ?>">
                     <p align="left" ><font size="4" color="white">หมายเหตุ</font></p> 
                     <input value="<?php echo $data['Q_Detail']['detail']; ?>" type="text"  name="detail" >
@@ -54,9 +54,11 @@
 
 $('#test2').inputpicker({
     data:[
+    {value:"<?php echo $data['Q_Detail']['dentist_id'] ?>",text:"<?php echo $data['Q_Detail']['dentist']; ?>"},
     <?php foreach($data['Dentist'] as $row){ ?>
+        <?php if($row['user_id']==$data['Q_Detail']['dentist_id']){}else{  ?>
         {value:"<?php echo $row['user_id'] ?>",text:"<?php echo $row['name'] ?>"},
-        <?php } ?>
+        <?php }} ?>
         {}
     ],
     fields:['value','text'],
