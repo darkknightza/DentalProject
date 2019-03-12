@@ -66,6 +66,10 @@ class FinanceController extends Controller
     public function FormAddIncome(){
         $this->views('finance/AddIncome',null);
     }
+    public function DELETEIncome($id){
+        $result = $this->model->DeleteIncome($id);
+        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewListIncome" </script>';
+    }
     public function InsertIncome(){
         $Income = filter_input(INPUT_POST, 'Income',FILTER_SANITIZE_STRING);
         $detail = filter_input(INPUT_POST, 'detail',FILTER_SANITIZE_STRING);
@@ -157,6 +161,7 @@ class FinanceController extends Controller
         if($treatment_history_id){
             for($i = 0;$i<=$count;$i++){
                 $product = filter_input(INPUT_POST, 'product'.$i,FILTER_SANITIZE_STRING);
+                print_r($product);
                 if($product){
                     $price = filter_input(INPUT_POST, 'price'.$i,FILTER_SANITIZE_STRING);
                     $amount = filter_input(INPUT_POST, 'amount'.$i,FILTER_SANITIZE_STRING);
@@ -167,13 +172,13 @@ class FinanceController extends Controller
                         'amount' => $amount,
                         'product' => $product
                     ];
-                    $this->model->InsertProductlog($data);
+//                     $this->model->InsertProductlog($data);
                 }
                 
             }
         }
 
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';
+//         echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';
     }
     public function PrintBill($id){
         $getBillDetail = $this->model->getBillDetail($id);
