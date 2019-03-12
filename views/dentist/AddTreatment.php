@@ -67,7 +67,9 @@
 	//คำสั่ง Jquery เริ่มทำงาน เมื่อ โหลดหน้า Page เสร็จ 
 	$(function(){
 		//กำหนดให้  Plug-in dataTable ทำงาน ใน ตาราง Html ที่มี id เท่ากับ example
-		$('#dataTable').dataTable();
+		$('#dataTable').dataTable({
+			  "pageLength": 50
+		});
 		$("#appointDIV").hide();	
 	});
 	$( "#appoint" ).change(function() {

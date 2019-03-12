@@ -2,7 +2,7 @@
 	<div class="contact-caption clearfix">
 		<div class="col-md-6 col-md-offset-3 contact-form">
     		<div align="center">
-    			<h3>ทำบัตรผู้ป่วยรายใหม่</h3>
+    			<h3>เพิ่มข้อมูลพนักงาน</h3>
     		</div>			
 				<form class="form" method="POST" action="/HRController/ADDUser">
 					<p align="left" ><font size="4" color="white">ชื่อ-นามสกุล :</font></p> <input type="text" placeholder="ชื่อ-นามสกุล" name="name" required>
