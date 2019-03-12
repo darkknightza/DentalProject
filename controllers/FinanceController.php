@@ -54,6 +54,7 @@ class FinanceController extends Controller
         echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewAllProduct" </script>';
     }
     public function DeleteProduct($id){
+        $result = $this->model->DeleteProductlogById($id);
         $result = $this->model->Deleteproduct($id);
         echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewAllProduct" </script>';
     }
