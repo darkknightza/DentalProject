@@ -125,6 +125,10 @@ class RecordController extends Controller
 
 
     public function Add_Q(){
+        if(empty(filter_input(INPUT_POST, 'patient',FILTER_SANITIZE_STRING))||empty(filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING))){
+             echo '<script>alert("กรุณากรอกข้อมูลให้ครบ");window.location = "/RecordController/ToQ_Page"</script>';
+
+        }
       $patient_id = filter_input(INPUT_POST, 'patient',FILTER_SANITIZE_STRING);
       $dentist_id = filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING);
       $Treatment_q_time = filter_input(INPUT_POST, 'bdaytime',FILTER_SANITIZE_STRING);
@@ -135,7 +139,7 @@ class RecordController extends Controller
        
 
       $data = array($patient_id, $dentist_id, $UpdateBy,$Treatment_q_time,$status_id,$detail); 
-      $this->model->InsertPatient_Q($data);
+      $result = $this->model->InsertPatient_Q($data);
       echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
         
     }

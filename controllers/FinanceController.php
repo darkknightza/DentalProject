@@ -150,13 +150,17 @@ class FinanceController extends Controller
         ]);
     }
     public function SubmitBill() {
+        $user= Session::get('user');
         $treatment_history_id = filter_input(INPUT_POST, 'id',FILTER_SANITIZE_STRING);
         $treatment_Q_id = filter_input(INPUT_POST, 'treatment_Q_id',FILTER_SANITIZE_STRING);
+        $treatment_name = filter_input(INPUT_POST, 'treatment_name',FILTER_SANITIZE_STRING);
+        
         $product = $this->model->GetProduct();
         $count = count($product);
         if($treatment_Q_id){
             $this->model->UpdateQueue($treatment_Q_id);
         }
+        $priceIncome = 0;
         $result = $this->model->DeleteProductlogByHisId($treatment_history_id);
         if($treatment_history_id){
             for($i = 0;$i<=$count;$i++){
@@ -172,9 +176,17 @@ class FinanceController extends Controller
                         'product' => $product
                     ];
                     $this->model->InsertProductlog($data);
+                    $priceIncome += $price;
                 }
                 
             }
+            $data = [
+                'Income' =>  'รับ',
+                'detail' => $treatment_name,
+                'amount' =>$priceIncome,
+                'user_id' => $user['user_id']
+            ];
+            $this->model->InsertIncome($data);
         }
 
         echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';
