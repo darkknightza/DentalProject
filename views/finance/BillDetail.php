@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="contact-caption clearfix">
 		<div class="col-md-6 col-md-offset-3 contact-form">
-			<center><h3>เพิ่มรายละเอียดการรักษา</h3></center>				
+			<center><h3>ออกใบเสร็จ</h3></center>				
 				<form class="form" method="POST" action="/FinanceController/SubmitBill">
 					<font size="4" color="white"><p align="left" >ชื่อ-สกุล:</p></font> <input class="form-control" type="text" value="<?php echo $data['getBillDetail']['patient_name']; ?>" placeholder="ชื่อ"  id="fname" name="name" readonly="readonly">
 					<input type="hidden" value="<?php echo $data['getBillDetail']['treatment_history_id']; ?>" name="id">	
