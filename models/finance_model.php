@@ -128,6 +128,12 @@ class finance_model extends Model
         $pstm->bindParam(':treatment_history_id',$id);
         return $pstm->execute();
     }
+    public function DeleteProductlogById($id){
+        $sql ="DELETE FROM product_log WHERE product_id = :product_id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':product_id',$id);
+        return $pstm->execute();
+    }
     public function UpdateQueue($Qid){
         $sql ="UPDATE treatment_q SET status_id = 5 WHERE treatment_Q_id = :treatment_Q_id";
         $pstm = $this->connect->prepare($sql);

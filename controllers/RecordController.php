@@ -115,7 +115,10 @@ class RecordController extends Controller
     }
 
      public function ToDeletePatient($id){
-        $result = $this->model->DeletePatient($id);
+         $result = $this->model->DeletePatient_productlog($id);
+         $result = $this->model->DeletePatient_treatment_history($id);
+         $result = $this->model->DeletePatient_treatment_q($id);
+         $result = $this->model->DeletePatient_patient($id);
         if($result){
             echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
         }else{

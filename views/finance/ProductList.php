@@ -35,7 +35,7 @@
         			<td><?php echo $row['productName'] ?></td>
         			<td><?php echo $row['Price'] ?></td>
 					<td><a href="/FinanceController/FormEditProduct/<?php echo $row['product_id'] ?>">แก้ไข</a></td>
-        			<td><a href="/FinanceController/DeleteProduct/<?php echo $row['product_id'] ?>">ลบ</a></td>
+        			<td><a href="/FinanceController/DeleteProduct/<?php echo $row['product_id'] ?>" onclick="return confirm('คุณต้องการลบ?');">ลบ</a></td>
         		</tr>
         	<?php } ?>
         	</tbody>

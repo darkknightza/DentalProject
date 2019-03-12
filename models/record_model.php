@@ -80,19 +80,46 @@ class record_model extends Model
         $pstm->bindParam(':id', $data['id']);
         return $pstm->execute();
     }
-
-   
-
-
-    
-
-     public function DeletePatient($id){
-        $sql ="DELETE FROM `patient` WHERE patient_id = :id";
+    public function DeletePatient_productlog($id){
+        $sql ="DELETE product_log FROM patient
+                LEFT JOIN treatment_q ON treatment_q.patient_id = patient.patient_id
+                LEFT JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
+                LEFT JOIN product_log ON product_log.treatment_history_id = treatment_history.treatment_history_id
+                WHERE patient.patient_id = :id";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':id', $id);
         return $pstm->execute();
     }
-    
+    public function DeletePatient_treatment_history($id){
+        $sql ="DELETE treatment_history FROM patient
+                LEFT JOIN treatment_q ON treatment_q.patient_id = patient.patient_id
+                LEFT JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
+                LEFT JOIN product_log ON product_log.treatment_history_id = treatment_history.treatment_history_id
+                WHERE patient.patient_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
+        return $pstm->execute();
+    }
+    public function DeletePatient_treatment_q($id){
+        $sql ="DELETE treatment_q FROM patient
+                LEFT JOIN treatment_q ON treatment_q.patient_id = patient.patient_id
+                LEFT JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
+                LEFT JOIN product_log ON product_log.treatment_history_id = treatment_history.treatment_history_id
+                WHERE patient.patient_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
+        return $pstm->execute();
+    }
+    public function DeletePatient_patient($id){
+        $sql ="DELETE patient FROM patient
+                LEFT JOIN treatment_q ON treatment_q.patient_id = patient.patient_id
+                LEFT JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
+                LEFT JOIN product_log ON product_log.treatment_history_id = treatment_history.treatment_history_id
+                WHERE patient.patient_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
+        return $pstm->execute();
+    }
     public function GetAllQ(){
 
         $sql ="SELECT p.patient_name as patientName,u.name as dentist,us.name as UpdateBy,t.Treatment_q_time as time,t.detail as detail,t.Time_arrive as arrive,s.status_name as status,s.color as color,t.status_id as status_id, t.treatment_Q_id as t_id FROM treatment_q t INNER JOIN patient p on t.patient_id = p.patient_id INNER join user u on t.dentist_id = u.user_id INNER join user us on t.UpdateBy = us.user_id INNER join status s on t.status_id=s.status_id WHERE t.Time_arrive > NOW() - INTERVAL 3 DAY or (t.status_id != 4 and t.status_id != 5)   ORDER by t.Treatment_q_time";
