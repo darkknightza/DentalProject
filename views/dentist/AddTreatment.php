@@ -2,7 +2,7 @@
 	<div class="contact-caption clearfix">
 		<div class="col-md-6 col-md-offset-3 contact-form">
 			<center><h3>เพิ่มรายละเอียดการรักษา</h3></center>				
-				<form class="form" method="POST" action="/DentistController/SubmitTreatment">
+				<form class="form" method="POST" action="/DentistController/SubmitTreatment" enctype="multipart/form-data" runat="server">
 					<font size="4" color="white"><p align="left" >ชื่อ-สกุล:</p></font> <input class="form-control" type="text" value="<?php echo $data['Patient']['patient_name']; ?>" placeholder="ชื่อ"  id="fname" name="name" readonly="readonly">
 					<input type="hidden" value="<?php echo $data['Patient']['patient_id']; ?>" name="id">
 					<input type="hidden" value="<?php echo $data['QueueToday']['treatment_Q_id']; ?>" name="treatment_Q_id">

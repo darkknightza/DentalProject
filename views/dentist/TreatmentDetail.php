@@ -37,6 +37,7 @@
         			<th>เวลา</th>
         			<th>แก้ไข</th>
         			<th>ลบ</th>
+                    <th>ไฟล์ x-ray</th>
         		</tr>
         	</thead>
         	<tbody>
@@ -50,6 +51,13 @@
         			<td><?php echo $row['treatment_history_date'] ?></td>
         			<td><a href="/DentistController/FormEditTreatment/<?php echo $row['treatment_history_id'] ?>" >แก้ไข</a></td>
         			<td><a href="/DentistController/DeleteTreatment/<?php echo $row['treatment_history_id'] ?>" onclick="return confirm('คุณต้องการลบ?');">ลบ</a></td>
+                    <?php if($row['file']==''){ ?>
+                    <td><a href="/DentistController/LookX_rey/DF.png">ดูรูป X-ray</a></td>
+
+                    <?php }else{ ?>
+                    <td><a href="/DentistController/LookX_rey/<?php echo $row['file']?>">ดูรูป X-ray</a></td>
+
+                    <?php } ?>
         		</tr>
         		<?php $i++ ?>
         	<?php } ?>
