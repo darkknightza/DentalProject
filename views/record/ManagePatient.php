@@ -18,11 +18,11 @@
         	<thead>
         		<tr>
         			<th>ID</th>
-        			<th>ชื่ผู้ป่วย</th>
+        			<th>ชื่อผู้ป่วย</th>
                     <th>วันเกิด</th>
         			<th>ที่อยู่</th>
         			<th>เบอร์โทรศัพท์</th>
-        			<th>เพิ่มเติม</th>
+        			<th>ประวัติการรักษา</th>
         			<th>แก้ไข</th>
         			<th>ลบ</th>
         		</tr>
@@ -36,7 +36,7 @@
                     <td><?php echo $row['BirthDate'] ?></td>
         			<td><?php echo $row['location'] ?></td>
         			<td><?php echo $row['tel'] ?></td>
-         			<td><a href="/RecordController/ViewDetail/<?php echo $row['patient_id'] ?>">เพิ่มเติม</a></td>
+         			<td><a href="/RecordController/ViewDetail/<?php echo $row['patient_id'] ?>">รายละเอียด</a></td>
         			<td><a href="/RecordController/ToEditPatientPage/<?php echo $row['patient_id'] ?>">แก้ไข</a></td>
         			<td><a href="/RecordController/ToDeletePatient/<?php echo $row['patient_id'] ?>" onclick="return confirm('Are you sure?')">ลบ</a></td>
         		</tr>
