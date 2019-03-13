@@ -88,7 +88,7 @@ $('#test').inputpicker({
     ],
     fields:['value','text'],
     fieldText : 'text',
-    headShow: true,
+    headShow: 0,
     filterOpen: true,
     autoOpen: true
 });
@@ -103,7 +103,7 @@ $('#test2').inputpicker({
     ],
     fields:['value','text'],
     fieldText : 'text',
-    headShow: true,
+    headShow: 0,
     filterOpen: true,
     autoOpen: true
 });

@@ -25,6 +25,7 @@
         			<th>ประเภท</th>
         			<th>รายละเอียด</th>
         			<th>จำนวน</th>
+                    <th>เวลา</th>
         			<th>แก้ไข</th>
         			<th>ลบ</th>
         		</tr>
@@ -40,6 +41,7 @@
         			<td><p style="color: green"><?php echo $row['Transaction_type'] ?></p></td>
         			<td><p style="color: green"><?php echo $row['Transaction_detail'] ?></p></td>
         			<td><p style="color: green"><?php echo $row['amount'] ?></p></td>
+                    <td><p style="color: green"><?php echo $row['time'] ?></p></td>
 					<td><a href="/FinanceController/FormEditIncome/<?php echo $row['Transaction_id'] ?>">แก้ไข</a></td>
         			<td><a href="/FinanceController/DELETEIncome/<?php echo $row['Transaction_id']  ?>" onclick="return confirm('Are you sure?')" > ลบ </a></td>
 
@@ -51,6 +53,7 @@
                     <td><p style="color: red"><?php echo $row['Transaction_type'] ?></p></td>
                     <td><p style="color: red"><?php echo $row['Transaction_detail'] ?></p></td>
                     <td><p style="color: red"><?php echo $row['amount'] ?></p></td>
+                    <td><p style="color: red"><?php echo $row['time'] ?></p></td>
                     <td><a href="/FinanceController/FormEditIncome/<?php echo $row['Transaction_id'] ?>">แก้ไข</a></td>
                     <td><a href="/FinanceController/DELETEIncome/<?php echo $row['Transaction_id']  ?>" onclick="return confirm('Are you sure?')"> ลบ </a></td>
 
