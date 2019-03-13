@@ -18,11 +18,12 @@ class dentist_model extends Model
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function getQueueNow() {
+    public function getQueueNow($id) {
         $sql ="SELECT `user`.`name`,treatment_q.patient_id,treatment_q.dentist_id,treatment_q.Time_arrive,treatment_q.detail,
                 patient.patient_name,treatment_q.treatment_Q_id FROM `user` INNER JOIN treatment_q ON treatment_q.dentist_id = `user`.user_id
-                INNER JOIN patient ON treatment_q.patient_id = patient.patient_id WHERE status_id = 2 ORDER BY Time_arrive ASC";
+                INNER JOIN patient ON treatment_q.patient_id = patient.patient_id WHERE treatment_q.dentist_id = :id and treatment_q.status_id = 2  ORDER BY Time_arrive ASC";
         $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id',$id);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }

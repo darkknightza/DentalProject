@@ -27,7 +27,9 @@ class DentistController extends Controller
         ]);
     }
     public function QueueToday() {
-        $QueueToday =$this->model->getQueueNow();
+        $user= Session::get('user');
+        $user_id = $user['user_id'];
+        $QueueToday =$this->model->getQueueNow($user_id);
         $this->views('dentist/QueueList',[
             'QueueToday' =>$QueueToday
         ]);
