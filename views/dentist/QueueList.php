@@ -21,6 +21,7 @@
         			<th>ชื่อผู้ป่วย</th>
         			<th>รายการที่ทำ</th>
         			<th>เวลา</th>
+        			<th>แพทย์</th>
         			<th>ดูรายละเอียด</th>
         		</tr>
         	</thead>
@@ -31,6 +32,7 @@
         			<td><?php echo $row['patient_name'] ?></td>
         			<td><?php echo $row['detail'] ?></td>
         			<td><?php echo $row['Time_arrive'] ?></td>
+        			<td><?php echo $row['name'] ?></td>
         			<td><a href="/DentistController/QueueDetail/<?php echo $row['patient_id'] ?>">ดูรายละเอียด</a></td>
         		</tr>
         	<?php } ?>
