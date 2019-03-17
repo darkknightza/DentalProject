@@ -35,9 +35,11 @@ class OwnerController extends Controller
 
         $Fdate = filter_input(INPUT_POST, 'Fdate',FILTER_SANITIZE_STRING);
         $Ldate = filter_input(INPUT_POST, 'Ldate',FILTER_SANITIZE_STRING);
-         $allTransaction = $this->model->FindTransaction($Fdate,$Ldate);
-         $allIncome = $this->model->FindSumIncomeTransaction($Fdate,$Ldate);
-         $allExpenses = $this->model->FindSumExpensesTransaction($Fdate,$Ldate);
+        $L = explode('-', $Ldate);
+        $Ldate = $L[0].'-'.$L[1].'-'.($L[2]+1);
+        $allTransaction = $this->model->FindTransaction($Fdate,$Ldate);
+        $allIncome = $this->model->FindSumIncomeTransaction($Fdate,$Ldate);
+        $allExpenses = $this->model->FindSumExpensesTransaction($Fdate,$Ldate);
 
 
 
