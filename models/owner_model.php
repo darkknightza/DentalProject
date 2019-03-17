@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 namespace models;
 use core\Model;
 use PDO;
