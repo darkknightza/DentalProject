@@ -34,7 +34,7 @@ class owner_model extends Model{
     }
 
       public function FindTransaction($Fdate,$Ldate){
-        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount as amount ,u.name as UpdateBy, t.Time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id and (t.Time BETWEEN :Fdate and :Ldate)";
+        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount as amount ,u.name as UpdateBy, t.Time as time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id and (t.Time BETWEEN :Fdate and :Ldate)";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
