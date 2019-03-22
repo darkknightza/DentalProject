@@ -84,7 +84,11 @@ class RecordController extends Controller
       
         $this->model->InsertPatient($data,$user_id);
 
-        echo "<script type='text/javascript'>alert('เพิ่มข้อมูลผู้ป่วยสำเร็จ');
+        // echo "<script type='text/javascript'>alert('เพิ่มข้อมูลผู้ป่วยสำเร็จ');
+        // window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        // </script>";
+
+        echo "<script type='text/javascript'>
         window.location='/UserTypeController/Topage/".$user['userType_id']."';
         </script>";
         
@@ -107,10 +111,16 @@ class RecordController extends Controller
             'id' => $id
         ];
         $result = $this->model->UpdatePatient($data);
-        if($result){
-            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+        // if($result){
+        //     echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+        // }else{
+        //     echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
+        // }
+
+         if($result){
+            echo '<script>window.location = "/RecordController/ToManagePatient"</script>';
         }else{
-            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
+            echo '<script>window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
         }
     }
 
@@ -119,17 +129,25 @@ class RecordController extends Controller
          $result = $this->model->DeletePatient_treatment_history($id);
          $result = $this->model->DeletePatient_treatment_q($id);
          $result = $this->model->DeletePatient_patient($id);
+        // if($result){
+        //     echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+        // }else{
+        //     echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+        // }
+
+
         if($result){
-            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+            echo '<script>window.location = "/RecordController/ToManagePatient"</script>';
         }else{
-            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
+            echo '<script>window.location = "/RecordController/ToManagePatient"</script>';
         }
     }
 
 
     public function Add_Q(){
         if(empty(filter_input(INPUT_POST, 'patient',FILTER_SANITIZE_STRING))||empty(filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING))){
-             echo '<script>alert("กรุณากรอกข้อมูลให้ครบ");window.location = "/RecordController/ToQ_Page"</script>';
+             //echo '<script>alert("กรุณากรอกข้อมูลให้ครบ");window.location = "/RecordController/ToQ_Page"</script>';
+             echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
 
         }
       $patient_id = filter_input(INPUT_POST, 'patient',FILTER_SANITIZE_STRING);
@@ -143,7 +161,9 @@ class RecordController extends Controller
 
       $data = array($patient_id, $dentist_id, $UpdateBy,$Treatment_q_time,$status_id,$detail); 
       $result = $this->model->InsertPatient_Q($data);
-      echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
+      //echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
+
+      echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
         
     }
 
@@ -180,10 +200,16 @@ class RecordController extends Controller
             'Time_arrive' => $time
         ];
         $result = $this->model->UpdateQ($data);
+        // if($result){
+        //     echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
+        // }else{
+        //     echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/EditStatus/'.$id.'"</script>';
+        // }
+
         if($result){
-            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
+            echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
         }else{
-            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/EditStatus/'.$id.'"</script>';
+            echo '<script>window.location = "/RecordController/EditStatus/'.$id.'"</script>';
         }
     }
 

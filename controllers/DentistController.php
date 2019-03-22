@@ -71,10 +71,23 @@ class DentistController extends Controller
             'howtotreatment' => $howtotreatment
         ];
         $this->model->UpdateTreatment($data);
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/ViewHistoryDetail/'.$patientid.'" </script>';
+        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/ViewHistoryDetail/'.$patientid.'" </script>';
+        '<script> window.location = "/DentistController/ViewHistoryDetail/'.$patientid.'" </script>';
     }
     public function DeleteTreatment($id) {
         $this->model->DELETEProductLog($id);
+        // $result = $this->model->DELETETreatment($id);
+        // if($result){
+        //     echo '<script>alert("ทำรายการสำเร็จ");</script>';
+        //     if (isset($_SERVER["HTTP_REFERER"])) {
+        //         header("Location: " . $_SERVER["HTTP_REFERER"]);
+        //     }
+        // }else{
+        //     echo '<script>alert("ไม่ทำรายการสำเร็จ");</script>';
+        //     if (isset($_SERVER["HTTP_REFERER"])) {
+        //         header("Location: " . $_SERVER["HTTP_REFERER"]);
+        //     }
+        // }
         $result = $this->model->DELETETreatment($id);
         if($result){
             echo '<script>alert("ทำรายการสำเร็จ");</script>';
@@ -203,7 +216,8 @@ class DentistController extends Controller
                 
             }
         }
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/QueueToday" </script>';
+        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/QueueToday" </script>';
+        echo ' window.location = "/DentistController/QueueToday" </script>';
     }
     
 }

@@ -40,7 +40,7 @@ class OwnerController extends Controller
         $allTransaction = $this->model->FindTransaction($Fdate,$Ldate);
         $allIncome = $this->model->FindSumIncomeTransaction($Fdate,$Ldate);
         $allExpenses = $this->model->FindSumExpensesTransaction($Fdate,$Ldate);
-
+        
 
 
          

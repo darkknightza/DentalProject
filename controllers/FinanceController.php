@@ -33,7 +33,8 @@ class FinanceController extends Controller
             'Price' => $Price
         ];
         $result = $this->model->Insertproduct($data);
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewAllProduct" </script>';
+        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewAllProduct" </script>';
+        echo 'window.location = "/FinanceController/ViewAllProduct" </script>';
     }
     public function FormEditProduct($id){
         $Product = $this->model->getproductById($id);
@@ -51,12 +52,14 @@ class FinanceController extends Controller
             'Price' => $Price
         ];
         $result = $this->model->Updateproduct($data);
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewAllProduct" </script>';
+        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewAllProduct" </script>';
+        echo ' window.location = "/FinanceController/ViewAllProduct" </script>';
     }
     public function DeleteProduct($id){
         $result = $this->model->DeleteProductlogById($id);
         $result = $this->model->Deleteproduct($id);
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewAllProduct" </script>';
+        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewAllProduct" </script>';
+        echo ' window.location = "/FinanceController/ViewAllProduct" </script>';
     }
     public function ViewListIncome(){
         $AllIncome = $this->model->getAllIncome();
@@ -69,7 +72,8 @@ class FinanceController extends Controller
     }
     public function DELETEIncome($id){
         $result = $this->model->DeleteIncome($id);
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewListIncome" </script>';
+        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewListIncome" </script>';
+        echo 'window.location = "/FinanceController/ViewListIncome" </script>';
     }
     public function InsertIncome(){
         $Income = filter_input(INPUT_POST, 'Income',FILTER_SANITIZE_STRING);
@@ -88,7 +92,8 @@ class FinanceController extends Controller
             'user_id' => $user['user_id']
         ];
         $result = $this->model->InsertIncome($data);
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewListIncome" </script>';
+        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewListIncome" </script>';
+        echo 'window.location = "/FinanceController/ViewListIncome" </script>';
     }
     public function FormEditIncome($id){
         $Income = $this->model->getIncomeById($id);
@@ -113,7 +118,8 @@ class FinanceController extends Controller
             'id' => $id
         ];
         $result = $this->model->UpdateIncome($data);
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewListIncome" </script>';
+        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/ViewListIncome" </script>';
+        echo ' window.location = "/FinanceController/ViewListIncome" </script>';
     }
     public function ViewBill(){
         $getBill = $this->model->getBill();
@@ -190,7 +196,8 @@ class FinanceController extends Controller
             $this->model->InsertIncome($data);
         }
 
-        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';
+        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';
+        echo 'window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';
     }
     public function PrintBill($id){
         $getBillDetail = $this->model->getBillDetail($id);
