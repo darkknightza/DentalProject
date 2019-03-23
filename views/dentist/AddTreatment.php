@@ -1,13 +1,26 @@
 <div class="row">
 	<div class="contact-caption clearfix">
+		<img src="/public/img/th_pic.jpg" class="rounded mx-auto d-block" alt="...">
 		<div class="col-md-6 col-md-offset-3 contact-form">
-			<center><h3>เพิ่มรายละเอียดการรักษา</h3></center>				
+			<center><h3>เพิ่มรายละเอียดการรักษา</h3></center>
+
 				<form class="form" method="POST" action="/DentistController/SubmitTreatment" enctype="multipart/form-data" runat="server">
 					<font size="4" color="white"><p align="left" >ชื่อ-สกุล:</p></font> <input class="form-control" type="text" value="<?php echo $data['Patient']['patient_name']; ?>" placeholder="ชื่อ"  id="fname" name="name" readonly="readonly">
 					<input type="hidden" value="<?php echo $data['Patient']['patient_id']; ?>" name="id">
 					<input type="hidden" value="<?php echo $data['QueueToday']['treatment_Q_id']; ?>" name="treatment_Q_id">
 					
 					<font size="4" color="white"><p align="left" >การรักษา:</p></font><input class="form-control" type="text" placeholder="เบอร์ติดต่อ" id="phone" name="treatment_name" value="<?php echo $data['QueueToday']['detail']; ?>" readonly="readonly">
+
+					<p align="left" ><font size="4" color="white">ประเภทการรักษา</font></p> 
+                    <select value="<?php echo $data['Q_Detail']['status'] ?>" name="status" align="left" class="form-control">
+                        <option value="1">ยังไม่มา</option>
+                        <option value="2">รอพบแพทย์</option>
+                        <option value="3">รอจ่ายเงิน</option>
+                        <option value="4">ยกเลิกนัด</option>
+                        <option value="5">เสร็จสิ้น</option>
+                    </select>
+                    <br>
+
 					<font size="4" color="white"><p align="left" >รายละเอียดการรักษา:</p></font><textarea class="form-control" cols="30" rows="10" placeholder="รายละเอียดการรักษา"  name="howtotreatment"></textarea>
 					<font size="4" color="white"><p align="left" >ไฟล์เอกสาร</p></font> <input class="form-control" type="file" placeholder="การแพ้ยา" id="allegic" name="fileupload">
 					<hr>
