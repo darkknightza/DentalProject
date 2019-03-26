@@ -1,5 +1,6 @@
 <div class="row">
 	<div class="contact-caption clearfix">
+        <img src="/public/img/th_pic.jpg" class="rounded mx-auto d-block" alt="...">
 		<div class="col-md-6 col-md-offset-3 contact-form">
 			<center><h3>ออกใบเสร็จ</h3></center>				
 				<form class="form" method="POST" action="/FinanceController/SubmitBill">
@@ -7,7 +8,8 @@
 					<input type="hidden" value="<?php echo $data['getBillDetail']['treatment_history_id']; ?>" name="id">	
 					<input type="hidden" value="<?php echo $data['getBillDetail']['treatment_Q_id']; ?>" name="treatment_Q_id">	
 					<font size="4" color="white"><p align="left" >การรักษา:</p></font><input class="form-control" type="text" placeholder="เบอร์ติดต่อ" id="phone" name="treatment_name" value="<?php echo $data['getBillDetail']['treatment_name']; ?>" readonly="readonly">
-					<font size="4" color="white"><p align="left" >รายละเอียดการรักษา:</p></font><textarea class="form-control" cols="30" rows="10" placeholder="รายละเอียดการรักษา"  name="howtotreatment" readonly="readonly"><?php echo $data['getBillDetail']['HowToTreatment']; ?></textarea>
+					<font size="4" color="white"><p align="left" >รายละเอียดการรักษา : M = ฟันที่ถอน / ผ่าฟันคุดครั้งนี้ , F = ฟันที่อุดครั้งนี้ , A = ฟันเทียมชนิดถอดได้</p>
+                    </font><textarea class="form-control" cols="30" rows="10" placeholder="รายละเอียดการรักษา"  name="howtotreatment" readonly="readonly"><?php echo $data['getBillDetail']['HowToTreatment']; ?></textarea>
 					<hr>
 					<div class="form-group row">
     					<div class="col-md-12">
