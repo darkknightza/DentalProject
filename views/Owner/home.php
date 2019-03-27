@@ -70,7 +70,7 @@
 			</a>
 
 			<a href="/OwnerController/GoDentis_Page">
-				<div class="col-md-6 col-sm-6">
+				<div class="col-md-4 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">
@@ -82,8 +82,21 @@
 					</div>
 				</div>
 			</a>
+			<a href="/RecordController/ToAddNewPatient">
+				<div class="col-md-4 col-sm-6">
+					<div class="single-service">
+						<div class="single-service-img">
+							<div class="service-img">
+								<img class="heart img-responsive" src="/public/img/user.png"
+									style="width: 60%; height: 80%" alt="">
+							</div>
+						</div>
+						<h3>ผู้ป่วยใหม่</h3>
+					</div>
+				</div>
+			</a>
 			<a href="/OwnerController/ToTransaction_Page">
-				<div class="col-md-6 col-sm-6">
+				<div class="col-md-4 col-sm-6">
 					<div class="single-service">
 						<div class="single-service-img">
 							<div class="service-img">

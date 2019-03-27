@@ -22,7 +22,12 @@ class RecordController extends Controller
     }
     
     
-     public function ToAddPatient(){
+     public function ToAddNewPatient(){
+        $this->views('record/AddNewPatient',null);
+    }
+
+
+    public function ToAddPatient(){
         $this->views('record/AddPatient',null);
     }
 
