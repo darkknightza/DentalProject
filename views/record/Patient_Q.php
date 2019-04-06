@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="/public/css/jquery.inputpicker.css" />
 <script src="/public/js/jquery.inputpicker.js"></script>
+<?php if($data['page_type']=='all'){ ?>
 <div class="row">
     <div class="contact-caption clearfix">
         <div class="col-md-6 col-md-offset-3 contact-form">
@@ -19,6 +20,7 @@
         </div>
     </div>
 </div>
+<?php } ?>
 
 
 <section class="about text-center" id="about">

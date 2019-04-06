@@ -129,6 +129,15 @@ class record_model extends Model
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function GetAllQ_today(){
+
+        $sql ="SELECT p.patient_name as patientName,u.name as dentist,us.name as UpdateBy,t.Treatment_q_time as time,t.detail as detail,t.Time_arrive as arrive,s.status_name as status,s.color as color,t.status_id as status_id, t.treatment_Q_id as t_id FROM treatment_q t INNER JOIN patient p on t.patient_id = p.patient_id INNER join user u on t.dentist_id = u.user_id INNER join user us on t.UpdateBy = us.user_id INNER join status s on t.status_id=s.status_id WHERE t.status_id != 4 and t.status_id != 5 and (DATE(t.Treatment_q_time)=CURRENT_DATE || DATE(t.Treatment_q_time)=CURRENT_DATE + INTERVAL 1 DAY)  ORDER by t.Treatment_q_time";
+
+        $pstm = $this->connect->prepare($sql);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     public function InsertPatient_Q($data){
         $sql ="insert into treatment_q (patient_id,dentist_id,UpdateBy,Treatment_q_time,status_id,detail) values(:patient_id,:dentist_id,:UpdateBy,:Treatment_q_time,:status_id,:detail)";

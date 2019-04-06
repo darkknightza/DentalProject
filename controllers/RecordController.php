@@ -44,10 +44,26 @@ class RecordController extends Controller
          $allQ = $this->model->GetAllQ();
          $allPatient = $this->model->GetAllPatient();
          $Dentist = $this->model->GetAllDentist();
+         $Page_type = 'all';
         $this->views('record/Patient_Q',[
             'allQ' =>$allQ,
             'allPatient' =>$allPatient,
-            'Dentist' =>$Dentist
+            'Dentist' =>$Dentist,
+            'page_type' => $Page_type
+        ]);
+    }
+
+
+    public function ToQ_Page_today(){
+         $allQ = $this->model->GetAllQ_today();
+         $allPatient = $this->model->GetAllPatient();
+         $Dentist = $this->model->GetAllDentist();
+         $Page_type = 'today';
+        $this->views('record/Patient_Q',[
+            'allQ' =>$allQ,
+            'allPatient' =>$allPatient,
+            'Dentist' =>$Dentist,
+            'page_type' => $Page_type
         ]);
     }
 
