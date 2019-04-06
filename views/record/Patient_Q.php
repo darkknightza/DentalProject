@@ -49,7 +49,7 @@
         			<th>สถานะ</th>
         			<th>อัพเดตโดย</th>
         			<th>หมายเหตุ</th>
-                    <th>การจัดการ</th>
+                    <th>เบอร์ติดต่อ</th>
         		</tr>
         	</thead>
         	<tbody>
@@ -64,7 +64,7 @@
          			<td><p style="color: <?php echo $row['color'] ?>"><?php echo $row['status'] ?>  </p></a></td>
         			<td><?php echo $row['UpdateBy'] ?></td>
         			<td><?php echo $row['detail'] ?></td>
-                    <td><a href="/RecordController/EditStatus/<?php echo $row['t_id'] ?>">จัดการ</td>
+                    <td><?php echo $row['tel'] ?></td>
         		</tr>
         		<?php $i++ ?>
         	<?php } ?>
