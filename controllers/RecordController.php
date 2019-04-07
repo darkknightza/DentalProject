@@ -28,7 +28,10 @@ class RecordController extends Controller
 
 
     public function ToAddPatient(){
-        $this->views('record/AddPatient',null);
+        $Dentist = $this->model->GetAllDentist();
+        $this->views('record/AddPatient',[
+            'Dentist' =>$Dentist
+        ]);
     }
 
      public function ToManagePatient(){
