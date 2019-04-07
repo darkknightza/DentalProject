@@ -92,11 +92,19 @@ class RecordController extends Controller
     public function AddPatient(){
       $fname = filter_input(INPUT_POST, 'fname',FILTER_SANITIZE_STRING);
         $lname = filter_input(INPUT_POST, 'lname',FILTER_SANITIZE_STRING);
-         $phone = filter_input(INPUT_POST, 'phone',FILTER_SANITIZE_STRING);
-        $bdate = filter_input(INPUT_POST, 'bdate',FILTER_SANITIZE_STRING);
+        $nickname = filter_input(INPUT_POST, 'nickname',FILTER_SANITIZE_STRING);
+        $personal_ID = filter_input(INPUT_POST, 'personal_ID',FILTER_SANITIZE_STRING);
+        $location = filter_input(INPUT_POST, 'location',FILTER_SANITIZE_STRING);
+        $nation = filter_input(INPUT_POST, 'nation',FILTER_SANITIZE_STRING);
+        $Occupation = filter_input(INPUT_POST, 'Occupation',FILTER_SANITIZE_STRING);
+        $phone = filter_input(INPUT_POST, 'phone',FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email',FILTER_SANITIZE_STRING);
         $allegic = filter_input(INPUT_POST, 'allegic',FILTER_SANITIZE_STRING);
         $contagious = filter_input(INPUT_POST, 'contagious',FILTER_SANITIZE_STRING);
-        $location = filter_input(INPUT_POST, 'location',FILTER_SANITIZE_STRING);
+        $bdate = filter_input(INPUT_POST, 'bdate',FILTER_SANITIZE_STRING);
+        $weight = filter_input(INPUT_POST, 'weight',FILTER_SANITIZE_STRING);
+        $height = filter_input(INPUT_POST, 'height',FILTER_SANITIZE_STRING);
+
         $fullname = $fname." ".$lname;
 
 
