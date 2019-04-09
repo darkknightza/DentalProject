@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="/public/css/jquery.inputpicker.css" />
 <script src="/public/js/jquery.inputpicker.js"></script>
+<link href="/public/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <?php if($data['page_type']=='all'){ ?>
 <div class="row">
     <div class="contact-caption clearfix">
@@ -12,7 +13,12 @@
                 <form class="form" method="POST" action="/RecordController/Add_Q">
                     <p align="left" ><font size="4" color="white">ชื่อคนไข้</font></p> <input id="test" value="" name="patient"/>
                     <p align="left" ><font size="4" color="white">แพทย์ผู้นัดหมาย</font></p> <input id="test2" value=" " name="dentist"/>
-                    <p align="left" ><font size="4" color="white">วันที่นัดหมาย</font></p><input type="datetime-local" name="bdaytime" required="">
+                    <p align="left" ><font size="4" color="white">วันที่นัดหมาย</font></p>
+                    <div class="input-group date form_time" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd hh:ii">
+                        <input class="form-control" size="16" type="text" value="" name="bdaytime" readonly="readonly">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+    					<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                    </div>
                     <p align="left" ><font size="4" color="white">หมายเหตุ</font></p> 
                     <textarea value="" type="text" placeholder="ชื่อ-นามสกุล" name="detail"> </textarea>
                     <input class="submit-btn" type="submit" value="เพิ่มการนัดหมาย">
@@ -38,13 +44,13 @@
 </section>
 <!-- end of about section -->
 	<div class="container">
-        <table class="table table-bordered" id="dataTable">
+        <table class="table table-bordered" id="dataTable" style="width: 100%">
         	<thead>
         		<tr>
         			<th>ID</th>
         			<th>ชื่อผู้ป่วย</th>
                     <th>แพทย์ผู้นัด</th>
-        			<th>เวลานัด</th>
+        			<th style="width: 100%">เวลานัด</th>
         			<th>เวลาทำรายการ</th>
         			<th>สถานะ</th>
         			<th>อัพเดตโดย</th>
@@ -58,10 +64,32 @@
         		<tr>
         			<td><?php echo $i ?></td>
         			<td><?php echo $row['patientName'] ?></td>
-                    <td><?php echo $row['dentist'] ?></td>
-        			<td><?php echo $row['time'] ?></td>
+                    <td><select onchange="UpdateDentist(this.value,<?php echo $row['t_id'] ?>)">
+                    <option value="<?php echo $row['UserId'] ?>"><?php echo $row['dentist'] ?></option>
+                    <?php foreach($data['Dentist'] as $value){ ?>
+                    	<?php if($row['UserId'] != $value['user_id']){ ?> 
+                    		<option value="<?php echo $value['user_id'] ?>"><?php echo $value['name'] ?></option>
+                    	<?php } ?>
+                    <?php } ?>
+                    </select>
+                    </td>
+        			<td>
+            			<div class="input-group date form_time" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd hh:ii">
+                            <input class="form-control" size="16" type="text" value="<?php echo $row['time'] ?>" name="bdaytime" readonly="readonly" onchange="UpdateTime(this.value,<?php echo $row['t_id'] ?>)">
+        					<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+        					<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                        </div>
+                    </td>
         			<td><?php echo $row['arrive'] ?></td>
-         			<td><p style="color: <?php echo $row['color'] ?>"><?php echo $row['status'] ?>  </p></a></td>
+         			<td><select onchange="UpdateStatus(this.value,<?php echo $row['t_id'] ?>)">
+                    	<option style='color: #cccccc' value="<?php echo $row['status_id'] ?>"><?php echo $row['status'] ?></option>
+                    <?php foreach($data['Q_Status'] as $value){ ?>
+                    	<?php if($row['status_id'] != $value['status_id']){ ?> 
+                    		<option value="<?php echo $value['status_id'] ?>"><?php echo $value['status_name'] ?></option>
+                    	<?php } ?>
+                    <?php } ?>
+                    </select>
+         			</td>
         			<td><?php echo $row['UpdateBy'] ?></td>
         			<td><?php echo $row['detail'] ?></td>
                     <td><?php echo $row['tel'] ?></td>
@@ -78,8 +106,56 @@
 				$('#dataTable').dataTable();
 			});
 </script>
-
+<script type="text/javascript" src="/public/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/public/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 <script>
+function UpdateDentist(value,id){
+	$.ajax({
+        method: "POST",
+        url: "/RecordController/EditDentistByAjax",
+        cache: false,
+        data: { dentist:value,Qid:id },
+        success: function(data){
+            if(data){
+            	alert("ทำรายการสำเร็จ");
+            }else{
+            	alert("ทำรายการไม่สำเร็จ");
+            }
+        }
+    });
+}
+function UpdateTime(value,id){
+	$.ajax({
+        method: "POST",
+        url: "/RecordController/EditTimeByAjax",
+        cache: false,
+        data: { Time:value,Qid:id },
+        success: function(data){
+            if(data){
+            	alert("ทำรายการสำเร็จ");
+            }else{
+            	alert("ทำรายการไม่สำเร็จ");
+            }
+        }
+    });
+}
+function UpdateStatus(value,id){
+	$.ajax({
+        method: "POST",
+        url: "/RecordController/EditStatusByAjax",
+        cache: false,
+        data: { StatusId:value,Qid:id },
+        success: function(data){
+            if(data){
+            	alert("ทำรายการสำเร็จ");
+            }else{
+            	alert("ทำรายการไม่สำเร็จ");
+            }
+            location.reload();
+        }
+    });
+}
 $('#test').inputpicker({
     data:[
     {value:"",text:""},
@@ -109,4 +185,18 @@ $('#test2').inputpicker({
     filterOpen: true,
     autoOpen: true
 });
+$('.form_time').datetimepicker({
+    language:  'th',
+    weekStart: 1,
+    todayBtn:  1,
+	autoclose: 1,
+	todayHighlight: 1,
+	startView: 2,
+	minView: 0,
+	maxView: 1,
+	forceParse: 0
+});
 </script>
+
+
+
