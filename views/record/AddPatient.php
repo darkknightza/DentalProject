@@ -42,13 +42,11 @@
                     <br>
 
 
-                    <font size="4" color="white"><p align="center" >พบแพทย์ทันที</p></font><input type="checkbox" checked id="phone" name="height" required class="btn" >
+                    <font size="4" color="white"><p align="center" >พบแพทย์ทันที</p></font><input type="checkbox" checked id="phone" name="height" class="btn" >
                  <!-- <div class="dentist" style="display:none;"> -->
                  	<div class="dentist">
-                    <p align="left" ><font size="4" color="white">แพทย์ผู้นัดหมาย</font></p> <input id="test2" value=" " name="dentist" required />
+                    <p align="left" ><font size="4" color="white">แพทย์ผู้รับผิดชอบ</font></p> <input id="test2" value=" " name="dentist" required />
                     </div>
-
-
                     <br>
 					<input class="submit-btn" type="submit" value="SUBMIT">	
 				</form>

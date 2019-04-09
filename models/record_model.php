@@ -13,14 +13,23 @@ class record_model extends Model
     }
     
     public function InsertPatient($data,$user_id){
-        $sql ="insert into patient (patient_name,location,tel,Allergic,CongenitalDetail,BirthDate,UpdateBy) values(:patient,:location,:tel,:Allergic,:CongenitalDetail,:BirthDate,:UpdateBy)";
+        $sql ="insert into patient (patient_name,Nickname,personal_ID,location,Nation,Occupation,tel,Email,Allergic,CongenitalDetail,BirthDate,Height,Weight,Blood_type,UpdateBy) values(:patient_name,:Nickname,:personal_ID,:location,:Nation,:Occupation,:tel,:Email,:Allergic,:CongenitalDetail,:BirthDate,:Height,:Weight,:Blood_type,:UpdateBy)";
         $pstm = $this->connect->prepare($sql);
-        $pstm->bindParam(':patient', $data[0]);
-        $pstm->bindParam(':location', $data[1]);
-        $pstm->bindParam(':tel', $data[2]);
-        $pstm->bindParam(':Allergic', $data[3]);
-        $pstm->bindParam(':CongenitalDetail', $data[4]);
-        $pstm->bindParam(':BirthDate', $data[5]);
+        $pstm->bindParam(':patient_name', $data[0]);
+        $pstm->bindParam(':Nickname', $data[1]);
+        $pstm->bindParam(':personal_ID', $data[2]);
+        $pstm->bindParam(':location', $data[3]);
+        $pstm->bindParam(':Nation', $data[4]);
+        $pstm->bindParam(':Occupation', $data[5]);
+        $pstm->bindParam(':tel', $data[6]);
+        $pstm->bindParam(':Email', $data[7]);
+        $pstm->bindParam(':Allergic', $data[8]);
+        $pstm->bindParam(':CongenitalDetail', $data[9]);
+        $pstm->bindParam(':BirthDate', $data[10]);
+        $pstm->bindParam(':Height', $data[11]);
+        $pstm->bindParam(':Weight', $data[12]);
+        $pstm->bindParam(':Blood_type', $data[13]);
+
         $pstm->bindParam(':UpdateBy', $user_id);
         $pstm->execute();
     }

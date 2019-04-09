@@ -104,17 +104,20 @@ class RecordController extends Controller
         $bdate = filter_input(INPUT_POST, 'bdate',FILTER_SANITIZE_STRING);
         $weight = filter_input(INPUT_POST, 'weight',FILTER_SANITIZE_STRING);
         $height = filter_input(INPUT_POST, 'height',FILTER_SANITIZE_STRING);
+        $blood_type = filter_input(INPUT_POST, 'blood_type',FILTER_SANITIZE_STRING);
 
-        $fullname = $fname." ".$lname;
+        
+
+        // $fullname = $fname." ".$lname;
 
 
-        $data = array($fullname, $location, $phone,$allegic,$contagious,$bdate);
+        // $data = array($fullname,$nickname, $personal_ID,$location,$nation,$Occupation,$phone,$email,$allegic,$contagious,$bdate,$height,$weight,$blood_type);
        
-        $user= Session::get('user');
-        $user_id = $user['user_id'];
+        // $user= Session::get('user');
+        // $user_id = $user['user_id'];
 
       
-        $this->model->InsertPatient($data,$user_id);
+        // $this->model->InsertPatient($data,$user_id);
 
         // echo "<script type='text/javascript'>alert('เพิ่มข้อมูลผู้ป่วยสำเร็จ');
         // window.location='/UserTypeController/Topage/".$user['userType_id']."';
