@@ -81,11 +81,11 @@
                         </div>
                     </td>
         			<td><?php echo $row['arrive'] ?></td>
-         			<td><select onchange="UpdateStatus(this.value,<?php echo $row['t_id'] ?>)">
-                    	<option style='color: #cccccc' value="<?php echo $row['status_id'] ?>"><?php echo $row['status'] ?></option>
+         			<td><select id="select<?php echo $i ?>" onchange="UpdateStatus(this.value,<?php echo $row['t_id'] ?>)">
+                    	<option style="color:<?php echo $row['color'] ?>" value="<?php echo $row['status_id'] ?>"><?php echo $row['status'] ?></option>
                     <?php foreach($data['Q_Status'] as $value){ ?>
                     	<?php if($row['status_id'] != $value['status_id']){ ?> 
-                    		<option value="<?php echo $value['status_id'] ?>"><?php echo $value['status_name'] ?></option>
+                    		<option style="color:<?php echo $value['color'] ?>" value="<?php echo $value['status_id'] ?>"><?php echo $value['status_name'] ?></option>
                     	<?php } ?>
                     <?php } ?>
                     </select>
@@ -156,6 +156,18 @@ function UpdateStatus(value,id){
         }
     });
 }
+var countQ = <?php echo count($data['allQ']) ?>;
+// for(var i=1;i<=countQ;i++){
+// 	$('#select'+i).css('color','gray');	
+// 	$('#select'+i).change(function() {
+// 	    var current = $('#select'+i).val();
+// 	    if (current != 'null') {
+// 	    	$('#select'+i).css('color','black');
+// 	    } else {
+// 	    	$('#select'+i).css('color','gray');
+// 	    }
+// 	}); 
+// }
 $('#test').inputpicker({
     data:[
     {value:"",text:""},
