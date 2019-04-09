@@ -44,15 +44,17 @@ class RecordController extends Controller
 
 
     public function ToQ_Page(){
-         $allQ = $this->model->GetAllQ();
-         $allPatient = $this->model->GetAllPatient();
-         $Dentist = $this->model->GetAllDentist();
-         $Page_type = 'all';
+        $allQ = $this->model->GetAllQ();
+        $allPatient = $this->model->GetAllPatient();
+        $Dentist = $this->model->GetAllDentist();
+        $Q_Status = $this->model->GetAllQ_Status();
+        $Page_type = 'all';
         $this->views('record/Patient_Q',[
             'allQ' =>$allQ,
             'allPatient' =>$allPatient,
             'Dentist' =>$Dentist,
-            'page_type' => $Page_type
+            'page_type' => $Page_type,
+            'Q_Status' => $Q_Status
         ]);
     }
 
@@ -203,7 +205,7 @@ class RecordController extends Controller
     }
 
 
-      public function EditStatus($id){
+     public function EditStatus($id){
          $Q_Detail = $this->model->GetQ_Detail($id);
          $Dentist = $this->model->GetAllDentist();
          $Q_Status = $this->model->GetAllQ_Status();
@@ -214,7 +216,45 @@ class RecordController extends Controller
             'id' => $id
         ]);
     }
-
+    public function EditDentistByAjax(){
+        $id = filter_input(INPUT_POST, 'Qid',FILTER_SANITIZE_STRING);
+        $dentist = filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING);
+        $user = Session::get('user');
+        $UpdateBy = $user['user_id'];
+        $data = [
+            'id' => $id,
+            'dentist' => $dentist,
+            'UpdateBy' => $UpdateBy
+        ];
+        $result = $this->model->UpdateDentistQ($data);
+        echo $result;
+    }
+    public function EditTimeByAjax(){
+        $id = filter_input(INPUT_POST, 'Qid',FILTER_SANITIZE_STRING);
+        $Time = filter_input(INPUT_POST, 'Time',FILTER_SANITIZE_STRING);
+        $user = Session::get('user');
+        $UpdateBy = $user['user_id'];
+        $data = [
+            'id' => $id,
+            'Time' => $Time,
+            'UpdateBy' => $UpdateBy
+        ];
+        $result = $this->model->UpdateTimeQ($data);
+        echo $result;
+    }
+    public function EditStatusByAjax(){
+        $id = filter_input(INPUT_POST, 'Qid',FILTER_SANITIZE_STRING);
+        $StatusId = filter_input(INPUT_POST, 'StatusId',FILTER_SANITIZE_STRING);
+        $user = Session::get('user');
+        $UpdateBy = $user['user_id'];
+        $data = [
+            'id' => $id,
+            'StatusId' => $StatusId,
+            'UpdateBy' => $UpdateBy
+        ];
+        $result = $this->model->UpdateStatusQ($data);
+        echo $result;
+    }
 
     public function Save_Q(){
         $id = filter_input(INPUT_POST, 'Q_id',FILTER_SANITIZE_STRING);

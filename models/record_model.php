@@ -131,7 +131,7 @@ class record_model extends Model
     }
     public function GetAllQ(){
 
-        $sql ="SELECT p.patient_name as patientName,u.name as dentist,us.name as UpdateBy,t.Treatment_q_time as time,t.detail as detail,t.Time_arrive as arrive,s.status_name as status,s.color as color,t.status_id as status_id, t.treatment_Q_id as t_id,p.tel as tel FROM treatment_q t INNER JOIN patient p on t.patient_id = p.patient_id INNER join user u on t.dentist_id = u.user_id INNER join user us on t.UpdateBy = us.user_id INNER join status s on t.status_id=s.status_id WHERE t.status_id != 4 and t.status_id != 5   ORDER by t.Treatment_q_time";
+        $sql ="SELECT u.user_id as UserId,p.patient_name as patientName,u.name as dentist,us.name as UpdateBy,t.Treatment_q_time as time,t.detail as detail,t.Time_arrive as arrive,s.status_name as status,s.color as color,t.status_id as status_id, t.treatment_Q_id as t_id,p.tel as tel FROM treatment_q t INNER JOIN patient p on t.patient_id = p.patient_id INNER join user u on t.dentist_id = u.user_id INNER join user us on t.UpdateBy = us.user_id INNER join status s on t.status_id=s.status_id WHERE t.status_id != 4 and t.status_id != 5   ORDER by t.Treatment_q_time";
 
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();
@@ -187,7 +187,33 @@ class record_model extends Model
         $pstm->bindParam(':Time_arrive', $data['Time_arrive']);
         return $pstm->execute();
     }
-
+    public function UpdateDentistQ($data){
+        $sql ="UPDATE treatment_q SET dentist_id = :dentist_id ,UpdateBy = :UpdateBy WHERE treatment_Q_id = :id";
+        
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $data['id']);
+        $pstm->bindParam(':dentist_id', $data['dentist']);
+        $pstm->bindParam(':UpdateBy', $data['UpdateBy']);
+        return $pstm->execute();
+    }
+    public function UpdateTimeQ($data){
+        $sql ="UPDATE treatment_q SET Treatment_q_time = :Time ,UpdateBy = :UpdateBy WHERE treatment_Q_id = :id";
+        
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $data['id']);
+        $pstm->bindParam(':Time', $data['Time']);
+        $pstm->bindParam(':UpdateBy', $data['UpdateBy']);
+        return $pstm->execute();
+    }
+    public function UpdateStatusQ($data){
+        $sql ="UPDATE treatment_q SET status_id = :StatusId ,Time_arrive = now(),UpdateBy = :UpdateBy WHERE treatment_Q_id = :id";
+        
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $data['id']);
+        $pstm->bindParam(':StatusId', $data['StatusId']);
+        $pstm->bindParam(':UpdateBy', $data['UpdateBy']);
+        return $pstm->execute();
+    }
     
 }
 
