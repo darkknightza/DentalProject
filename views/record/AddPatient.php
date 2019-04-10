@@ -45,7 +45,12 @@
                     <font size="4" color="white"><p align="center" >พบแพทย์ทันที</p></font><input type="checkbox" checked id="phone" name="height" class="btn" >
                  <!-- <div class="dentist" style="display:none;"> -->
                  	<div class="dentist">
-                    <p align="left" ><font size="4" color="white">แพทย์ผู้รับผิดชอบ</font></p> <input id="test2" value=" " name="dentist" required />
+                    <p align="left" ><font size="4" color="white">แพทย์ผู้รับผิดชอบ</font></p>
+                    <select  name="dentist" align="left" class="form-control">
+                        <?php foreach($data['Dentist'] as $row){ ?>
+                        <option value="<?php echo $row['user_id'] ?>"><?php echo $row['name'] ?></option>
+                        <?php } ?>
+                    </select>
                     </div>
                     <br>
 					<input class="submit-btn" type="submit" value="SUBMIT">	
@@ -62,18 +67,18 @@ $(document).ready(function(){
   
 });
 
-$('#test2').inputpicker({
-    data:[
-    {value:"",text:""},
-    <?php foreach($data['Dentist'] as $row){ ?>
-        {value:"<?php echo $row['user_id'] ?>",text:"<?php echo $row['name'] ?>"},
-        <?php } ?>
-        {}
-    ],
-    fields:['value','text'],
-    fieldText : 'text',
-    headShow: 0,
-    filterOpen: true,
-    autoOpen: true
-});
+// $('#test2').inputpicker({
+//     data:[
+//     {value:"",text:""},
+//     <?php foreach($data['Dentist'] as $row){ ?>
+//         {value:"<?php echo $row['user_id'] ?>",text:"<?php echo $row['name'] ?>"},
+//         <?php } ?>
+//         {}
+//     ],
+//     fields:['value','text'],
+//     fieldText : 'text',
+//     headShow: 0,
+//     filterOpen: true,
+//     autoOpen: true
+// });
 </script>

@@ -108,6 +108,9 @@ class RecordController extends Controller
         $height = filter_input(INPUT_POST, 'height',FILTER_SANITIZE_STRING);
         $blood_type = filter_input(INPUT_POST, 'blood_type',FILTER_SANITIZE_STRING);
 
+
+        
+
         
 
         // $fullname = $fname." ".$lname;
@@ -125,9 +128,9 @@ class RecordController extends Controller
         // window.location='/UserTypeController/Topage/".$user['userType_id']."';
         // </script>";
 
-        echo "<script type='text/javascript'>
-        window.location='/UserTypeController/Topage/".$user['userType_id']."';
-        </script>";
+        // echo "<script type='text/javascript'>
+        // window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        // </script>";
         
         
     }
