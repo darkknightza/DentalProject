@@ -12,7 +12,12 @@
             </div>          
                 <form class="form" method="POST" action="/RecordController/Add_Q">
                     <p align="left" ><font size="4" color="white">ชื่อคนไข้</font></p> <input id="test" value="" name="patient"/>
-                    <p align="left" ><font size="4" color="white">แพทย์ผู้นัดหมาย</font></p> <input id="test2" value=" " name="dentist"/>
+                    <p align="left" ><font size="4" color="white">แพทย์ผู้นัดหมาย</font></p>
+                        <select name="dentist" class="form-control">
+                            <?php foreach($data['Dentist'] as $row){ ?>
+                            	<option value="<?php echo $row['user_id'] ?>"><?php echo $row['name'] ?></option>
+                        	<?php } ?>
+                        </select>
                     <p align="left" ><font size="4" color="white">วันที่นัดหมาย</font></p>
                     <div class="input-group date form_time" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd hh:ii">
                         <input class="form-control" size="16" type="text" value="" name="bdaytime" readonly="readonly">
@@ -157,14 +162,17 @@ function UpdateStatus(value,id){
     });
 }
 var countQ = <?php echo count($data['allQ']) ?>;
+<?php foreach($data['allQ'] as $key => $value){ ?>
+	$('#select'+<?php echo $key+1 ?>).css('color','<?php echo $value['color'] ?>');
+<?php } ?>
 // for(var i=1;i<=countQ;i++){
-// 	$('#select'+i).css('color','gray');	
+// 	$('#select'+i).css('color','red');	
 // 	$('#select'+i).change(function() {
 // 	    var current = $('#select'+i).val();
 // 	    if (current != 'null') {
 // 	    	$('#select'+i).css('color','black');
 // 	    } else {
-// 	    	$('#select'+i).css('color','gray');
+// 	    	$('#select'+i).css('color','red');
 // 	    }
 // 	}); 
 // }
@@ -173,21 +181,6 @@ $('#test').inputpicker({
     {value:"",text:""},
     <?php foreach($data['allPatient'] as $row){ ?>
         {value:"<?php echo $row['patient_id'] ?>",text:"<?php echo $row['patient_name'] ?>"},
-        <?php } ?>
-        {}
-    ],
-    fields:['value','text'],
-    fieldText : 'text',
-    headShow: 0,
-    filterOpen: true,
-    autoOpen: true
-});
-
-$('#test2').inputpicker({
-    data:[
-    {value:"",text:""},
-    <?php foreach($data['Dentist'] as $row){ ?>
-        {value:"<?php echo $row['user_id'] ?>",text:"<?php echo $row['name'] ?>"},
         <?php } ?>
         {}
     ],

@@ -214,8 +214,6 @@ class RecordController extends Controller
       $user= Session::get('user');
       $UpdateBy = $user['user_id'];
       $status_id = 1;
-       
-
       $data = array($patient_id, $dentist_id, $UpdateBy,$Treatment_q_time,$status_id,$detail); 
       $result = $this->model->InsertPatient_Q($data);
       echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
