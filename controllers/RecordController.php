@@ -108,29 +108,46 @@ class RecordController extends Controller
         $height = filter_input(INPUT_POST, 'height',FILTER_SANITIZE_STRING);
         $blood_type = filter_input(INPUT_POST, 'blood_type',FILTER_SANITIZE_STRING);
 
+        $fullname = $fname." ".$lname;
 
         
 
-        
-
-        // $fullname = $fname." ".$lname;
 
 
-        // $data = array($fullname,$nickname, $personal_ID,$location,$nation,$Occupation,$phone,$email,$allegic,$contagious,$bdate,$height,$weight,$blood_type);
+        $data = array($fullname,$nickname, $personal_ID,$location,$nation,$Occupation,$phone,$email,$allegic,$contagious,$bdate,$height,$weight,$blood_type);
        
-        // $user= Session::get('user');
-        // $user_id = $user['user_id'];
+        $user= Session::get('user');
+        $user_id = $user['user_id'];
 
       
-        // $this->model->InsertPatient($data,$user_id);
+        $this->model->InsertPatient($data,$user_id);
+
+
+        if(empty(filter_input(INPUT_POST, 'Q',FILTER_SANITIZE_STRING))){
+
+
+        }else{
+            //insert Q
+
+            $id = $this->model->GetPatientID($fullname);
+
+            
+
+            $dentist = filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING);
+            $detail = filter_input(INPUT_POST, 'detail',FILTER_SANITIZE_STRING);
+
+            $data = array($id['id'], $dentist, $user_id,date("Y-m-d H:i:s"),2,$detail); 
+            $result = $this->model->InsertPatient_Q($data);
+        }
+
 
         // echo "<script type='text/javascript'>alert('เพิ่มข้อมูลผู้ป่วยสำเร็จ');
         // window.location='/UserTypeController/Topage/".$user['userType_id']."';
         // </script>";
 
-        // echo "<script type='text/javascript'>
-        // window.location='/UserTypeController/Topage/".$user['userType_id']."';
-        // </script>";
+        echo "<script type='text/javascript'>
+        window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        </script>";
         
         
     }
@@ -151,17 +168,17 @@ class RecordController extends Controller
             'id' => $id
         ];
         $result = $this->model->UpdatePatient($data);
-        // if($result){
-        //     echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
-        // }else{
-        //     echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
-        // }
-
-         if($result){
-            echo '<script>window.location = "/RecordController/ToManagePatient"</script>';
+        if($result){
+            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
         }else{
-            echo '<script>window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
+            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
         }
+
+        //  if($result){
+        //     echo '<script>window.location = "/RecordController/ToManagePatient"</script>';
+        // }else{
+        //     echo '<script>window.location = "/RecordController/ToManagePatient'.$id.'"</script>';
+        // }
     }
 
      public function ToDeletePatient($id){
@@ -169,25 +186,25 @@ class RecordController extends Controller
          $result = $this->model->DeletePatient_treatment_history($id);
          $result = $this->model->DeletePatient_treatment_q($id);
          $result = $this->model->DeletePatient_patient($id);
-        // if($result){
-        //     echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
-        // }else{
-        //     echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
-        // }
-
-
         if($result){
-            echo '<script>window.location = "/RecordController/ToManagePatient"</script>';
+            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
         }else{
-            echo '<script>window.location = "/RecordController/ToManagePatient"</script>';
+            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/ToManagePatient"</script>';
         }
+
+
+        // if($result){
+        //     echo '<script>window.location = "/RecordController/ToManagePatient"</script>';
+        // }else{
+        //     echo '<script>window.location = "/RecordController/ToManagePatient"</script>';
+        // }
     }
 
 
     public function Add_Q(){
         if(empty(filter_input(INPUT_POST, 'patient',FILTER_SANITIZE_STRING))||empty(filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING))){
-             //echo '<script>alert("กรุณากรอกข้อมูลให้ครบ");window.location = "/RecordController/ToQ_Page"</script>';
-             echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
+             echo '<script>alert("กรุณากรอกข้อมูลให้ครบ");window.location = "/RecordController/ToQ_Page"</script>';
+             //echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
 
         }
       $patient_id = filter_input(INPUT_POST, 'patient',FILTER_SANITIZE_STRING);
@@ -201,9 +218,9 @@ class RecordController extends Controller
 
       $data = array($patient_id, $dentist_id, $UpdateBy,$Treatment_q_time,$status_id,$detail); 
       $result = $this->model->InsertPatient_Q($data);
-      //echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
+      echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
 
-      echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
+      //echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
         
     }
 
@@ -278,17 +295,17 @@ class RecordController extends Controller
             'Time_arrive' => $time
         ];
         $result = $this->model->UpdateQ($data);
-        // if($result){
-        //     echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
-        // }else{
-        //     echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/EditStatus/'.$id.'"</script>';
-        // }
-
         if($result){
-            echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
+            echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
         }else{
-            echo '<script>window.location = "/RecordController/EditStatus/'.$id.'"</script>';
+            echo '<script>alert("ทำรายการไม่สำเร็จ");window.location = "/RecordController/EditStatus/'.$id.'"</script>';
         }
+
+        // if($result){
+        //     echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
+        // }else{
+        //     echo '<script>window.location = "/RecordController/EditStatus/'.$id.'"</script>';
+        // }
     }
 
 

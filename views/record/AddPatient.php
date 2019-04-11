@@ -42,7 +42,7 @@
                     <br>
 
 
-                    <font size="4" color="white"><p align="center" >พบแพทย์ทันที</p></font><input type="checkbox" checked id="phone" name="height" class="btn" >
+                    <font size="4" color="white"><p align="center" >พบแพทย์ทันที</p></font><input type="checkbox" checked id="phone" name="Q" class="btn" value="Q">
                  <!-- <div class="dentist" style="display:none;"> -->
                  	<div class="dentist">
                     <p align="left" ><font size="4" color="white">แพทย์ผู้รับผิดชอบ</font></p>
@@ -51,6 +51,9 @@
                         <option value="<?php echo $row['user_id'] ?>"><?php echo $row['name'] ?></option>
                         <?php } ?>
                     </select>
+                    <br>
+                    <font size="4" color="white"><p align="left" >รายละเอียดการรักษา</p></font>
+                    <textarea  class="message" cols="30" rows="10" placeholder="รายละเอียดการรักษา" id="location" name="detail" maxlength="100"></textarea>
                     </div>
                     <br>
 					<input class="submit-btn" type="submit" value="SUBMIT">	

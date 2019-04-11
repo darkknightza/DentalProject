@@ -49,6 +49,14 @@ class record_model extends Model
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function GetPatientID($name){
+        $sql ="SELECT max(patient_id) as id FROM `patient` WHERE patient_name = :name";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':name', $name);
+        $pstm->execute();
+        return $pstm->fetch(PDO::FETCH_ASSOC);
+    }
+
 
     public function GetAllQ_Status(){
         $sql ="SELECT * FROM `status`";
