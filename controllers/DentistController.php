@@ -71,8 +71,8 @@ class DentistController extends Controller
             'howtotreatment' => $howtotreatment
         ];
         $this->model->UpdateTreatment($data);
-        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/ViewHistoryDetail/'.$patientid.'" </script>';
-        echo '<script> window.location = "/DentistController/ViewHistoryDetail/'.$patientid.'" </script>';
+        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/ViewHistoryDetail/'.$patientid.'" </script>';
+        //echo '<script> window.location = "/DentistController/ViewHistoryDetail/'.$patientid.'" </script>';
     }
     public function DeleteTreatment($id) {
         $this->model->DELETEProductLog($id);
@@ -229,10 +229,10 @@ class DentistController extends Controller
         }
 
 
-        //echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/QueueToday" </script>';
+        echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/QueueToday" </script>';
         
 
-        echo '<script>window.location = "/DentistController/QueueToday" </script>';
+        //echo '<script>window.location = "/DentistController/QueueToday" </script>';
     }
     
 }

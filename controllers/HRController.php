@@ -39,25 +39,25 @@ class HRController extends Controller
             'usertype' => $usertype
         ];
         $result = $this->model->InsertUser($data);
-        // if($result){
-        //    echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
-        // window.location='/HRController/ManageUsers';
-        // </script>";
-        // }else{
-        //     echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
-        // window.location='/HRController/ManageUsers';
-        // </script>";
-        // }
-
         if($result){
-           echo "<script type='text/javascript'>
+           echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
         window.location='/HRController/ManageUsers';
         </script>";
         }else{
-            echo "<script type='text/javascript'>
+            echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
         window.location='/HRController/ManageUsers';
         </script>";
         }
+
+        // if($result){
+        //    echo "<script type='text/javascript'>
+        // window.location='/HRController/ManageUsers';
+        // </script>";
+        // }else{
+        //     echo "<script type='text/javascript'>
+        // window.location='/HRController/ManageUsers';
+        // </script>";
+        // }
     }
     public function ManageUsers(){
         $alluser = $this->model->GetAllUser();
@@ -87,25 +87,25 @@ class HRController extends Controller
         ];
 
         $result = $this->model->UpdateUser($data);
-        // if($result){
-        //    echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
-        // window.location='/HRController/ManageUsers';
-        // </script>";
-        // }else{
-        //     echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
-        // window.location='/HRController/ManageUsers';
-        // </script>";
-        // }
-
         if($result){
-           echo "<script type='text/javascript'>
+           echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
         window.location='/HRController/ManageUsers';
         </script>";
         }else{
-            echo "<script type='text/javascript'>
+            echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
         window.location='/HRController/ManageUsers';
         </script>";
         }
+
+        // if($result){
+        //    echo "<script type='text/javascript'>
+        // window.location='/HRController/ManageUsers';
+        // </script>";
+        // }else{
+        //     echo "<script type='text/javascript'>
+        // window.location='/HRController/ManageUsers';
+        // </script>";
+        // }
     }
     public function DeleteUser($id){
         $user= Session::get('user');
@@ -114,26 +114,26 @@ class HRController extends Controller
         $this->model->ChangeUserPermissionTreatment($id,$user_id);
         $this->model->ChangeUserPermissionTransaction($id,$user_id);
         $result = $this->model->DeleteUser($id);
-        // if($result){
-        //    echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
-        // window.location='/HRController/ManageUsers';
-        // </script>";
-        // }else{
-        //     echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
-        // window.location='/HRController/ManageUsers';
-        // </script>";
-        // }
-
-
         if($result){
-           echo "<script type='text/javascript'>
+           echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
         window.location='/HRController/ManageUsers';
         </script>";
         }else{
-            echo "<script type='text/javascript'>
+            echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
         window.location='/HRController/ManageUsers';
         </script>";
         }
+
+
+        // if($result){
+        //    echo "<script type='text/javascript'>
+        // window.location='/HRController/ManageUsers';
+        // </script>";
+        // }else{
+        //     echo "<script type='text/javascript'>
+        // window.location='/HRController/ManageUsers';
+        // </script>";
+        // }
     }
     public function EditPassword($id){
         $user = $this->model->GetUser($id);
@@ -146,26 +146,26 @@ class HRController extends Controller
         $pass = password_hash($password, PASSWORD_DEFAULT);
         $id = filter_input(INPUT_POST, 'user_id',FILTER_SANITIZE_STRING);
         $result = $this->model->UpdatePassword($pass,$id);
-        // if($result){
-        //    echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
-        // window.location='/HRController/ManageUsers';
-        // </script>";
-        // }else{
-        //     echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
-        // window.location='/HRController/ManageUsers';
-        // </script>";
-        // }
-
-
         if($result){
-           echo "<script type='text/javascript'>
+           echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
         window.location='/HRController/ManageUsers';
         </script>";
         }else{
-            echo "<script type='text/javascript'>
+            echo "<script type='text/javascript'>alert('ทำรายไม่สำเร็จ');
         window.location='/HRController/ManageUsers';
         </script>";
         }
+
+
+        // if($result){
+        //    echo "<script type='text/javascript'>
+        // window.location='/HRController/ManageUsers';
+        // </script>";
+        // }else{
+        //     echo "<script type='text/javascript'>
+        // window.location='/HRController/ManageUsers';
+        // </script>";
+        // }
     }
 
 }
