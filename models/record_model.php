@@ -77,7 +77,15 @@ class record_model extends Model
 
 
     public function GetPatientHistory($id){
-        $sql ="SELECT t.treatment_name as treatment_name,t.HowToTreatment as HowToTreatment,t.treatment_history_date as treatment_history_date,u.name as name  FROM treatment_history t INNER JOIN treatment_q q on t.treatment_Q_id = q.treatment_Q_id INNER join user u on q.dentist_id = u.user_id WHERE q.patient_id = :id";
+        $sql ="SELECT sum(product_log.totalPrice) as totalPrice,t.treatment_name as treatment_name,t.HowToTreatment as HowToTreatment,t.treatment_history_date as treatment_history_date,u.name as name
+               FROM
+               treatment_history AS t
+               INNER JOIN treatment_q AS q ON t.treatment_Q_id = q.treatment_Q_id
+               INNER JOIN `user` AS u ON q.dentist_id = u.user_id
+               INNER JOIN product_log ON product_log.treatment_history_id = t.treatment_history_id
+               WHERE q.patient_id = :id
+               GROUP BY q.treatment_Q_id
+               ";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':id', $id);
         $pstm->execute();
