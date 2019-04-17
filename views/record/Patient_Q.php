@@ -123,9 +123,9 @@ function UpdateDentist(value,id){
         data: { dentist:value,Qid:id },
         success: function(data){
             if(data){
-            	alert("ทำรายการสำเร็จ");
+            	//alert("ทำรายการสำเร็จ");
             }else{
-            	alert("ทำรายการไม่สำเร็จ");
+            	//alert("ทำรายการไม่สำเร็จ");
             }
         }
     });
@@ -138,9 +138,9 @@ function UpdateTime(value,id){
         data: { Time:value,Qid:id },
         success: function(data){
             if(data){
-            	alert("ทำรายการสำเร็จ");
+            	//alert("ทำรายการสำเร็จ");
             }else{
-            	alert("ทำรายการไม่สำเร็จ");
+            	//alert("ทำรายการไม่สำเร็จ");
             }
         }
     });
@@ -153,9 +153,9 @@ function UpdateStatus(value,id){
         data: { StatusId:value,Qid:id },
         success: function(data){
             if(data){
-            	alert("ทำรายการสำเร็จ");
+            	//alert("ทำรายการสำเร็จ");
             }else{
-            	alert("ทำรายการไม่สำเร็จ");
+            	//alert("ทำรายการไม่สำเร็จ");
             }
             location.reload();
         }
