@@ -38,9 +38,10 @@ class DentistController extends Controller
     public function QueueDetail($id) {
         $Patient = $this->model->GetPatientDetail($id);
         $History = $this->model->GetPatientHistory($id);
-        $this->views('dentist/QueueDetail',[
+        $this->views('record/ViewDetail',[
             'Patient' =>$Patient,
-            'History' =>$History
+            'History' =>$History,
+            'type' => 1
         ]);
     }
     public function FormTreatment($id) {

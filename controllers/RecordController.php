@@ -78,7 +78,8 @@ class RecordController extends Controller
         $History = $this->model->GetPatientHistory($id);
         $this->views('record/ViewDetail',[
             'Patient' =>$Patient,
-            'History' =>$History
+            'History' =>$History,
+            'type' => null
         ]);
     }
 

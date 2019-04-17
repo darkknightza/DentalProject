@@ -29,7 +29,16 @@ tr #textRow {
 	<div class="contact-caption clearfix">
 		<div class="container">
 			<br>
+            <br>
 			<div class="medical">
+				<?php if($data['type']){ ?>
+				<br>
+				<div class="row">
+                    <div class="col-md-12 contact-form" align="center">
+                        	<a href="/DentistController/FormTreatment/<?php echo $data['Patient']['patient_id'];  ?>" class="btn btn-info">เพิ่มรายละเอียดการรักษา</a>
+                    </div>
+                </div>
+                <?php } ?>
 				<div class="row">
 					<div class="col-sm-3" align="left">
 						<h1>Medical History</h1>
@@ -108,6 +117,7 @@ tr #textRow {
 						</table>
 					</div>
 				</div>
+				<br>
 			</div>
 		</div>
 	<br>
