@@ -161,7 +161,7 @@ class FinanceController extends Controller
         $treatment_history_id = filter_input(INPUT_POST, 'id',FILTER_SANITIZE_STRING);
         $treatment_Q_id = filter_input(INPUT_POST, 'treatment_Q_id',FILTER_SANITIZE_STRING);
         $treatment_name = filter_input(INPUT_POST, 'treatment_name',FILTER_SANITIZE_STRING);
-        
+        $dentist_name = filter_input(INPUT_POST, 'dentist_name',FILTER_SANITIZE_STRING);
         $product = $this->model->GetProduct();
         $count = count($product);
         if($treatment_Q_id){
@@ -187,13 +187,22 @@ class FinanceController extends Controller
                 }
                 
             }
-            $data = [
+            $priceIncome = $priceIncome/2;
+            $Income = [
                 'Income' =>  'รับ',
-                'detail' => $treatment_name,
+                'detail' => 'ค่าบริการ ('.$dentist_name.')',
                 'amount' =>$priceIncome,
                 'user_id' => $user['user_id']
             ];
-            $this->model->InsertIncome($data);
+            $expenditure = [
+                'Income' =>  'จ่าย',
+                'detail' => 'ส่วนแบ่งแพทย์ ('.$dentist_name.')',
+                'amount' =>$priceIncome,
+                'user_id' => $user['user_id']
+            ];
+            $this->model->InsertIncome($Income);
+            $this->model->InsertIncome($expenditure);
+        
         }
 
         echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/FinanceController/PrintBill/'.$treatment_Q_id.'" </script>';

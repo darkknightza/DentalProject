@@ -7,6 +7,7 @@
 					<font size="4" color="white"><p align="left" >ชื่อ-สกุล:</p></font> <input class="form-control" type="text" value="<?php echo $data['getBillDetail']['patient_name']; ?>" placeholder="ชื่อ"  id="fname" name="name" readonly="readonly">
 					<input type="hidden" value="<?php echo $data['getBillDetail']['treatment_history_id']; ?>" name="id">	
 					<input type="hidden" value="<?php echo $data['getBillDetail']['treatment_Q_id']; ?>" name="treatment_Q_id">	
+					<input type="hidden" value="<?php echo $data['getBillDetail']['name']; ?>" name="dentist_name">	
 					<font size="4" color="white"><p align="left" >การรักษา:</p></font><input class="form-control" type="text" placeholder="เบอร์ติดต่อ" id="phone" name="treatment_name" value="<?php echo $data['getBillDetail']['treatment_name']; ?>" readonly="readonly">
 					<font size="4" color="white"><p align="left" >รายละเอียดการรักษา : M = ฟันที่ถอน / ผ่าฟันคุดครั้งนี้ , F = ฟันที่อุดครั้งนี้ , A = ฟันเทียมชนิดถอดได้</p>
                     </font><textarea class="form-control" cols="30" rows="10" placeholder="รายละเอียดการรักษา"  name="howtotreatment" readonly="readonly"><?php echo $data['getBillDetail']['HowToTreatment']; ?></textarea>

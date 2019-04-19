@@ -97,10 +97,13 @@ class finance_model extends Model
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
     public function getBillDetail($Id) {
-        $sql ="SELECT patient.patient_id,treatment_q.treatment_Q_id,treatment_history.treatment_history_id,treatment_history.treatment_name,treatment_history.HowToTreatment,patient.patient_name,
+        $sql ="SELECT user.name as name,dentist_id,patient.patient_id,treatment_q.treatment_Q_id,treatment_history.treatment_history_id,treatment_history.treatment_name,treatment_history.HowToTreatment,patient.patient_name,
                 patient.tel,treatment_q.Time_arrive
-                FROM treatment_q INNER JOIN patient ON treatment_q.patient_id = patient.patient_id
+                FROM
+                treatment_q
+                INNER JOIN patient ON treatment_q.patient_id = patient.patient_id
                 INNER JOIN treatment_history ON treatment_history.treatment_Q_id = treatment_q.treatment_Q_id
+                INNER JOIN `user` ON treatment_q.dentist_id = `user`.user_id
                 WHERE treatment_q.treatment_Q_id = :Id";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Id', $Id);
