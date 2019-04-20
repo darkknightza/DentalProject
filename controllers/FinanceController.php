@@ -189,13 +189,13 @@ class FinanceController extends Controller
             }
             $priceIncome = $priceIncome/2;
             $Income = [
-                'Income' =>  'รับ',
+                'Income' =>  'รับ(ค่าบริการ)',
                 'detail' => 'ค่าบริการ ('.$dentist_name.')',
                 'amount' =>$priceIncome,
                 'user_id' => $user['user_id']
             ];
             $expenditure = [
-                'Income' =>  'จ่าย',
+                'Income' =>  'จ่าย(แพทย์)',
                 'detail' => 'ส่วนแบ่งแพทย์ ('.$dentist_name.')',
                 'amount' =>$priceIncome,
                 'user_id' => $user['user_id']

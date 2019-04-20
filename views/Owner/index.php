@@ -18,6 +18,15 @@
                     <p align="left" ><font size="4" color="white">รายจ่าย</font></p> 
                     <input type="text" placeholder="<?php echo $rowT['expenses'] ?>" name="Price" disabled>
                     <?php } ?>
+                    <center>
+  <label style="color: white"><input type="checkbox" value="รับ(ค่าบริการ)" name="t1">ค่าบริการ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+  <label style="color: white"><input type="checkbox" value="จ่าย(แพทย์)" name="t2">ส่วนแบ่งแพทย์&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+  <label style="color: white"><input type="checkbox" value="รับ" name="t3">รายรับอื่นๆ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  <label style="color: white"><input type="checkbox" value="จ่าย" name="t4">รายจ่ายอื่นๆ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  </center>
+<br><br>
                     <input class="submit-btn" type="submit" value="ค้นหา"> 
                 </form>
         </div>
@@ -43,7 +52,7 @@
         		<tr>
         			<td><?php echo $i ?></td>
 
-                    <?php if($row['Transaction_type']=='รับ'){ ?>
+                    <?php if($row['Transaction_type']=='รับ'||$row['Transaction_type']=='รับ(ค่าบริการ)'){ ?>
 
 
 
@@ -53,7 +62,7 @@
                     <td><p style="color: green"><?php echo $row['time'] ?></p></td>
                     <td><p style="color: green"><?php echo $row['UpdateBy'] ?></p></td>
 
-                    <?php }if($row['Transaction_type']=='จ่าย'){ ?>
+                    <?php }if($row['Transaction_type']=='จ่าย'||$row['Transaction_type']=='จ่าย(แพทย์)'){ ?>
 
 
 
