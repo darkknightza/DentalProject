@@ -19,12 +19,14 @@ class OwnerController extends Controller
          $allTransaction = $this->model->GetAllTransaction();
          $allIncome = $this->model->GetSumIncomeTransaction();
          $allExpenses = $this->model->GetSumExpensesTransaction();
+         $Dentist = $this->model->GetAllDentist();
 
 
         $this->views('Owner/index',[
             'allTransaction' =>$allTransaction,
             'allIncome' =>$allIncome,
-            'allExpenses' =>$allExpenses
+            'allExpenses' =>$allExpenses,
+            'Dentist'=>$Dentist
 
 
         ]);
@@ -38,26 +40,35 @@ class OwnerController extends Controller
         $L = explode('-', $Ldate);
         $Ldate = $L[0].'-'.$L[1].'-'.($L[2]+1);
         
-            $t1= filter_input(INPUT_POST, 't1',FILTER_SANITIZE_STRING);
-            $t2= filter_input(INPUT_POST, 't2',FILTER_SANITIZE_STRING);
-            $t3= filter_input(INPUT_POST, 't3',FILTER_SANITIZE_STRING);
-            $t4= filter_input(INPUT_POST, 't4',FILTER_SANITIZE_STRING);
+        $t1= filter_input(INPUT_POST, 't1',FILTER_SANITIZE_STRING);
+        $t2= filter_input(INPUT_POST, 't2',FILTER_SANITIZE_STRING);
+        $t3= filter_input(INPUT_POST, 't3',FILTER_SANITIZE_STRING);
+        $t4= filter_input(INPUT_POST, 't4',FILTER_SANITIZE_STRING);
+        $dentist= filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING);
+
+        echo $dentist;
+
         
 
-        $allTransaction = $this->model->FindTransaction($Fdate,$Ldate,$t1,$t2,$t3,$t4);
-        $allIncome = $this->model->FindSumIncomeTransaction($Fdate,$Ldate,$t1,$t3);
-        $allExpenses = $this->model->FindSumExpensesTransaction($Fdate,$Ldate,$t2,$t4);
+
+
+
+        $allTransaction = $this->model->FindTransaction($Fdate,$Ldate,$t1,$t2,$t3,$t4,$dentist);
+        $allIncome = $this->model->FindSumIncomeTransaction($Fdate,$Ldate,$t1,$t3,$dentist);
+        $allExpenses = $this->model->FindSumExpensesTransaction($Fdate,$Ldate,$t2,$t4,$dentist);
+        $Dentist = $this->model->GetAllDentist();
         
 
 
          
 
 
-        $this->views('Owner/index',[
-            'allTransaction' =>$allTransaction,
-            'allIncome' =>$allIncome,
-            'allExpenses' =>$allExpenses
-        ]);
+        // $this->views('Owner/index',[
+        //     'allTransaction' =>$allTransaction,
+        //     'allIncome' =>$allIncome,
+        //     'allExpenses' =>$allExpenses,
+        //     'dentist' => $Dentist
+        // ]);
     }
 
 

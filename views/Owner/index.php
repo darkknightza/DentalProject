@@ -18,6 +18,15 @@
                     <p align="left" ><font size="4" color="white">รายจ่าย</font></p> 
                     <input type="text" placeholder="<?php echo $rowT['expenses'] ?>" name="Price" disabled>
                     <?php } ?>
+
+                    <p align="left" ><font size="4" color="white">ระบุแพทย์ที่ต้องการค้นหา</font></p>
+                        <select name="dentist" class="form-control">
+                             <option value="">ไม่ระบุแพทย์</option>
+                            <?php foreach($data['Dentist'] as $row){ ?>
+                                <option value="<?php echo $row['name'] ?>"><?php echo $row['name'] ?></option>
+                            <?php } ?>
+                        </select>
+                        <br>
                     <center>
   <label style="color: white"><input type="checkbox" value="รับ(ค่าบริการ)" name="t1">ค่าบริการ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 
