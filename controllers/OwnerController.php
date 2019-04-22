@@ -46,7 +46,9 @@ class OwnerController extends Controller
         $t4= filter_input(INPUT_POST, 't4',FILTER_SANITIZE_STRING);
         $dentist= filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING);
 
-        echo $dentist;
+        $dentist = '%'.$dentist.'%';
+
+        //echo $dentist;
 
         
 
@@ -57,18 +59,20 @@ class OwnerController extends Controller
         $allIncome = $this->model->FindSumIncomeTransaction($Fdate,$Ldate,$t1,$t3,$dentist);
         $allExpenses = $this->model->FindSumExpensesTransaction($Fdate,$Ldate,$t2,$t4,$dentist);
         $Dentist = $this->model->GetAllDentist();
+
+        //print_r($Dentist);
         
 
 
          
 
 
-        // $this->views('Owner/index',[
-        //     'allTransaction' =>$allTransaction,
-        //     'allIncome' =>$allIncome,
-        //     'allExpenses' =>$allExpenses,
-        //     'dentist' => $Dentist
-        // ]);
+        $this->views('Owner/index',[
+            'allTransaction' =>$allTransaction,
+            'allIncome' =>$allIncome,
+            'allExpenses' =>$allExpenses,
+            'Dentist' => $Dentist
+        ]);
     }
 
 
