@@ -133,6 +133,7 @@ class RecordController extends Controller
             //insert Q
 
             $id = $this->model->GetPatientID($fullname);
+            date_default_timezone_set('Asia/Bangkok');
 
             
 
