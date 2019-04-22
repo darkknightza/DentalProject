@@ -54,7 +54,7 @@
         	<thead>
         		<tr>
         			<th>ID</th>
-        			<th style="width: 30%">ชื่อผู้ป่วย</th>
+        			<th style="width: 60%">ชื่อผู้ป่วย</th>
                     <th>แพทย์ผู้นัด</th>
         			<th style="width: 100%">เวลานัด</th>
         			<th>เวลาทำรายการ</th>
