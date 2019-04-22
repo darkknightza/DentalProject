@@ -118,14 +118,14 @@ body {
             		<?php $sumTotal = 0?>
             		<?php foreach ( $data['getProductLog'] as $key => $row){ ?>
             		<?php 
-    					$sumTotal += $row['totalPrice'];
+    					$sumTotal += $row['totalPrice']*$row['amount'];
     			    ?>
             		<tr>
             			<td><?php echo $key+1 ?></td>
             			<td><?php echo $row['productName'] ?></td>
             			<td><?php echo $row['amount'] ?></td>
-            			<td><?php echo $row['Price'] ?></td>
             			<td><?php echo $row['totalPrice'] ?></td>
+            			<td><?php echo $row['totalPrice']*$row['amount']; ?></td>
             		</tr>
             		<?php } ?>
             		<tr>

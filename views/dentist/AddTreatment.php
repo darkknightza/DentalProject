@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="/public/css/picker.min.css">
 <script type="text/javascript" src="/public/js/picker.min.js"></script>
-
+<link href="/public/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <div class="row">
 
 	<div class="contact-caption clearfix">
@@ -105,7 +105,11 @@
 					<div class="form-group row" id="appointDIV">
 						<font size="4" color="white"><p align="left">การนัดครั้งหน้า</p></font>
     					<div class="col-md-12">
-    					<input type="datetime-local" class="form-control" name="datetime">
+        					<div class="input-group date form_time" data-date="" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input3" data-link-format="yyyy-mm-dd hh:ii">
+                                <input class="form-control" size="16" type="text" value="" name="datetime" readonly="readonly">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            					<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                            </div>
     					</div>
     					<font size="4" color="white"><p align="left">รายละเอียด</p></font>
     					<div class="col-md-12">
@@ -118,6 +122,9 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="/public/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/public/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 <script type="text/javascript">
 	//คำสั่ง Jquery เริ่มทำงาน เมื่อ โหลดหน้า Page เสร็จ 
 	$(function(){
@@ -135,6 +142,16 @@
 		}
 		
 	});
-
+	$('.form_time').datetimepicker({
+	    language:  'th',
+	    weekStart: 1,
+	    todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+	});
 	$('#ex-search').picker({search : true});
 </script>
