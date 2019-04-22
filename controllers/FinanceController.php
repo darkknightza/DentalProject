@@ -175,7 +175,6 @@ class FinanceController extends Controller
                 if($product){
                     $price = filter_input(INPUT_POST, 'price'.$i,FILTER_SANITIZE_STRING);
                     $amount = filter_input(INPUT_POST, 'amount'.$i,FILTER_SANITIZE_STRING);
-                    $price = $price * $amount;
                     $data = [
                         'lastId' => $treatment_history_id,
                         'price' => $price,

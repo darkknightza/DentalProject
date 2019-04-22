@@ -215,7 +215,6 @@ class DentistController extends Controller
                 if($product){
                     $price = filter_input(INPUT_POST, 'price'.$i,FILTER_SANITIZE_STRING);
                     $amount = filter_input(INPUT_POST, 'amount'.$i,FILTER_SANITIZE_STRING);
-                    $price = $price * $amount;
                     $data = [
                         'lastId' => $lastId,
                         'price' => $price,
@@ -228,8 +227,6 @@ class DentistController extends Controller
                 
             }
         }
-
-
         echo '<script>alert("ทำรายการสำเร็จ"); window.location = "/DentistController/QueueToday" </script>';
         
 
