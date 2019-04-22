@@ -87,6 +87,21 @@ class HR_model extends Model
         $pstm->execute();
     }
 
+    public function ChangeUserPermissionTreatment_Q_updateBy($oldid,$newid){
+        $sql ="UPDATE treatment_q SET  updateBy = :newid WHERE updateBy = :oldid";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':newid',$newid);
+        $pstm->bindParam(':oldid', $oldid);
+        $pstm->execute();
+    }
+    public function ChangeUserPermissionTreatment_Q_Dentist($oldid,$newid){
+        $sql ="UPDATE treatment_q SET  dentist_id = :newid WHERE dentist_id = :oldid";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':newid',$newid);
+        $pstm->bindParam(':oldid', $oldid);
+        $pstm->execute();
+    }
+
 
 
     

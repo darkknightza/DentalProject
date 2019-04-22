@@ -113,6 +113,8 @@ class HRController extends Controller
         $this->model->ChangeUserPermissionPatient($id,$user_id);
         $this->model->ChangeUserPermissionTreatment($id,$user_id);
         $this->model->ChangeUserPermissionTransaction($id,$user_id);
+        $this->model->ChangeUserPermissionTreatment_Q_updateBy($id,$user_id);
+        $this->model->ChangeUserPermissionTreatment_Q_Dentist($id,$user_id);
         $result = $this->model->DeleteUser($id);
         if($result){
            echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
