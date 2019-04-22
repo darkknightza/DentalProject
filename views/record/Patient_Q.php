@@ -48,12 +48,13 @@
 	</div>
 </section>
 <!-- end of about section -->
+
 	<div class="container">
         <table class="table table-bordered" id="dataTable" style="width: 100%">
         	<thead>
         		<tr>
         			<th>ID</th>
-        			<th>ชื่อผู้ป่วย</th>
+        			<th style="width: 30%">ชื่อผู้ป่วย</th>
                     <th>แพทย์ผู้นัด</th>
         			<th style="width: 100%">เวลานัด</th>
         			<th>เวลาทำรายการ</th>
