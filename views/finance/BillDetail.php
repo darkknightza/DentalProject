@@ -36,14 +36,6 @@
     							</tr>
     							
     							<?php $i++; } ?>
-    							<?php foreach ( $data['arrayProtductNochoose'] as $key => $row){ ?>
-    							<tr>
-    								<td><input type="checkbox" value="<?php echo $row['product_id'] ?>" name="product<?php echo $i  ?>"></td>
-    								<td><?php echo $row['productName'] ?></td>
-    								<td><input type="number" name="price<?php echo $i  ?>" id="price" value="<?php echo $row['Price'] ?>" placeholder="ราคา"></td>
-    								<td><input type="number" name="amount<?php echo $i  ?>" id="amount" value="1" placeholder="จำนวน"></td>
-    							</tr>
-    							<?php $i++; } ?>
     						</tbody>
     					</table>
     					</div>

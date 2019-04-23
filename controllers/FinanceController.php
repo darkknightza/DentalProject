@@ -153,7 +153,6 @@ class FinanceController extends Controller
         $this->views('finance/BillDetail',[
             'getBillDetail' => $getBillDetail,
             'getProductLog' => $getProductLog,
-            'arrayProtductNochoose' => $arrayProtductNochoose
         ]);
     }
     public function SubmitBill() {
