@@ -28,12 +28,14 @@
                         </select>
                         <br>
                     <center>
-  <label style="color: white"><input type="checkbox" value="รับ(ค่าบริการ)" name="t1">ค่าบริการ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        
+
+  <!-- <label style="color: white"><input type="checkbox" value="รับ(ค่าบริการ)" name="t1">ค่าบริการ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 
   <label style="color: white"><input type="checkbox" value="จ่าย(แพทย์)" name="t2">ส่วนแบ่งแพทย์&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 
   <label style="color: white"><input type="checkbox" value="รับ" name="t3">รายรับอื่นๆ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-  <label style="color: white"><input type="checkbox" value="จ่าย" name="t4">รายจ่ายอื่นๆ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  <label style="color: white"><input type="checkbox" value="จ่าย" name="t4">รายจ่ายอื่นๆ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> -->
   </center>
 <br><br>
                     <input class="submit-btn" type="submit" value="ค้นหา"> 
