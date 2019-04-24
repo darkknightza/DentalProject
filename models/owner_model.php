@@ -33,39 +33,100 @@ class owner_model extends Model{
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
 
-      public function FindTransaction($Fdate,$Ldate,$t1,$t2,$t3,$t4,$dentist){
-        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount as amount ,u.name as UpdateBy, t.Time as time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id and (t.Time BETWEEN :Fdate and :Ldate) and (Transaction_type = :t1 || Transaction_type = :t2 || Transaction_type = :t3 || Transaction_type = :t4) and Transaction_detail like :dentist ";
+      public function FindTransaction($Fdate,$Ldate,$condition,$dentist){
+        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount as amount ,u.name as UpdateBy, t.Time as time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id and (t.Time BETWEEN :Fdate and :Ldate) and Transaction_type = :condition and Transaction_detail like :dentist ";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
-        $pstm->bindParam(':t1',$t1);
-        $pstm->bindParam(':t2',$t2);
-        $pstm->bindParam(':t3',$t3);
-        $pstm->bindParam(':t4',$t4);
+        $pstm->bindParam(':condition',$condition);
         $pstm->bindParam(':dentist',$dentist);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function FindSumIncomeTransaction($Fdate,$Ldate,$t1,$t3,$dentist){
-        $sql ="SELECT sum(amount) as income FROM transaction_detail where (Transaction_type = :t1 || Transaction_type = :t3) and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+    public function FindSumIncomeTransaction($Fdate,$Ldate,$condition,$dentist){
+        $sql ="SELECT sum(amount) as income FROM transaction_detail where Transaction_type = :condition and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
-        $pstm->bindParam(':t1',$t1);
-        $pstm->bindParam(':t3',$t3);
+        $pstm->bindParam(':condition',$condition);
         $pstm->bindParam(':dentist',$dentist);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function FindSumExpensesTransaction($Fdate,$Ldate,$t2,$t4,$dentist){
-        $sql ="SELECT sum(amount) as expenses FROM transaction_detail where (Transaction_type = :t2 || Transaction_type = :t4) and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+    public function FindSumExpensesTransaction($Fdate,$Ldate,$condition,$dentist){
+        $sql ="SELECT sum(amount) as expenses FROM transaction_detail where Transaction_type = :condition and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
-        $pstm->bindParam(':t2',$t2);
-        $pstm->bindParam(':t4',$t4);
+        $pstm->bindParam(':condition',$condition);
+        $pstm->bindParam(':dentist',$dentist);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+          public function FindTransaction_All($Fdate,$Ldate,$condition,$con,$dentist){
+        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount as amount ,u.name as UpdateBy, t.Time as time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id and ((t.Time BETWEEN :Fdate and :Ldate) and (Transaction_type = :condition)or(Transaction_type = :con)) and Transaction_detail like :dentist ";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':Fdate',$Fdate);
+        $pstm->bindParam(':Ldate',$Ldate);
+        $pstm->bindParam(':condition',$condition);
+        $pstm->bindParam(':dentist',$dentist);
+        $pstm->bindParam(':con',$con);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function FindSumIncomeTransaction_All($Fdate,$Ldate,$condition,$con,$dentist){
+        $sql ="SELECT sum(amount) as income FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'รับ')or(Transaction_type = :con and Transaction_type = 'รับ(ค่าบริการ)')  and (Time BETWEEN  :Fdate and :Ldate))  and Transaction_detail like :dentist";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':Fdate',$Fdate);
+        $pstm->bindParam(':Ldate',$Ldate);
+        $pstm->bindParam(':condition',$condition);
+        $pstm->bindParam(':dentist',$dentist);
+        $pstm->bindParam(':con',$con);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function FindSumExpensesTransaction_All($Fdate,$Ldate,$condition,$con,$dentist){
+        $sql ="SELECT sum(amount) as expenses FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'จ่าย')or(Transaction_type = :con and Transaction_type = 'จ่าย(แพทย์)') and (Time BETWEEN  :Fdate and :Ldate))  and Transaction_detail like :dentist";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':Fdate',$Fdate);
+        $pstm->bindParam(':Ldate',$Ldate);
+        $pstm->bindParam(':condition',$condition);
+        $pstm->bindParam(':dentist',$dentist);
+        $pstm->bindParam(':con',$con);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+     public function FindTransaction_Income($Fdate,$Ldate,$dentist){
+        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount*2 as amount ,u.name as UpdateBy, t.Time as time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id and (t.Time BETWEEN :Fdate and :Ldate) and Transaction_type = 'รับ(ค่าบริการ)' and Transaction_detail like :dentist ";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':Fdate',$Fdate);
+        $pstm->bindParam(':Ldate',$Ldate);
+        $pstm->bindParam(':dentist',$dentist);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function FindSumIncomeTransaction_Income($Fdate,$Ldate,$dentist){
+        $sql ="SELECT sum(amount)*2 as income FROM transaction_detail where  Transaction_type = 'รับ(ค่าบริการ)' and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':Fdate',$Fdate);
+        $pstm->bindParam(':Ldate',$Ldate);
+        $pstm->bindParam(':dentist',$dentist);
+        $pstm->execute();
+        return $pstm->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function FindSumExpensesTransaction_Income($Fdate,$Ldate,$dentist){
+        $sql ="SELECT sum(amount)*2 as expenses FROM transaction_detail where Transaction_type = 'ไม่รับ' and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':Fdate',$Fdate);
+        $pstm->bindParam(':Ldate',$Ldate);
         $pstm->bindParam(':dentist',$dentist);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);

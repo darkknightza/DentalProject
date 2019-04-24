@@ -28,7 +28,17 @@
                         </select>
                         <br>
                     <center>
-                        
+                        <p align="left" ><font size="4" color="white">ประเภทรายการที่ต้องการดู</font></p>
+                        <select name="condition" class="form-control">
+                             <option value="รับทั้งหมด">รายรับรวมทั้งหมด</option>
+                             <option value="จ่ายทั้งหมด">รายจ่ายรวมทั้งหมด</option>
+                             <option value="รับรวม">รายรับของการรักษาที่ยังไม่หักค่าใช้จ่าย</option>
+                             <option value="รับ(ค่าบริการ)">รายรับหลังจากหักค่าใช้จ่าย</option>
+                             <option value="จ่าย(ค่าบริการ)">รายจ่ายสำหรับแพทย์</option>
+                             <option value="รับ">รายรับอื่นๆ</option>
+                             <option value="จ่าย">รายจ่ายอื่นๆ</option>
+                        </select>
+
 
   <!-- <label style="color: white"><input type="checkbox" value="รับ(ค่าบริการ)" name="t1">ค่าบริการ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 

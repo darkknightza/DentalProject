@@ -40,13 +40,43 @@ class OwnerController extends Controller
         $L = explode('-', $Ldate);
         $Ldate = $L[0].'-'.$L[1].'-'.($L[2]+1);
         
-        $t1= filter_input(INPUT_POST, 't1',FILTER_SANITIZE_STRING);
-        $t2= filter_input(INPUT_POST, 't2',FILTER_SANITIZE_STRING);
-        $t3= filter_input(INPUT_POST, 't3',FILTER_SANITIZE_STRING);
-        $t4= filter_input(INPUT_POST, 't4',FILTER_SANITIZE_STRING);
+        $condition= filter_input(INPUT_POST, 'condition',FILTER_SANITIZE_STRING);
+
         $dentist= filter_input(INPUT_POST, 'dentist',FILTER_SANITIZE_STRING);
 
         $dentist = '%'.$dentist.'%';
+        $con='รับ(ค่าบริการ)';
+
+
+        if($condition=='รับทั้งหมด'||$condition=='จ่ายทั้งหมด'){
+            if($condition=='รับทั้งหมด'){
+                $condition='รับ';
+                $con='รับ(ค่าบริการ)';
+                
+            }else{
+                $condition='จ่าย';
+                $con='จ่าย(แพทย์)';
+            }
+            
+            $allTransaction = $this->model->FindTransaction_All($Fdate,$Ldate,$condition,$con,$dentist);
+            $allIncome = $this->model->FindSumIncomeTransaction_All($Fdate,$Ldate,$condition,$con,$dentist);
+            $allExpenses = $this->model->FindSumExpensesTransaction_All($Fdate,$Ldate,$condition,$con,$dentist);
+
+      
+        }else if($condition=='รับรวม'){
+            $allTransaction = $this->model->FindTransaction_Income($Fdate,$Ldate,$dentist);
+            $allIncome = $this->model->FindSumIncomeTransaction_Income($Fdate,$Ldate,$dentist);
+            $allExpenses = $this->model->FindSumExpensesTransaction_Income($Fdate,$Ldate,$dentist);
+
+
+        }else{
+            
+            $allTransaction = $this->model->FindTransaction($Fdate,$Ldate,$condition,$dentist);
+            $allIncome = $this->model->FindSumIncomeTransaction($Fdate,$Ldate,$condition,$dentist);
+            $allExpenses = $this->model->FindSumExpensesTransaction($Fdate,$Ldate,$condition,$dentist);
+
+        }
+        
 
         //echo $dentist;
 
@@ -55,9 +85,7 @@ class OwnerController extends Controller
 
 
 
-        $allTransaction = $this->model->FindTransaction($Fdate,$Ldate,$t1,$t2,$t3,$t4,$dentist);
-        $allIncome = $this->model->FindSumIncomeTransaction($Fdate,$Ldate,$t1,$t3,$dentist);
-        $allExpenses = $this->model->FindSumExpensesTransaction($Fdate,$Ldate,$t2,$t4,$dentist);
+        
         $Dentist = $this->model->GetAllDentist();
 
         //print_r($Dentist);
