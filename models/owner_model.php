@@ -67,7 +67,7 @@ class owner_model extends Model{
     }
 
           public function FindTransaction_All($Fdate,$Ldate,$condition,$con,$dentist){
-        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount as amount ,u.name as UpdateBy, t.Time as time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id and ((t.Time BETWEEN :Fdate and :Ldate) and (Transaction_type = :condition)or(Transaction_type = :con)) and Transaction_detail like :dentist ";
+        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount as amount ,u.name as UpdateBy, t.Time as time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id and (t.Time BETWEEN :Fdate and :Ldate) and ((Transaction_type = :condition)or(Transaction_type = :con)) and Transaction_detail like :dentist ";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
@@ -79,7 +79,7 @@ class owner_model extends Model{
     }
 
     public function FindSumIncomeTransaction_All($Fdate,$Ldate,$condition,$con,$dentist){
-        $sql ="SELECT sum(amount) as income FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'รับ')or(Transaction_type = :con and Transaction_type = 'รับ(ค่าบริการ)')  and (Time BETWEEN  :Fdate and :Ldate))  and Transaction_detail like :dentist";
+        $sql ="SELECT sum(amount) as income FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'รับ')or(Transaction_type = :con and Transaction_type = 'รับ(ค่าบริการ)'))  and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
@@ -91,7 +91,7 @@ class owner_model extends Model{
     }
 
     public function FindSumExpensesTransaction_All($Fdate,$Ldate,$condition,$con,$dentist){
-        $sql ="SELECT sum(amount) as expenses FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'จ่าย')or(Transaction_type = :con and Transaction_type = 'จ่าย(แพทย์)') and (Time BETWEEN  :Fdate and :Ldate))  and Transaction_detail like :dentist";
+        $sql ="SELECT sum(amount) as expenses FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'จ่าย')or(Transaction_type = :con and Transaction_type = 'จ่าย(แพทย์)')) and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
