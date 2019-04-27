@@ -8,12 +8,11 @@
                 <h3>ค้นหารายการบัญชี</h3>
             </div>          
                 <form class="form" method="POST" action="/OwnerController/ToFindTransaction_Page">
-                    <p align="left" ><font size="4" color="white">ช่วงเวลาที่ต้องการค้นหา</font></p><input type="date" name="Fdate" required>
-                    <input type="date" name="Ldate" required>
+                    <p align="left" ><font size="4" color="white">ช่วงเวลาที่ต้องการค้นหา</font><br><input type="date" name="Fdate" required style="width: 25%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="white">ถึงวันที่</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="Ldate" required style="width: 25%"></p>
                     <?php foreach ($data['allIncome'] as $rowO){ ?>
                     <p align="left" ><font size="4" color="white">รายรับ</font></p> 
 
-                    <input type="text" placeholder="<?php echo $rowO['income'] ?>" name="productName" disabled>
+                    <input type="text" placeholder="<?php echo $rowO['income'] ?>" name="productName" disabled >
                     <?php }foreach ($data['allExpenses'] as $rowT){ ?>
                     <p align="left" ><font size="4" color="white">รายจ่าย</font></p> 
                     <input type="text" placeholder="<?php echo $rowT['expenses'] ?>" name="Price" disabled>
