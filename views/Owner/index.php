@@ -5,7 +5,7 @@
     <div class="contact-caption clearfix">
         <div class="col-md-6 col-md-offset-3 contact-form">
             <div align="center">
-                <h3>ค้นหารายการบัญชี</h3>
+                <h3>ค้นหารายการสรุปรายรับรายจ่าย</h3>
             </div>          
                 <form class="form" method="POST" action="/OwnerController/ToFindTransaction_Page">
                     <p align="left" ><font size="4" color="white">ช่วงเวลาที่ต้องการค้นหา</font><br><input type="date" name="Fdate" required style="width: 25%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="white">ถึงวันที่</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="Ldate" required style="width: 25%"></p>
