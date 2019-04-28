@@ -14,7 +14,7 @@
 	<section class="service text-center" id="service">
 		<div class="container">
 			<div class="row">
-				<h2>งานเวชระเบียน</h2>
+				<h2>งานการเงินและบริการ</h2>
 				<h4><?php echo $user['name'] ?> ( <?php echo $user['userType_name'] ?> ) </h4>
 				<a href="/FinanceController/ViewAllProduct" ><div class="col-md-3 col-sm-6">
 					<div class="single-service">

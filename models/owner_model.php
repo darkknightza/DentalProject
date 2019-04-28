@@ -20,14 +20,14 @@ class owner_model extends Model{
     }
 
     public function GetSumIncomeTransaction(){
-        $sql ="SELECT sum(amount) as income FROM transaction_detail where Transaction_type = 'รับ'";
+        $sql ="SELECT ROUND(SUM(amount),2) as income FROM transaction_detail where Transaction_type = 'รับ' or Transaction_type = 'รับ(ค่าบริการ)'";
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function GetSumExpensesTransaction(){
-        $sql ="SELECT sum(amount) as expenses FROM transaction_detail where Transaction_type = 'จ่าย'";
+        $sql ="SELECT ROUND(SUM(amount),2) as expenses FROM transaction_detail where Transaction_type = 'จ่าย' or Transaction_type = 'จ่าย(แพทย์)'";
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
@@ -45,7 +45,7 @@ class owner_model extends Model{
     }
 
     public function FindSumIncomeTransaction($Fdate,$Ldate,$condition,$dentist){
-        $sql ="SELECT sum(amount) as income FROM transaction_detail where (Transaction_type = :condition and (Transaction_type ='รับ' or Transaction_type = 'รับ(ค่าบริการ)')) and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+        $sql ="SELECT ROUND(SUM(amount),2) as income FROM transaction_detail where (Transaction_type = :condition and (Transaction_type ='รับ' or Transaction_type = 'รับ(ค่าบริการ)')) and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
@@ -56,7 +56,7 @@ class owner_model extends Model{
     }
 
     public function FindSumExpensesTransaction($Fdate,$Ldate,$condition,$dentist){
-        $sql ="SELECT sum(amount) as expenses FROM transaction_detail where (Transaction_type = :condition and (Transaction_type='จ่าย' or Transaction_type = 'จ่าย(แพทย์)')) and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+        $sql ="SELECT ROUND(SUM(amount),2) as expenses FROM transaction_detail where (Transaction_type = :condition and (Transaction_type='จ่าย' or Transaction_type = 'จ่าย(แพทย์)')) and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
@@ -79,7 +79,7 @@ class owner_model extends Model{
     }
 
     public function FindSumIncomeTransaction_All($Fdate,$Ldate,$condition,$con,$dentist){
-        $sql ="SELECT sum(amount) as income FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'รับ')or(Transaction_type = :con and Transaction_type = 'รับ(ค่าบริการ)'))  and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+        $sql ="SELECT ROUND(SUM(amount),2) as income FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'รับ')or(Transaction_type = :con and Transaction_type = 'รับ(ค่าบริการ)'))  and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
@@ -91,7 +91,7 @@ class owner_model extends Model{
     }
 
     public function FindSumExpensesTransaction_All($Fdate,$Ldate,$condition,$con,$dentist){
-        $sql ="SELECT sum(amount) as expenses FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'จ่าย')or(Transaction_type = :con and Transaction_type = 'จ่าย(แพทย์)')) and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+        $sql ="SELECT ROUND(SUM(amount),2) as expenses FROM transaction_detail where ((Transaction_type = :condition and Transaction_type = 'จ่าย')or(Transaction_type = :con and Transaction_type = 'จ่าย(แพทย์)')) and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
@@ -113,7 +113,7 @@ class owner_model extends Model{
     }
 
     public function FindSumIncomeTransaction_Income($Fdate,$Ldate,$dentist){
-        $sql ="SELECT sum(amount)*2 as income FROM transaction_detail where  Transaction_type = 'รับ(ค่าบริการ)' and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+        $sql ="SELECT ROUND(SUM(amount),2)*2 as income FROM transaction_detail where  Transaction_type = 'รับ(ค่าบริการ)' and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);
@@ -123,7 +123,7 @@ class owner_model extends Model{
     }
 
     public function FindSumExpensesTransaction_Income($Fdate,$Ldate,$dentist){
-        $sql ="SELECT sum(amount)*2 as expenses FROM transaction_detail where Transaction_type = 'ไม่รับ' and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
+        $sql ="SELECT ROUND(SUM(amount),2)*2 as expenses FROM transaction_detail where Transaction_type = 'ไม่รับ' and (Time BETWEEN  :Fdate and :Ldate)  and Transaction_detail like :dentist";
         $pstm = $this->connect->prepare($sql);
         $pstm->bindParam(':Fdate',$Fdate);
         $pstm->bindParam(':Ldate',$Ldate);

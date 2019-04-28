@@ -82,7 +82,7 @@
     							<tr>
     								<td><input type="checkbox" value="<?php echo $row['product_id'] ?>" name="product<?php echo $key  ?>"></td>
     								<td><?php echo $row['productName'] ?></td>
-    								<td><input type="number" name="price<?php echo $key  ?>" id="price" value="<?php echo $row['Price'] ?>" placeholder="ราคา"></td>
+    								<td><input type="number" name="price<?php echo $key  ?>" id="price" value="<?php echo $row['Price'] ?>" placeholder="ราคา" step="0.01"></td>
     								<td><input type="number" name="amount<?php echo $key  ?>" id="amount" value="1" placeholder="จำนวน"></td>
     							</tr>
     							<?php } ?>
