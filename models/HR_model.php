@@ -27,6 +27,27 @@ class HR_model extends Model
         $pstm->bindParam(':userType_id', $data['usertype']);
         return $pstm->execute();
     }
+    
+
+    public function Getname($id){
+        $sql ="SELECT name from user where user_id = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
+        $pstm->execute();
+        return $pstm->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function ChangeUserPermissionStaff($oldname,$newname,$name){
+        $sql ="UPDATE transaction_detail SET transaction_detail = replace(transaction_detail,:oldname,:newname) WHERE transaction_detail like :name";
+        
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':oldname', $oldname);
+        $pstm->bindParam(':newname', $newname);
+        $pstm->bindParam(':name', $name);
+        return $pstm->execute();
+    }
+
+
     public function UpdateUser($data){
         $sql ="UPDATE user SET name = :name ,userType_id = :userType_id WHERE user_id = :id";
         $pstm = $this->connect->prepare($sql);

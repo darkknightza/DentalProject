@@ -85,8 +85,12 @@ class HRController extends Controller
             'usertype' => $usertype,
             'id' => $id
         ];
-
+        $oldname = $this->model->Getname($id);
         $result = $this->model->UpdateUser($data);
+        
+        
+        
+        $this->model->ChangeUserPermissionStaff($oldname['name'],$name,'%'.$oldname['name'].'%');
         if($result){
            echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
         window.location='/HRController/ManageUsers';
@@ -110,11 +114,15 @@ class HRController extends Controller
     public function DeleteUser($id){
         $user= Session::get('user');
         $user_id = $user['user_id'];
+        $oldname = $this->model->Getname($id);
+        $name = $this->model->Getname($user_id);
         $this->model->ChangeUserPermissionPatient($id,$user_id);
         $this->model->ChangeUserPermissionTreatment($id,$user_id);
         $this->model->ChangeUserPermissionTransaction($id,$user_id);
         $this->model->ChangeUserPermissionTreatment_Q_updateBy($id,$user_id);
         $this->model->ChangeUserPermissionTreatment_Q_Dentist($id,$user_id);
+        
+        $this->model->ChangeUserPermissionStaff($oldname['name'],$name['name'],'%'.$oldname['name'].'%');
         $result = $this->model->DeleteUser($id);
         if($result){
            echo "<script type='text/javascript'>alert('ทำรายการสำเร็จ');
