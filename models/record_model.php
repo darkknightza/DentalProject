@@ -186,7 +186,13 @@ class record_model extends Model
         $pstm->execute();
         return $pstm->fetch(PDO::FETCH_ASSOC);
     }
-
+    public function Get_CardId($id){
+        $sql ="SELECT * FROM patient WHERE personal_ID = :id";
+        $pstm = $this->connect->prepare($sql);
+        $pstm->bindParam(':id', $id);
+        $pstm->execute();
+        return $pstm->fetch(PDO::FETCH_ASSOC);
+    }
 
 
     public function UpdateQ($data){
