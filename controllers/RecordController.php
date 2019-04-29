@@ -219,7 +219,7 @@ class RecordController extends Controller
       $status_id = 1;
       $data = array($patient_id, $dentist_id, $UpdateBy,$Treatment_q_time,$status_id,$detail); 
       $result = $this->model->InsertPatient_Q($data);
-      //echo '<script>alert("ทำรายการสำเร็จ");window.location = "/RecordController/ToQ_Page"</script>';
+      echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
 
       //echo '<script>window.location = "/RecordController/ToQ_Page"</script>';
         

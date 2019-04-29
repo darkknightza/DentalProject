@@ -8,18 +8,18 @@
                 <h3>ค้นหารายการสรุปรายรับรายจ่าย</h3>
             </div>          
                 <form class="form" method="POST" action="/OwnerController/ToFindTransaction_Page">
-                    <p align="left" ><font size="4" color="white">ช่วงเวลาที่ต้องการค้นหา</font><br><input type="date" name="Fdate" required style="width: 25%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="white">ถึงวันที่</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="Ldate" required style="width: 25%"></p>
+                    <p align="center" ><font size="4" color="white">ช่วงเวลาที่ต้องการค้นหา</font><br><input type="date" name="Fdate" required style="width: 25%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" color="white">ถึงวันที่</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="Ldate" required style="width: 25%"></p>
                     <?php foreach ($data['allIncome'] as $rowO){ ?>
-                    <p align="left" ><font size="4" color="white">รายรับ</font> 
+                    <p align="center" ><font size="4" color="white">รายรับ</font> 
 
                     <br><input type="text" placeholder="<?php echo $rowO['income'] ?>" name="productName" disabled style="width: 62%"></p>
                     <?php }foreach ($data['allExpenses'] as $rowT){ ?>
-                    <p align="left" ><font size="4" color="white">รายจ่าย</font>
+                    <p align="center" ><font size="4" color="white">รายจ่าย</font>
                     <br><input type="text" placeholder="<?php echo $rowT['expenses'] ?>" name="Price" disabled style="width: 62%">
                     <?php } ?>
                     </p>
 
-                    <p align="left" ><font size="4" color="white">ระบุแพทย์ที่ต้องการค้นหา</font>
+                    <p align="center" ><font size="4" color="white">ระบุแพทย์ที่ต้องการค้นหา</font>
                         <select name="dentist" class="form-control" style="width: 62%">
                              <option value="">ไม่ระบุแพทย์</option>
                             <?php foreach($data['Dentist'] as $row){ ?>
@@ -29,7 +29,7 @@
                         </p>
                         <br>
                     <center>
-                        <p align="left" ><font size="4" color="white">ประเภทรายการที่ต้องการตรวจสอบ</font>
+                        <p align="center" ><font size="4" color="white">ประเภทรายการที่ต้องการตรวจสอบ</font>
                         <br><select name="condition" class="form-control" style="width: 62%">
                              <option value="รับทั้งหมด">รายรับรวมทั้งหมด</option>
                              <option value="จ่ายทั้งหมด">รายจ่ายรวมทั้งหมด</option>
