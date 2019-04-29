@@ -20,13 +20,6 @@ class RecordController extends Controller
     public function ToHistory_Page(){
         $this->views('record/History',null);
     }
-    
-    
-     public function ToAddNewPatient(){
-        $this->views('record/AddNewPatient',null);
-    }
-
-
     public function ToAddPatient(){
         $Dentist = $this->model->GetAllDentist();
         $this->views('record/AddPatient',[
@@ -98,7 +91,13 @@ class RecordController extends Controller
       $fname = filter_input(INPUT_POST, 'fname',FILTER_SANITIZE_STRING);
         $lname = filter_input(INPUT_POST, 'lname',FILTER_SANITIZE_STRING);
         $nickname = filter_input(INPUT_POST, 'nickname',FILTER_SANITIZE_STRING);
-        $personal_ID = filter_input(INPUT_POST, 'personal_ID',FILTER_SANITIZE_STRING);
+        $personal_ID = filter_input(INPUT_POST, 'personal_ID',FILTER_SANITIZE_STRING); 
+        if($this->model->Get_CardId($personal_ID) != null){
+            echo "<script type='text/javascript'>
+            alert('รหัสบัตรประชาชนซ้ำ');
+            window.location='/RecordController/ToAddPatient';
+            </script>";          
+        }
         $location = filter_input(INPUT_POST, 'location',FILTER_SANITIZE_STRING);
         $nation = filter_input(INPUT_POST, 'nation',FILTER_SANITIZE_STRING);
         $Occupation = filter_input(INPUT_POST, 'Occupation',FILTER_SANITIZE_STRING);
