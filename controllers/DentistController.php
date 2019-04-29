@@ -172,10 +172,14 @@ class DentistController extends Controller
         $point = filter_input(INPUT_POST, 'point',FILTER_DEFAULT,FILTER_REQUIRE_ARRAY);
 
         $i=0;
-        while ($i<sizeof($point)) {
+        if(!empty($point)){
+            while ($i<sizeof($point)) {
             $howtotreatment = $howtotreatment.",".$point[$i];
             $i++;
         }
+
+        }
+        
 
         
         
