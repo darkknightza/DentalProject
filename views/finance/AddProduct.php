@@ -8,7 +8,7 @@
 					<p align="left" ><font size="4" color="white">รายการรักษา</font></p> 
 					<input type="text" placeholder="รายการรักษา" name="productName" >
 					<p align="left" ><font size="4" color="white">ราคา</font></p> 
-					<input type="text" placeholder="ราคา" name="Price" >
+					<input type="number" placeholder="ราคา" name="Price" step="0.01">
 					<input class="submit-btn" type="submit" value="บันทึก">	
 				</form>
 		</div>

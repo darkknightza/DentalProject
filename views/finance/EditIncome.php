@@ -14,7 +14,7 @@
 					<p align="left" ><font size="4" color="white">รายละเอียด</font></p> 
 					<input type="text" placeholder="รายละเอียด" name="detail" value="<?php echo $data['Income']['Transaction_detail']; ?>">
 					<p align="left" ><font size="4" color="white">จำนวน</font></p> 
-					<input type="text" placeholder="จำนวน" name="amount" value="<?php echo $data['Income']['amount']; ?>">
+					<input type="number" placeholder="จำนวน" name="amount" value="<?php echo $data['Income']['amount']; ?>" step="0.01">
 					<input class="submit-btn" type="submit" value="บันทึก">	
 				</form>
 		</div>

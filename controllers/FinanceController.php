@@ -107,7 +107,7 @@ class FinanceController extends Controller
         $detail = filter_input(INPUT_POST, 'detail',FILTER_SANITIZE_STRING);
         $amount = filter_input(INPUT_POST, 'amount',FILTER_SANITIZE_STRING);
         if($Income == 1){
-            $Income = 'รับ;';
+            $Income = 'รับ';
         }else{
             $Income = 'จ่าย';
         }
