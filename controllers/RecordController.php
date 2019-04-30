@@ -97,7 +97,7 @@ class RecordController extends Controller
             alert('รหัสบัตรประชาชนซ้ำ');
             window.location='/RecordController/ToAddPatient';
             </script>";          
-        }
+        }else{
         $location = filter_input(INPUT_POST, 'location',FILTER_SANITIZE_STRING);
         $nation = filter_input(INPUT_POST, 'nation',FILTER_SANITIZE_STRING);
         $Occupation = filter_input(INPUT_POST, 'Occupation',FILTER_SANITIZE_STRING);
@@ -144,16 +144,16 @@ class RecordController extends Controller
         }
 
 
-        // echo "<script type='text/javascript'>alert('เพิ่มข้อมูลผู้ป่วยสำเร็จ');
-        // window.location='/UserTypeController/Topage/".$user['userType_id']."';
-        // </script>";
-
-        echo "<script type='text/javascript'>
+        echo "<script type='text/javascript'>alert('เพิ่มข้อมูลผู้ป่วยสำเร็จ');
         window.location='/UserTypeController/Topage/".$user['userType_id']."';
         </script>";
+
+        // echo "<script type='text/javascript'>
+        // window.location='/UserTypeController/Topage/".$user['userType_id']."';
+        // </script>";
         
         
-    }
+    }}
 
     public function UpdatePatient(){
         $id = filter_input(INPUT_POST, 'Patient_id',FILTER_SANITIZE_STRING);
