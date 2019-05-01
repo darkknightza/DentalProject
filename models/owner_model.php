@@ -13,21 +13,21 @@ class owner_model extends Model{
 
 
     public function GetAllTransaction(){
-        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount as amount ,u.name as UpdateBy,t.time as time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id";
+        $sql ="SELECT t.Transaction_id as id,t.Transaction_type as Transaction_type,t.Transaction_detail as Transaction_detail , t.amount as amount ,u.name as UpdateBy,t.time as time FROM transaction_detail t inner join user u where t.UpdateBy = u.user_id and 0";
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function GetSumIncomeTransaction(){
-        $sql ="SELECT ROUND(SUM(amount),2) as income FROM transaction_detail where Transaction_type = 'รับ' or Transaction_type = 'รับ(ค่าบริการ)'";
+        $sql ="SELECT ROUND(SUM(amount),2) as income FROM transaction_detail where (Transaction_type = 'รับ' or Transaction_type = 'รับ(ค่าบริการ)') and 0";
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function GetSumExpensesTransaction(){
-        $sql ="SELECT ROUND(SUM(amount),2) as expenses FROM transaction_detail where Transaction_type = 'จ่าย' or Transaction_type = 'จ่าย(แพทย์)'";
+        $sql ="SELECT ROUND(SUM(amount),2) as expenses FROM transaction_detail where (Transaction_type = 'จ่าย' or Transaction_type = 'จ่าย(แพทย์)') and 0";
         $pstm = $this->connect->prepare($sql);
         $pstm->execute();
         return $pstm->fetchAll(PDO::FETCH_ASSOC);
